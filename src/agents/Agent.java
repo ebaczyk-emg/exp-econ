@@ -5,9 +5,9 @@ package agents;
  */
 public abstract class Agent {
 
-    abstract double getIntrinsicValue();
-    abstract double getBid();
-    abstract double getOffer();
+    public abstract double getFundamentalValue();
+    public abstract double getBid();
+    public abstract double getOffer();
 
 
 }

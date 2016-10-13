@@ -27,7 +27,7 @@ public class StandardCompetitionMarketplace extends Marketplace{
     public boolean runOneStep() {
 
         for(Agent agent : agents) {
-
+            agent.getFundamentalValue();
         }
         return true;
     }

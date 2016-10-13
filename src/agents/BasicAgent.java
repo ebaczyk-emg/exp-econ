@@ -29,7 +29,7 @@ public class BasicAgent extends Agent{
         return 0d;
     }
 
-    public double getIntrinsicValue() {
+    public double getFundamentalValue() {
         return 0d;
     }
 
