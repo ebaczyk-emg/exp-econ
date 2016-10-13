@@ -9,5 +9,8 @@ public abstract class Agent {
     public abstract double getBid();
     public abstract double getOffer();
 
+    public abstract int getAssetEndowment();
+    public abstract double getCashEndowment();
+
 
 }

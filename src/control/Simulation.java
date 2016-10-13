@@ -14,7 +14,8 @@ public class Simulation {
     BrainAllocator brainAllocator;
     AssetGenerator assetGenerator;
     Marketplace market;
-// hi
+    private static final double INIT_CASH_ENDOWMENT = 1000;
+    private static final int INIT_ASSET_ENDOWMENT = 2;
 
     public Simulation() {
         brainAllocator = new SimplestBrainAllocator();
@@ -23,5 +24,14 @@ public class Simulation {
                                                     assetGenerator,
                                                     100 );
         // figure out how to dynamically generate more markets
+
+    }
+
+    public static int getInitAssetEndowment() {
+        return INIT_ASSET_ENDOWMENT;
+    }
+
+    public static double getInitCashEndowment() {
+        return INIT_CASH_ENDOWMENT;
     }
 }
