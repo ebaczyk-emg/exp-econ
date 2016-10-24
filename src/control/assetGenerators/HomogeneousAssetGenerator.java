@@ -20,13 +20,12 @@ public class HomogeneousAssetGenerator extends AssetGenerator {
     }
 
     public ArrayList<Asset> generateAssets(int numAssets){
-        ArrayList<Asset> assets = new ArrayList<>();
+        ArrayList<Asset> assets = new ArrayList<>(numAssets);
         for(int i = 0; i < numAssets; i++) {
-            Asset newAsset = new HomogeneousAsset(
-                    registry,
-                    Math.random() *
-                        (sim.getConfig().getMaxAssetValue() - sim.getConfig().getMinAssetValue())
-                        + sim.getConfig().getMinAssetValue());
+            double value = Math.random() *
+                    (sim.getConfig().getMaxAssetValue() - sim.getConfig().getMinAssetValue())
+                    + sim.getConfig().getMinAssetValue();
+            Asset newAsset = new HomogeneousAsset(registry, value);
             assets.add(newAsset);
         }
         return assets;

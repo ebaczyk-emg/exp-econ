@@ -9,23 +9,40 @@ import java.util.ArrayList;
  */
 public abstract class Agent {
     private int id;
-    private ArrayList<Asset> assetEndowment;
-    private double cashEndowment;
+    ArrayList<Asset> assetEndowment;
+    double cashEndowment;
 
-    public abstract double getFundamentalValue();
+    public abstract double getFundamentalValue(Asset a);
     public abstract double getBid();
     public abstract double getOffer();
+
+    public void buyAsset(Asset a, double price) {
+        this.debit(price);
+        this.endowAsset(a);
+    }
+
+    public void sellAsset(Asset a, double price) {
+        this.credit(price);
+        this.unendowAsset(a);
+    }
 
     public void endowAsset(Asset a) {
         assert (a.getOwner() == null);
         assetEndowment.add(a);
+        a.setOwner(this);
     }
 
-    public void credit(double amount) {
+    public void unendowAsset(Asset a) {
+        assert (a.getOwner() == this);
+        assetEndowment.remove(a);
+        a.setOwner(null);
+    }
+
+    private void credit(double amount) {
         cashEndowment += amount;
     }
 
-    public void debit(double amount) {
+    private void debit(double amount) {
         cashEndowment -= amount;
     }
 

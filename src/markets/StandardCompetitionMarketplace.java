@@ -8,7 +8,6 @@ import control.Simulation;
 import control.assetGenerators.AssetGenerator;
 import control.brainAllocators.BrainAllocator;
 
-import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -38,7 +37,7 @@ public class StandardCompetitionMarketplace extends Marketplace{
         for(Agent agent : agents) {
             agentPopulation.init(agent);
         }
-        this.agents = agentPopulation.getAgents();
+        this.agents = new ArrayList<>(agentPopulation.getAgents());
 
         this.registry = sim.getAssetRegistry();
         this.assets = assetGenerator.generateAssets((sim.getConfig().getnAgents() *
@@ -46,26 +45,35 @@ public class StandardCompetitionMarketplace extends Marketplace{
         for(Asset asset : assets) {
             registry.init(asset);
         }
-        this.assets = registry.getAssets();
+        this.assets = new ArrayList<>(registry.getAssets());
 
         this.initializeAssetAllocation();
     }
 
     public boolean initializeAssetAllocation() {
+        ArrayList<Asset> unallocatedAssets = new ArrayList<>(assets);
         for(Agent agent : agents) {
             for(int i = 0; i < sim.getConfig().getInitAssetEndowment(); i++) {
-
+                int index = (int) Math.floor(Math.random() * unallocatedAssets.size());
+                System.out.println(index);
+                agent.endowAsset(unallocatedAssets.get(index));
+                unallocatedAssets.remove(index);
             }
         }
+        assert unallocatedAssets.size() == 0: "assets were created and were not allocated";
         return true;
     }
 
     public boolean runOneStep() {
         HashMap<Double, Agent> bids = new HashMap<>();
         HashMap<Double, Agent> offers = new HashMap<>();
-
         for(Agent agent : agents) {
-            agent.getFundamentalValue();
+            //agent.getFundamentalValue();
+            if(agent.getID().equals("Agent1")) {
+//                System.out.println("here");
+                System.out.println(agent.getOwnedAssets().get(0).getID() + " " + agent.getOwnedAssets().get(0).getIntrinsicValue() +
+                " " + agent.getOwnedAssets().get(1).getID() + " " + agent.getOwnedAssets().get(1).getIntrinsicValue());
+            }
 
             //collect all agents' bids and asks
             if(Math.random() > 0.5d) {

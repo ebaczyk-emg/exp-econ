@@ -6,7 +6,7 @@ import agents.Agent;
  * Created by Emily on 10/4/2016.
  */
 public class HomogeneousAsset extends Asset {
-    private static double intrinsicValue;
+    private double intrinsicValue;
     private AssetRegistry registry;
 
     public HomogeneousAsset(AssetRegistry registry,

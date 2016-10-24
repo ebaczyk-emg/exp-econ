@@ -32,8 +32,9 @@ public class Simulation {
                                                     assetGenerator,
                                                     config.getnAgents(),
                                                     this);
-        // figure out how to dynamically generate more markets
-        System.out.println("market created");
+
+        //TODO figure out how to dynamically generate more markets
+        System.out.println("Market created; starting to step");
 
         for(int i = 1; i <= config.getnSteps(); i++){
             market.runOneStep();
