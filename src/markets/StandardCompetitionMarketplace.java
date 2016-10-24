@@ -3,6 +3,7 @@ package markets;
 import agents.Agent;
 import agents.AgentPopulation;
 import assets.Asset;
+import assets.AssetRegistry;
 import control.Simulation;
 import control.assetGenerators.AssetGenerator;
 import control.brainAllocators.BrainAllocator;
@@ -18,6 +19,7 @@ import java.util.HashMap;
 public class StandardCompetitionMarketplace extends Marketplace{
     private Simulation sim;
     private AgentPopulation agentPopulation;
+    private AssetRegistry registry;
     ArrayList<Agent> agents = new ArrayList<>();
     ArrayList<Asset> assets = new ArrayList<>();
     int numAgents;
@@ -31,13 +33,31 @@ public class StandardCompetitionMarketplace extends Marketplace{
         this.sim = sim;
         this.numAgents = numAgents;
 
-        agentPopulation = sim.getPopulation();
+        this.agentPopulation = sim.getPopulation();
         this.agents = brainAllocator.generateAgents(numAgents);
         for(Agent agent : agents) {
             agentPopulation.init(agent);
         }
+        this.agents = agentPopulation.getAgents();
 
-        this.assets = assetGenerator.generateAssets(1);
+        this.registry = sim.getAssetRegistry();
+        this.assets = assetGenerator.generateAssets((sim.getConfig().getnAgents() *
+                sim.getConfig().getInitAssetEndowment()));
+        for(Asset asset : assets) {
+            registry.init(asset);
+        }
+        this.assets = registry.getAssets();
+
+        this.initializeAssetAllocation();
+    }
+
+    public boolean initializeAssetAllocation() {
+        for(Agent agent : agents) {
+            for(int i = 0; i < sim.getConfig().getInitAssetEndowment(); i++) {
+
+            }
+        }
+        return true;
     }
 
     public boolean runOneStep() {

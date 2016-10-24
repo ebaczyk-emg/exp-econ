@@ -18,7 +18,6 @@ public class BasicAgent extends Agent{
 
     private double cashEndowment;
     private int assetEndowment;
-    private String id;
 
     ArrayList<Double> valuesForAllPeriods;
 
@@ -60,10 +59,6 @@ public class BasicAgent extends Agent{
     public double getFundamentalValue() {
 
         return 0d;
-    }
-
-    public void setID(int ID) {
-        this.id = "Agent" + ID;
     }
 
     @Override
@@ -112,7 +107,4 @@ public class BasicAgent extends Agent{
         return this.valuesForAllPeriods;
     }
 
-    public String getID() {
-        return id;
-    }
 }

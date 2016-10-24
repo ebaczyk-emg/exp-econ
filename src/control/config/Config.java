@@ -10,6 +10,7 @@ public final class Config {
     private static final double MIN_ASSET_VALUE = 50;
     private static final double MAX_ASSET_VALUE = 100;
     private static final int N_AGENTS = 10;
+    private static final int N_STEPS = 1000;
 
     public Config() {
         System.out.println("Generated Config file");
@@ -33,5 +34,9 @@ public final class Config {
 
     public static int getnAgents() {
         return N_AGENTS;
+    }
+
+    public static int getnSteps() {
+        return N_STEPS;
     }
 }
