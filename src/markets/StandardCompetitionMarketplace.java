@@ -1,10 +1,13 @@
 package markets;
 
 import agents.Agent;
+import agents.AgentPopulation;
 import assets.Asset;
+import control.Simulation;
 import control.assetGenerators.AssetGenerator;
 import control.brainAllocators.BrainAllocator;
 
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -13,7 +16,8 @@ import java.util.HashMap;
  * Created by Emily on 9/28/2016.
  */
 public class StandardCompetitionMarketplace extends Marketplace{
-
+    private Simulation sim;
+    private AgentPopulation agentPopulation;
     ArrayList<Agent> agents = new ArrayList<>();
     ArrayList<Asset> assets = new ArrayList<>();
     int numAgents;
@@ -22,9 +26,17 @@ public class StandardCompetitionMarketplace extends Marketplace{
 
     public StandardCompetitionMarketplace(BrainAllocator brainAllocator,
                                           AssetGenerator assetGenerator,
-                                          int numAgents){
+                                          int numAgents,
+                                          Simulation sim){
+        this.sim = sim;
         this.numAgents = numAgents;
+
+        agentPopulation = sim.getPopulation();
         this.agents = brainAllocator.generateAgents(numAgents);
+        for(Agent agent : agents) {
+            agentPopulation.init(agent);
+        }
+
         this.assets = assetGenerator.generateAssets(1);
     }
 

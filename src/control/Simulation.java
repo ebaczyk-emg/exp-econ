@@ -1,9 +1,11 @@
 package control;
 
+import agents.AgentPopulation;
 import control.assetGenerators.AssetGenerator;
 import control.assetGenerators.HomogeneousAssetGenerator;
 import control.brainAllocators.BrainAllocator;
 import control.brainAllocators.SimplestBrainAllocator;
+import control.config.Config;
 import markets.Marketplace;
 import markets.StandardCompetitionMarketplace;
 
@@ -14,24 +16,29 @@ public class Simulation {
     BrainAllocator brainAllocator;
     AssetGenerator assetGenerator;
     Marketplace market;
-    private static final double INIT_CASH_ENDOWMENT = 1000;
-    private static final int INIT_ASSET_ENDOWMENT = 2;
+    AgentPopulation population;
+
+    private Config config;
 
     public Simulation() {
-        brainAllocator = new SimplestBrainAllocator();
-        assetGenerator = new HomogeneousAssetGenerator();
+        this.config = new Config();
+        this.population = new AgentPopulation(this);
+        brainAllocator = new SimplestBrainAllocator(population, this);
+        assetGenerator = new HomogeneousAssetGenerator(this);
         market = new StandardCompetitionMarketplace(brainAllocator,
                                                     assetGenerator,
-                                                    100 );
+                                                    config.getnAgents(),
+                                                    this);
         // figure out how to dynamically generate more markets
+        System.out.println("market created");
 
     }
 
-    public static int getInitAssetEndowment() {
-        return INIT_ASSET_ENDOWMENT;
+    public Config getConfig() {
+        return config;
     }
 
-    public static double getInitCashEndowment() {
-        return INIT_CASH_ENDOWMENT;
+    public AgentPopulation getPopulation() {
+        return this.population;
     }
 }

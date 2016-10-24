@@ -9,5 +9,6 @@ public class SimulationCoordinator {
     static ArrayList<Simulation> sims;
     public static void main(String [] args) {
         sims = new ArrayList<Simulation>();
+        sims.add(new Simulation());
     }
 }

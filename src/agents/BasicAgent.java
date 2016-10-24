@@ -18,17 +18,19 @@ public class BasicAgent extends Agent{
 
     private double cashEndowment;
     private int assetEndowment;
+    private String id;
 
     ArrayList<Double> valuesForAllPeriods;
 
-    public BasicAgent(InductionBrain inductionBrain,
+    public BasicAgent(AgentPopulation population,
+                      InductionBrain inductionBrain,
                       LevelBrain levelBrain,
                       ThoughtBrain thoughtBrain){
         this.inductionBrain = inductionBrain;
         this.levelBrain = levelBrain;
         this.thoughtBrain = thoughtBrain;
-        this.cashEndowment = Simulation.getInitCashEndowment();
-        this.assetEndowment = Simulation.getInitAssetEndowment();
+        this.cashEndowment = population.getConfig().getInitCashEndowment();
+        this.assetEndowment = population.getConfig().getInitAssetEndowment();
 
         valuesForAllPeriods = new ArrayList<>();
         valuesForAllPeriods.add(this.getFundamentalValue());
@@ -56,7 +58,12 @@ public class BasicAgent extends Agent{
     }
 
     public double getFundamentalValue() {
+
         return 0d;
+    }
+
+    public void setID(int ID) {
+        this.id = "Agent" + ID;
     }
 
     @Override
@@ -103,5 +110,9 @@ public class BasicAgent extends Agent{
 
     public ArrayList<Double> getValuesForAllPeriods(){
         return this.valuesForAllPeriods;
+    }
+
+    public String getID() {
+        return id;
     }
 }
