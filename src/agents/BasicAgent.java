@@ -36,12 +36,23 @@ public class BasicAgent extends Agent{
 
     public double getBid() {
         double calculatedFairValue = this.getFundamentalValue();
-        return Math.random()*20 - calculatedFairValue; //some amount less than you think it's worth
+        double calculatedBid = Math.random()*20 - calculatedFairValue; //some amount less than you think it's worth
+        if(calculatedBid > cashEndowment) {
+            return 0d;
+        } else {
+            return calculatedBid;
+        }
+
     }
 
     public double getOffer() {
         double calculatedFairValue = this.getFundamentalValue();
-        return Math.random()*20 + calculatedFairValue; // some amount more than you think it's worth
+        double calculatedOffer = Math.random()*20 + calculatedFairValue; // some amount more than you think it's worth
+        if(assetEndowment == 0) {
+            return 0d;
+        } else {
+            return calculatedOffer;
+        }
     }
 
     public double getFundamentalValue() {
