@@ -23,6 +23,9 @@ public class StandardCompetitionMarketplace extends Marketplace{
     ArrayList<Asset> assets = new ArrayList<>();
     int numAgents;
 
+    private double activeBid;
+    private double activeOffer;
+
     ArrayList<Double> pastTransactionPrices = new ArrayList<>();
 
     public StandardCompetitionMarketplace(BrainAllocator brainAllocator,
@@ -48,6 +51,9 @@ public class StandardCompetitionMarketplace extends Marketplace{
         this.assets = new ArrayList<>(registry.getAssets());
 
         this.initializeAssetAllocation();
+
+        this.activeBid = sim.getConfig().getMinAssetValue();
+        this.activeOffer = sim.getConfig().getMaxAssetValue();
     }
 
     public boolean initializeAssetAllocation() {
@@ -67,6 +73,24 @@ public class StandardCompetitionMarketplace extends Marketplace{
     public boolean runOneStep() {
         HashMap<Double, Agent> bids = new HashMap<>();
         HashMap<Double, Agent> offers = new HashMap<>();
+        Agent actingAgent = agents.get((int) Math.floor(Math.random() * agents.size()));
+        if(Math.random() > 0.5d) {
+            //the agent is a buyer
+            double actingAgentBid = actingAgent.getBid();
+        } else {
+            double actingAgentOffer = actingAgent.getOffer();
+        }
+
+        //fuck this shit
+
+        if(activeBid >= activeOffer) {
+
+        }
+
+
+
+
+
         for(Agent agent : agents) {
             //agent.getFundamentalValue();
             if(agent.getID().equals("Agent1")) {
