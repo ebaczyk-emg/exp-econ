@@ -4,6 +4,8 @@ import agentBrains.InductionBrain;
 import agentBrains.LevelBrain;
 import agentBrains.ThoughtBrain;
 import assets.Asset;
+import control.marketObjects.Bid;
+import control.marketObjects.Offer;
 
 import java.util.ArrayList;
 
@@ -32,12 +34,12 @@ public class BasicAgent extends Agent{
         //valuesForAllPeriods.add(this.getFundamentalValue());
     }
 
-    public double getBid() {
-        return 0d;
+    public Bid getBid() {
+        return new Bid (null, 0d);
     }
 
-    public double getOffer() {
-        return 0d;
+    public Offer getOffer() {
+        return new Offer(null, 0d, null);
     }
 
     public double getBid(Asset a) {

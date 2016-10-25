@@ -6,7 +6,7 @@ import assets.Asset;
 /**
  * Created by Emily on 10/24/2016.
  */
-public class Offer {
+public class Offer implements Comparable{
     private Agent offeringAgent;
     private double offerPrice;
     private Asset offeredAsset;
@@ -29,5 +29,13 @@ public class Offer {
 
     public Asset getOfferedAsset() {
         return offeredAsset;
+    }
+
+    public int compareTo(Object a) {
+        if(((Offer) a).getOfferPrice() > this.getOfferPrice()) {
+            return -1;
+        } else {
+            return 1;
+        }
     }
 }

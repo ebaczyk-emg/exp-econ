@@ -7,10 +7,13 @@ import assets.AssetRegistry;
 import control.Simulation;
 import control.assetGenerators.AssetGenerator;
 import control.brainAllocators.BrainAllocator;
+import control.marketObjects.Bid;
+import control.marketObjects.Offer;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 /**
  * Created by Emily on 9/28/2016.
@@ -23,10 +26,14 @@ public class StandardCompetitionMarketplace extends Marketplace{
     ArrayList<Asset> assets = new ArrayList<>();
     int numAgents;
 
-    private double activeBid;
-    private double activeOffer;
+    private Bid activeBid;
+    private Offer activeOffer;
+    Queue<Bid> bids;
+    Queue<Offer> offers;
 
     ArrayList<Double> pastTransactionPrices = new ArrayList<>();
+
+    int[] indices;
 
     public StandardCompetitionMarketplace(BrainAllocator brainAllocator,
                                           AssetGenerator assetGenerator,
@@ -52,8 +59,14 @@ public class StandardCompetitionMarketplace extends Marketplace{
 
         this.initializeAssetAllocation();
 
-        this.activeBid = sim.getConfig().getMinAssetValue();
-        this.activeOffer = sim.getConfig().getMaxAssetValue();
+        this.activeBid = new Bid(null, sim.getConfig().getMinAssetValue());
+        this.activeOffer = new Offer(null, sim.getConfig().getMaxAssetValue(), null);
+        bids = new PriorityQueue<>();
+        offers = new PriorityQueue<>();
+        bids.add(activeBid);
+        offers.add(activeOffer);
+
+        this.setAgentOrder();
     }
 
     public boolean initializeAssetAllocation() {
@@ -71,24 +84,33 @@ public class StandardCompetitionMarketplace extends Marketplace{
     }
 
     public boolean runOneStep() {
-        HashMap<Double, Agent> bids = new HashMap<>();
-        HashMap<Double, Agent> offers = new HashMap<>();
-        Agent actingAgent = agents.get((int) Math.floor(Math.random() * agents.size()));
-        if(Math.random() > 0.5d) {
-            //the agent is a buyer
-            double actingAgentBid = actingAgent.getBid();
-        } else {
-            double actingAgentOffer = actingAgent.getOffer();
+        for(int i=0; i < agents.size(); i++) {
+            Agent actingAgent = agents.get(indices[i]);
+            if (Math.random() > 0.5d) {
+                //the agent is a buyer
+                Bid actingAgentBid = actingAgent.getBid();
+                if (actingAgentBid.getBidPrice() > activeBid.getBidPrice()) {
+                    bids.add(actingAgentBid);
+                }
+            } else {
+                Offer actingAgentOffer = actingAgent.getOffer();
+                if (actingAgentOffer.getOfferPrice() < activeOffer.getOfferPrice()) {
+                    offers.add(actingAgentOffer);
+                }
+            }
+
+            if (activeBid.getBidPrice() >= activeOffer.getOfferPrice()) {
+                //a transaction has occurred
+                double price = (activeBid.getBidPrice() + activeOffer.getOfferPrice()) / 2;
+                activeBid.getBiddingAgent().buyAsset(activeOffer.getOfferedAsset(), price);
+                activeOffer.getOfferingAgent().sellAsset(activeOffer.getOfferedAsset(), price);
+
+                offers.remove();
+                bids.remove();
+            }
+
+
         }
-
-        //fuck this shit
-
-        if(activeBid >= activeOffer) {
-
-        }
-
-
-
 
 
         for(Agent agent : agents) {
@@ -100,21 +122,31 @@ public class StandardCompetitionMarketplace extends Marketplace{
             }
 
             //collect all agents' bids and asks
-            if(Math.random() > 0.5d) {
-                //the agent has been selected to be a buyer
-                bids.put(agent.getBid(), agent);
-            }  else {
-                offers.put(agent.getOffer(), agent);
-            }
+//            if(Math.random() > 0.5d) {
+//                //the agent has been selected to be a buyer
+//                bids.put(agent.getBid(), agent);
+//            }  else {
+//                offers.put(agent.getOffer(), agent);
+//            }
             //sort them
-            ArrayList<Double> sortedBids = new ArrayList<Double>(bids.keySet());
-            Collections.sort(sortedBids);
-            ArrayList<Double> sortedOffers = new ArrayList<Double>(offers.keySet());
-            Collections.sort(sortedOffers);
+//            ArrayList<Double> sortedBids = new ArrayList<Double>(bids.keySet());
+//            Collections.sort(sortedBids);
+//            ArrayList<Double> sortedOffers = new ArrayList<Double>(offers.keySet());
+//            Collections.sort(sortedOffers);
 
 
         }
         return true;
+    }
+
+    public void setAgentOrder() {
+        indices = new int[agents.size()];
+        ArrayList<Agent> temp = new ArrayList<>(agents);
+        Collections.shuffle(temp);
+        for(int i = 0; i < agents.size(); i++) {
+            indices[i] = temp.indexOf(agents.get(i));
+        }
+        System.out.println(indices);
     }
 
     public ArrayList<Double> getPastTransactionPrices() {

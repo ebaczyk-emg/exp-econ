@@ -1,6 +1,8 @@
 package agents;
 
 import assets.Asset;
+import control.marketObjects.Bid;
+import control.marketObjects.Offer;
 
 import java.util.ArrayList;
 
@@ -13,8 +15,8 @@ public abstract class Agent {
     double cashEndowment;
 
     public abstract double getFundamentalValue(Asset a);
-    public abstract double getBid();
-    public abstract double getOffer();
+    public abstract Bid getBid();
+    public abstract Offer getOffer();
 
     public void buyAsset(Asset a, double price) {
         this.debit(price);

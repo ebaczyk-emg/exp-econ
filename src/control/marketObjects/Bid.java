@@ -5,7 +5,7 @@ import agents.Agent;
 /**
  * Created by Emily on 10/24/2016.
  */
-public class Bid {
+public class Bid implements Comparable{
     private Agent biddingAgent;
     private double bidPrice;
 
@@ -21,6 +21,14 @@ public class Bid {
 
     public double getBidPrice() {
         return bidPrice;
+    }
+
+    public int compareTo(Object a) {
+        if(((Bid) a).getBidPrice() < this.getBidPrice()) {
+            return -1;
+        } else {
+            return 1;
+        }
     }
 
 }
