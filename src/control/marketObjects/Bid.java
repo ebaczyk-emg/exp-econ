@@ -31,4 +31,13 @@ public class Bid implements Comparable{
         }
     }
 
+    public String toString() {
+        String ret = "";
+        if(biddingAgent == null) {
+            ret = "Bid of " + bidPrice + " by PLACEHOLDER";
+        }  else {
+            ret = "Bid of " + bidPrice + " by " + biddingAgent.getID();
+        }
+        return ret;
+    }
 }

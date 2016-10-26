@@ -40,6 +40,10 @@ public abstract class Agent {
         a.setOwner(null);
     }
 
+    public void endowCash(double amount) {
+        this.credit(amount);
+    }
+
     private void credit(double amount) {
         cashEndowment += amount;
     }

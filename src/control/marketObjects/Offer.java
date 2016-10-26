@@ -38,4 +38,19 @@ public class Offer implements Comparable{
             return 1;
         }
     }
+
+    public String toString() {
+        String ret = "";
+        if (offeringAgent == null) {
+            ret = "Offer of " + offerPrice +
+                    " by PLACEHOLDER"  +
+                    " for PLACEHOLDER";
+        }
+        else {
+            ret = "Offer of " + offerPrice +
+                    " by " + offeringAgent.getID() +
+                    " for " + offeredAsset.getID();
+        }
+        return ret;
+    }
 }

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * Created by Emily on 10/3/2016.
  */
 public class BasicAgent extends Agent{
-
+    AgentPopulation population;
     InductionBrain inductionBrain;
     LevelBrain levelBrain;
     ThoughtBrain thoughtBrain;
@@ -24,6 +24,7 @@ public class BasicAgent extends Agent{
                       InductionBrain inductionBrain,
                       LevelBrain levelBrain,
                       ThoughtBrain thoughtBrain){
+        this.population = population;
         this.inductionBrain = inductionBrain;
         this.levelBrain = levelBrain;
         this.thoughtBrain = thoughtBrain;
@@ -35,36 +36,55 @@ public class BasicAgent extends Agent{
     }
 
     public Bid getBid() {
-        return new Bid (null, 0d);
+        if(assetEndowment.size() == 0) {
+            return new Bid(this, 75d);
+        } else {
+            Asset mostValuableOwnedAsset = assetEndowment.get(0);
+            for (Asset asset : assetEndowment) {
+                if (asset.getIntrinsicValue() > mostValuableOwnedAsset.getIntrinsicValue()) {
+                    mostValuableOwnedAsset = asset;
+                }
+            }
+            return this.getBid(mostValuableOwnedAsset);
+        }
     }
 
     public Offer getOffer() {
-        return new Offer(null, 0d, null);
+        if(assetEndowment.size() > 0) {
+            Asset leastValuableOwnedAsset = assetEndowment.get(0);
+            for (Asset asset : assetEndowment) {
+                if (asset.getIntrinsicValue() < leastValuableOwnedAsset.getIntrinsicValue()) {
+                    leastValuableOwnedAsset = asset;
+                }
+            }
+            return this.getOffer(leastValuableOwnedAsset);
+        }
+        else return null;
     }
 
-    public double getBid(Asset a) {
+    public Bid getBid(Asset a) {
         double calculatedFairValue = this.getFundamentalValue(a);
-        double calculatedBid = Math.random()*20 - calculatedFairValue; //some amount less than you think it's worth
+        double calculatedBid = Math.max(calculatedFairValue - Math.random()*20,0d); //some amount less than you think it's worth
         if(calculatedBid > cashEndowment) {
-            return 0d;
+            return new Bid(this, population.getConfig().getMinAssetValue());
         } else {
-            return calculatedBid;
+            return new Bid(this, calculatedBid);
         }
 
     }
 
-    public double getOffer(Asset a) {
+    public Offer getOffer(Asset a) {
         double calculatedFairValue = this.getFundamentalValue(a);
         double calculatedOffer = Math.random()*20 + calculatedFairValue; // some amount more than you think it's worth
         if(assetEndowment.size() == 0) {
-            return 0d;
+            return new Offer(this, population.getConfig().getMaxAssetValue(), a);
         } else {
-            return calculatedOffer;
+            return new Offer(this, calculatedOffer, a);
         }
     }
 
     public double getFundamentalValue(Asset a) {
-        return 0d;
+        return a.getIntrinsicValue();
     }
 
     public InductionBrain getInductionBrain() {

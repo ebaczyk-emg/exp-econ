@@ -28,8 +28,8 @@ public class StandardCompetitionMarketplace extends Marketplace{
 
     private Bid activeBid;
     private Offer activeOffer;
-    Queue<Bid> bids;
-    Queue<Offer> offers;
+    PriorityQueue<Bid> bids;
+    PriorityQueue<Offer> offers;
 
     ArrayList<Double> pastTransactionPrices = new ArrayList<>();
 
@@ -80,6 +80,11 @@ public class StandardCompetitionMarketplace extends Marketplace{
             }
         }
         assert unallocatedAssets.size() == 0: "assets were created and were not allocated";
+
+        for(Agent agent : agents) {
+            agent.endowCash(sim.getConfig().getInitCashEndowment());
+        }
+
         return true;
     }
 
@@ -89,37 +94,60 @@ public class StandardCompetitionMarketplace extends Marketplace{
             if (Math.random() > 0.5d) {
                 //the agent is a buyer
                 Bid actingAgentBid = actingAgent.getBid();
+                System.out.println(actingAgentBid);
                 if (actingAgentBid.getBidPrice() > activeBid.getBidPrice()) {
                     bids.add(actingAgentBid);
+                    activeBid = actingAgentBid;
                 }
             } else {
                 Offer actingAgentOffer = actingAgent.getOffer();
+                System.out.println(actingAgentOffer);
                 if (actingAgentOffer.getOfferPrice() < activeOffer.getOfferPrice()) {
                     offers.add(actingAgentOffer);
+                    activeOffer = actingAgentOffer;
                 }
             }
+
+            System.out.println(activeBid + " " + activeOffer);
 
             if (activeBid.getBidPrice() >= activeOffer.getOfferPrice()) {
                 //a transaction has occurred
                 double price = (activeBid.getBidPrice() + activeOffer.getOfferPrice()) / 2;
+                System.out.println("TRANSACTION at price " + price);
                 activeBid.getBiddingAgent().buyAsset(activeOffer.getOfferedAsset(), price);
                 activeOffer.getOfferingAgent().sellAsset(activeOffer.getOfferedAsset(), price);
 
-                offers.remove();
-                bids.remove();
+                bids = new PriorityQueue<>();
+                offers = new PriorityQueue<>();
+
+                bids.add(new Bid(null, sim.getConfig().getMinAssetValue()));
+                offers.add(new Offer(null, sim.getConfig().getMaxAssetValue(), null));
+
+                activeBid = bids.peek();
+                activeOffer = offers.peek();
+//                if(offers.isEmpty()) {
+//                    offers.add(new Offer(null, sim.getConfig().getMaxAssetValue(), null));
+//                } else {
+//                    offers.remove();
+//                }
+//                if(bids.isEmpty()) {
+//                    bids.add(new Bid(null, sim.getConfig().getMinAssetValue()));
+//                } else {
+//                    bids.remove();
+//                }
             }
 
 
         }
 
 
-        for(Agent agent : agents) {
-            //agent.getFundamentalValue();
-            if(agent.getID().equals("Agent1")) {
-//                System.out.println("here");
-                System.out.println(agent.getOwnedAssets().get(0).getID() + " " + agent.getOwnedAssets().get(0).getIntrinsicValue() +
-                " " + agent.getOwnedAssets().get(1).getID() + " " + agent.getOwnedAssets().get(1).getIntrinsicValue());
-            }
+//        for(Agent agent : agents) {
+//            //agent.getFundamentalValue();
+//            if(agent.getID().equals("Agent1")) {
+////                System.out.println("here");
+//                System.out.println(agent.getOwnedAssets().get(0).getID() + " " + agent.getOwnedAssets().get(0).getIntrinsicValue() +
+//                " " + agent.getOwnedAssets().get(1).getID() + " " + agent.getOwnedAssets().get(1).getIntrinsicValue());
+//            }
 
             //collect all agents' bids and asks
 //            if(Math.random() > 0.5d) {
@@ -135,7 +163,7 @@ public class StandardCompetitionMarketplace extends Marketplace{
 //            Collections.sort(sortedOffers);
 
 
-        }
+//        }
         return true;
     }
 
@@ -146,7 +174,6 @@ public class StandardCompetitionMarketplace extends Marketplace{
         for(int i = 0; i < agents.size(); i++) {
             indices[i] = temp.indexOf(agents.get(i));
         }
-        System.out.println(indices);
     }
 
     public ArrayList<Double> getPastTransactionPrices() {
