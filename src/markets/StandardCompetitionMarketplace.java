@@ -28,10 +28,11 @@ public class StandardCompetitionMarketplace extends Marketplace{
 
     private Bid activeBid;
     private Offer activeOffer;
-    PriorityQueue<Bid> bids;
-    PriorityQueue<Offer> offers;
+    private PriorityQueue<Bid> bids;
+    private PriorityQueue<Offer> offers;
 
     ArrayList<Double> pastTransactionPrices = new ArrayList<>();
+    ArrayList<Double> allBidsThisMonth;
 
     int[] indices;
 
@@ -141,29 +142,6 @@ public class StandardCompetitionMarketplace extends Marketplace{
         }
 
 
-//        for(Agent agent : agents) {
-//            //agent.getFundamentalValue();
-//            if(agent.getID().equals("Agent1")) {
-////                System.out.println("here");
-//                System.out.println(agent.getOwnedAssets().get(0).getID() + " " + agent.getOwnedAssets().get(0).getIntrinsicValue() +
-//                " " + agent.getOwnedAssets().get(1).getID() + " " + agent.getOwnedAssets().get(1).getIntrinsicValue());
-//            }
-
-            //collect all agents' bids and asks
-//            if(Math.random() > 0.5d) {
-//                //the agent has been selected to be a buyer
-//                bids.put(agent.getBid(), agent);
-//            }  else {
-//                offers.put(agent.getOffer(), agent);
-//            }
-            //sort them
-//            ArrayList<Double> sortedBids = new ArrayList<Double>(bids.keySet());
-//            Collections.sort(sortedBids);
-//            ArrayList<Double> sortedOffers = new ArrayList<Double>(offers.keySet());
-//            Collections.sort(sortedOffers);
-
-
-//        }
         return true;
     }
 

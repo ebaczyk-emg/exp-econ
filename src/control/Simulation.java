@@ -7,6 +7,7 @@ import control.assetGenerators.HomogeneousAssetGenerator;
 import control.brainAllocators.BrainAllocator;
 import control.brainAllocators.SimplestBrainAllocator;
 import control.config.Config;
+import control.output.OutputPrinter;
 import markets.Marketplace;
 import markets.StandardCompetitionMarketplace;
 
@@ -19,7 +20,9 @@ public class Simulation {
     Marketplace market;
     AgentPopulation population;
     AssetRegistry assetRegistry;
+    OutputPrinter printer;
 
+    private int step;
     private Config config;
 
     public Simulation() {
@@ -32,14 +35,18 @@ public class Simulation {
                                                     assetGenerator,
                                                     config.getnAgents(),
                                                     this);
+        printer = new OutputPrinter(config.getSystemPath(), this);
 
         //TODO figure out how to dynamically generate more markets
         System.out.println("Market created; starting to step");
 
         for(int i = 1; i <= config.getnSteps(); i++){
+            step = i;
             market.runOneStep();
+            printer.printOneStepOfOutput();
         }
 
+        printer.closeWriters();
     }
 
     public Config getConfig() {
@@ -52,5 +59,9 @@ public class Simulation {
 
     public AssetRegistry getAssetRegistry() {
         return assetRegistry;
+    }
+
+    public BrainAllocator getBrainAllocator() {
+        return brainAllocator;
     }
 }

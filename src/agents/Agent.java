@@ -72,5 +72,11 @@ public abstract class Agent {
         return "Agent" + this.id;
     }
 
-
+    public String printEndowment(){
+        String ret = "Agent" + id + "," + cashEndowment;
+        for(Asset a : assetEndowment) {
+            ret += "," + a.getID() + "," + a.getIntrinsicValue();
+        }
+        return ret;
+    }
 }
