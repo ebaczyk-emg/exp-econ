@@ -26,10 +26,10 @@ public class SimplestBrainAllocator extends BrainAllocator{
         ArrayList<Agent> agents = new ArrayList<>();
         for(int n = 0; n < numberOfAgents; n++){
             Agent newAgent = new BasicAgent(
-                    population,
-                    new ForwardInductionBrain(),
-                    new PriceLevelBrain(),
-                    new FirstOrderThoughtBrain());
+                    population);
+//                    new ForwardInductionBrain(),
+//                    new PriceLevelBrain(),
+//                    new FirstOrderThoughtBrain());
             agents.add(newAgent);
         }
         return agents;

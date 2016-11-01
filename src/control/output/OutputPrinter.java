@@ -4,10 +4,8 @@ import agents.Agent;
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import control.Simulation;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 /**
@@ -37,11 +35,18 @@ public class OutputPrinter {
     }
 
     private void printTransactions() {
-
+        for(MarketState state : sim.getMarket().getStatesThisMonth()) {
+            try {
+                writeSequenceWithNoTerminalComma(transactionWriter, state.toPrint());
+                transactionWriter.flush();
+            } catch (IOException ex) {
+                System.err.println("Failed to print transaction records");
+                ex.printStackTrace();
+            }
+        }
     }
 
     private void printEndowments() {
-        System.out.println("here");
         for(Agent a : sim.getPopulation().getAgents()) {
             ArrayList<String> infoToAdd = new ArrayList<>();
             infoToAdd.add(a.getID());

@@ -10,6 +10,7 @@ import java.util.ArrayList;
  * Created by Emily on 9/28/2016.
  */
 public abstract class Agent {
+    private AgentPopulation population;
     private int id;
     ArrayList<Asset> assetEndowment;
     double cashEndowment;
@@ -17,6 +18,31 @@ public abstract class Agent {
     public abstract double getFundamentalValue(Asset a);
     public abstract Bid getBid();
     public abstract Offer getOffer();
+
+    public Agent(AgentPopulation population){
+        this.population = population;
+    }
+
+    public Bid getBid(Asset a) {
+        double calculatedFairValue = this.getFundamentalValue(a);
+        double calculatedBid = Math.max(calculatedFairValue - Math.random()*20,0d); //some amount less than you think it's worth
+        if(calculatedBid > cashEndowment) {
+            return new Bid(this, population.getConfig().getMinAssetValue());
+        } else {
+            return new Bid(this, calculatedBid);
+        }
+
+    }
+
+    public Offer getOffer(Asset a) {
+        double calculatedFairValue = this.getFundamentalValue(a);
+        double calculatedOffer = Math.random()*20 + calculatedFairValue; // some amount more than you think it's worth
+        if(assetEndowment.size() == 0) {
+            return new Offer(this, population.getConfig().getMaxAssetValue(), a);
+        } else {
+            return new Offer(this, calculatedOffer, a);
+        }
+    }
 
     public void buyAsset(Asset a, double price) {
         this.debit(price);

@@ -9,32 +9,16 @@ import control.assetGenerators.AssetGenerator;
 import control.brainAllocators.BrainAllocator;
 import control.marketObjects.Bid;
 import control.marketObjects.Offer;
+import control.output.MarketState;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.PriorityQueue;
-import java.util.Queue;
 
 /**
  * Created by Emily on 9/28/2016.
  */
 public class StandardCompetitionMarketplace extends Marketplace{
-    private Simulation sim;
-    private AgentPopulation agentPopulation;
-    private AssetRegistry registry;
-    ArrayList<Agent> agents = new ArrayList<>();
-    ArrayList<Asset> assets = new ArrayList<>();
-    int numAgents;
-
-    private Bid activeBid;
-    private Offer activeOffer;
-    private PriorityQueue<Bid> bids;
-    private PriorityQueue<Offer> offers;
-
-    ArrayList<Double> pastTransactionPrices = new ArrayList<>();
-    ArrayList<Double> allBidsThisMonth;
-
-    int[] indices;
 
     public StandardCompetitionMarketplace(BrainAllocator brainAllocator,
                                           AssetGenerator assetGenerator,
@@ -90,29 +74,42 @@ public class StandardCompetitionMarketplace extends Marketplace{
     }
 
     public boolean runOneStep() {
+        statesThisMonth = new ArrayList<>();
+
         for(int i=0; i < agents.size(); i++) {
             Agent actingAgent = agents.get(indices[i]);
             if (Math.random() > 0.5d) {
                 //the agent is a buyer
                 Bid actingAgentBid = actingAgent.getBid();
                 System.out.println(actingAgentBid);
-                if (actingAgentBid.getBidPrice() > activeBid.getBidPrice()) {
-                    bids.add(actingAgentBid);
-                    activeBid = actingAgentBid;
+                if(actingAgentBid != null) {
+                    if (actingAgentBid.getBidPrice() > activeBid.getBidPrice()) {
+                        bids.add(actingAgentBid);
+                        activeBid = actingAgentBid;
+                    }
                 }
             } else {
                 Offer actingAgentOffer = actingAgent.getOffer();
                 System.out.println(actingAgentOffer);
-                if (actingAgentOffer.getOfferPrice() < activeOffer.getOfferPrice()) {
-                    offers.add(actingAgentOffer);
-                    activeOffer = actingAgentOffer;
+                if(actingAgentOffer != null) {
+                    if (actingAgentOffer.getOfferPrice() < activeOffer.getOfferPrice()) {
+                        offers.add(actingAgentOffer);
+                        activeOffer = actingAgentOffer;
+                    }
                 }
             }
 
-            System.out.println(activeBid + " " + activeOffer);
+            System.out.println("ACTIVE BIDS " + activeBid + " " + activeOffer);
 
             if (activeBid.getBidPrice() >= activeOffer.getOfferPrice()) {
                 //a transaction has occurred
+                statesThisMonth.add(new MarketState(
+                        activeBid.getBidPrice(),
+                        activeBid.getBiddingAgent(),
+                        activeOffer.getOfferPrice(),
+                        activeOffer.getOfferingAgent(),
+                        true));
+
                 double price = (activeBid.getBidPrice() + activeOffer.getOfferPrice()) / 2;
                 System.out.println("TRANSACTION at price " + price);
                 activeBid.getBiddingAgent().buyAsset(activeOffer.getOfferedAsset(), price);
@@ -136,12 +133,16 @@ public class StandardCompetitionMarketplace extends Marketplace{
 //                } else {
 //                    bids.remove();
 //                }
+            } else {
+                statesThisMonth.add(new MarketState(
+                        activeBid.getBidPrice(),
+                        activeBid.getBiddingAgent(),
+                        activeOffer.getOfferPrice(),
+                        activeOffer.getOfferingAgent(),
+                        false));
             }
 
-
         }
-
-
         return true;
     }
 
@@ -152,10 +153,6 @@ public class StandardCompetitionMarketplace extends Marketplace{
         for(int i = 0; i < agents.size(); i++) {
             indices[i] = temp.indexOf(agents.get(i));
         }
-    }
-
-    public ArrayList<Double> getPastTransactionPrices() {
-        return this.pastTransactionPrices;
     }
 
 }

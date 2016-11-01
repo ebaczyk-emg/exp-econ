@@ -64,4 +64,8 @@ public class Simulation {
     public BrainAllocator getBrainAllocator() {
         return brainAllocator;
     }
+
+    public Marketplace getMarket() {
+        return market;
+    }
 }

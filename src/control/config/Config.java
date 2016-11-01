@@ -1,5 +1,11 @@
 package control.config;
 
+import control.SimulationCoordinator;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
+
 /**
  * Created by Emily on 10/23/2016.
  */
@@ -10,7 +16,7 @@ public final class Config {
     private static final double MIN_ASSET_VALUE = 50;
     private static final double MAX_ASSET_VALUE = 100;
     private static final int N_AGENTS = 10;
-    private static final int N_STEPS = 10;
+    private static final int N_STEPS = 1000;
     private static String systemPath = System.getProperty("user.dir");
 
     public Config() {
@@ -42,6 +48,10 @@ public final class Config {
     }
 
     public static String getSystemPath() {
+        //String str = systemPath + File.separator + ".." + File.separator + "exp-econ-output" + File.separator + SimulationCoordinator.getMomentOfInvocationYearMonthDayHourMinuteSecond();
+        //System.out.println(systemPath + " " + str);
         return systemPath;
     }
+
+
 }

@@ -40,4 +40,14 @@ public class Bid implements Comparable{
         }
         return ret;
     }
+
+    public String toPrint() {
+        String ret = "";
+        if(biddingAgent == null) {
+            ret = bidPrice + ",NA";
+        }  else {
+            ret = bidPrice + "," + biddingAgent.getID();
+        }
+        return ret;
+    }
 }

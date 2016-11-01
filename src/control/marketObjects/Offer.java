@@ -53,4 +53,20 @@ public class Offer implements Comparable{
         }
         return ret;
     }
+
+    public String toPrint() {
+        String ret = "";
+        if (offeringAgent == null) {
+            ret = offerPrice +
+                    ",NA" +
+                    ",NA";
+        }
+        else {
+            ret = offerPrice +
+                    "," + offeringAgent.getID() +
+                    "," + offeredAsset.getID();
+        }
+        return ret;
+    }
+
 }
