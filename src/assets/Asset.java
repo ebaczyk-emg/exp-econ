@@ -6,18 +6,21 @@ import agents.Agent;
  * Created by Emily on 10/4/2016.
  */
 public abstract class Asset {
-
-    private double intrinsicValue;
-    private String state;
+    AssetRegistry registry;
+    double intrinsicValue;
     private int id;
-    public Agent owner;
+    Agent owner;
+
+    double dividend;
+
+    public Asset(AssetRegistry registry,
+                 double intrinsicValue) {
+        this.registry = registry;
+        this.intrinsicValue = intrinsicValue;
+    }
 
     public double getIntrinsicValue(){
         return this.intrinsicValue;
-    }
-
-    public String getState(){
-        return this.state;
     }
 
     public String getID() {
@@ -34,5 +37,9 @@ public abstract class Asset {
 
     public Agent getOwner() {
         return owner;
+    }
+
+    public double getDividend() {
+        return dividend;
     }
 }

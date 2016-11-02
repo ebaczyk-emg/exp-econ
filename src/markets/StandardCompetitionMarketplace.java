@@ -22,25 +22,10 @@ public class StandardCompetitionMarketplace extends Marketplace{
 
     public StandardCompetitionMarketplace(BrainAllocator brainAllocator,
                                           AssetGenerator assetGenerator,
-                                          int numAgents,
                                           Simulation sim){
-        this.sim = sim;
-        this.numAgents = numAgents;
-
-        this.agentPopulation = sim.getPopulation();
-        this.agents = brainAllocator.generateAgents(numAgents);
-        for(Agent agent : agents) {
-            agentPopulation.init(agent);
-        }
-        this.agents = new ArrayList<>(agentPopulation.getAgents());
-
-        this.registry = sim.getAssetRegistry();
-        this.assets = assetGenerator.generateAssets((sim.getConfig().getnAgents() *
-                sim.getConfig().getInitAssetEndowment()));
-        for(Asset asset : assets) {
-            registry.init(asset);
-        }
-        this.assets = new ArrayList<>(registry.getAssets());
+        super(brainAllocator,
+                assetGenerator,
+                sim);
 
         this.initializeAssetAllocation();
 
@@ -73,6 +58,7 @@ public class StandardCompetitionMarketplace extends Marketplace{
         return true;
     }
 
+    @Override
     public boolean runOneStep() {
         statesThisMonth = new ArrayList<>();
 

@@ -3,29 +3,31 @@ package control.assetGenerators;
 import assets.Asset;
 import assets.AssetRegistry;
 import assets.HomogeneousAsset;
+import assets.MultiPeriodAsset;
 import control.Simulation;
 
 import java.util.ArrayList;
 
 /**
- * Created by Emily on 10/4/2016.
+ * Created by Emily on 11/1/2016.
  */
-public class HomogeneousAssetGenerator extends AssetGenerator {
+public class MultiPeriodAssetGenerator extends AssetGenerator {
 
-    public HomogeneousAssetGenerator(AssetRegistry assetRegistry, Simulation sim) {
-        super(assetRegistry,
+    public MultiPeriodAssetGenerator(AssetRegistry registry, Simulation sim) {
+        super(registry,
                 sim);
     }
 
-    public ArrayList<Asset> generateAssets(int numAssets){
+    public ArrayList<Asset> generateAssets(int numAssets) {
         ArrayList<Asset> assets = new ArrayList<>(numAssets);
         for(int i = 0; i < numAssets; i++) {
             double value = Math.random() *
                     (sim.getConfig().getMaxAssetValue() - sim.getConfig().getMinAssetValue())
                     + sim.getConfig().getMinAssetValue();
-            Asset newAsset = new HomogeneousAsset(registry, value);
+            Asset newAsset = new MultiPeriodAsset(registry, value);
             assets.add(newAsset);
         }
         return assets;
     }
+
 }

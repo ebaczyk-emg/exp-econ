@@ -4,6 +4,7 @@ import agents.AgentPopulation;
 import assets.AssetRegistry;
 import control.assetGenerators.AssetGenerator;
 import control.assetGenerators.HomogeneousAssetGenerator;
+import control.assetGenerators.MultiPeriodAssetGenerator;
 import control.brainAllocators.BrainAllocator;
 import control.brainAllocators.SimplestBrainAllocator;
 import control.config.Config;
@@ -30,10 +31,13 @@ public class Simulation {
         this.population = new AgentPopulation(this);
         this.assetRegistry = new AssetRegistry(this);
         brainAllocator = new SimplestBrainAllocator(population, this);
-        assetGenerator = new HomogeneousAssetGenerator(assetRegistry, this);
+        if(config.isUseMultiPeriodAsset()) {
+            assetGenerator = new MultiPeriodAssetGenerator(assetRegistry, this);
+        } else {
+            assetGenerator = new HomogeneousAssetGenerator(assetRegistry, this);
+        }
         market = new StandardCompetitionMarketplace(brainAllocator,
                                                     assetGenerator,
-                                                    config.getnAgents(),
                                                     this);
         printer = new OutputPrinter(config.getSystemPath(), this);
 

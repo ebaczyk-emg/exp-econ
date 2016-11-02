@@ -5,6 +5,8 @@ import agents.AgentPopulation;
 import assets.Asset;
 import assets.AssetRegistry;
 import control.Simulation;
+import control.assetGenerators.AssetGenerator;
+import control.brainAllocators.BrainAllocator;
 import control.marketObjects.Bid;
 import control.marketObjects.Offer;
 import control.output.MarketState;
@@ -22,7 +24,6 @@ public abstract class Marketplace {
     AssetRegistry registry;
     ArrayList<Agent> agents = new ArrayList<>();
     ArrayList<Asset> assets = new ArrayList<>();
-    int numAgents;
 
     Bid activeBid;
     Offer activeOffer;
@@ -34,7 +35,27 @@ public abstract class Marketplace {
 
     int[] indices;
     
-    
+    public Marketplace(BrainAllocator brainAllocator,
+                       AssetGenerator assetGenerator,
+                       Simulation sim) {
+        this.sim = sim;
+
+        this.agentPopulation = sim.getPopulation();
+        this.agents = brainAllocator.generateAgents(sim.getConfig().getnAgents());
+        for(Agent agent : agents) {
+            agentPopulation.init(agent);
+        }
+        this.agents = new ArrayList<>(agentPopulation.getAgents());
+
+        this.registry = sim.getAssetRegistry();
+        this.assets = assetGenerator.generateAssets((sim.getConfig().getnAgents() *
+                sim.getConfig().getInitAssetEndowment()));
+        for(Asset asset : assets) {
+            registry.init(asset);
+        }
+        this.assets = new ArrayList<>(registry.getAssets());
+    }
+
     public abstract boolean runOneStep();
 
 
