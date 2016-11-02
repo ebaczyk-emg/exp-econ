@@ -44,7 +44,6 @@ public class StandardCompetitionMarketplace extends Marketplace{
         for(Agent agent : agents) {
             for(int i = 0; i < sim.getConfig().getInitAssetEndowment(); i++) {
                 int index = (int) Math.floor(Math.random() * unallocatedAssets.size());
-                System.out.println(index);
                 agent.endowAsset(unallocatedAssets.get(index));
                 unallocatedAssets.remove(index);
             }
@@ -109,16 +108,6 @@ public class StandardCompetitionMarketplace extends Marketplace{
 
                 activeBid = bids.peek();
                 activeOffer = offers.peek();
-//                if(offers.isEmpty()) {
-//                    offers.add(new Offer(null, sim.getConfig().getMaxAssetValue(), null));
-//                } else {
-//                    offers.remove();
-//                }
-//                if(bids.isEmpty()) {
-//                    bids.add(new Bid(null, sim.getConfig().getMinAssetValue()));
-//                } else {
-//                    bids.remove();
-//                }
             } else {
                 statesThisMonth.add(new MarketState(
                         activeBid.getBidPrice(),

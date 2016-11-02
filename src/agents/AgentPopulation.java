@@ -24,7 +24,6 @@ public class AgentPopulation {
         agent.setID(ID);
         ID++;
         agents.add(agent);
-        System.out.println(agent.getID());
     }
 
     public ArrayList<Agent> getAgents() {

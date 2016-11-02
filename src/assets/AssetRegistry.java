@@ -24,7 +24,6 @@ public class AssetRegistry {
         asset.setID(ID);
         ID++;
         assets.add(asset);
-        System.out.println(asset.getID());
     }
 
     public ArrayList<Asset> getAssets() {

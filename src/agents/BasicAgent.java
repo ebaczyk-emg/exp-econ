@@ -1,8 +1,5 @@
 package agents;
 
-import agentBrains.InductionBrain;
-import agentBrains.LevelBrain;
-import agentBrains.ThoughtBrain;
 import assets.Asset;
 import control.marketObjects.Bid;
 import control.marketObjects.Offer;
@@ -14,9 +11,6 @@ import java.util.ArrayList;
  */
 public class BasicAgent extends Agent{
     AgentPopulation population;
-    InductionBrain inductionBrain;
-    LevelBrain levelBrain;
-    ThoughtBrain thoughtBrain;
 
     ArrayList<Double> valuesForAllPeriods;
 
@@ -28,21 +22,6 @@ public class BasicAgent extends Agent{
 
         valuesForAllPeriods = new ArrayList<>();
     }
-
-//    public BasicAgent(AgentPopulation population,
-//                      InductionBrain inductionBrain,
-//                      LevelBrain levelBrain,
-//                      ThoughtBrain thoughtBrain){
-//        this.population = population;
-//        this.inductionBrain = inductionBrain;
-//        this.levelBrain = levelBrain;
-//        this.thoughtBrain = thoughtBrain;
-//        this.cashEndowment = 0;
-//        this.assetEndowment = new ArrayList<>();
-//
-//        valuesForAllPeriods = new ArrayList<>();
-//        //valuesForAllPeriods.add(this.getFundamentalValue());
-//    }
 
     public Bid getBid() {
         if(assetEndowment.size() == 0) {
@@ -73,30 +52,6 @@ public class BasicAgent extends Agent{
 
     public double getFundamentalValue(Asset a) {
         return a.getIntrinsicValue();
-    }
-
-    public InductionBrain getInductionBrain() {
-        return inductionBrain;
-    }
-
-    public void setInductionBrain(InductionBrain inductionBrain) {
-        this.inductionBrain = inductionBrain;
-    }
-
-    public LevelBrain getLevelBrain() {
-        return levelBrain;
-    }
-
-    public void setLevelBrain(LevelBrain levelBrain) {
-        this.levelBrain = levelBrain;
-    }
-
-    public ThoughtBrain getThoughtBrain() {
-        return thoughtBrain;
-    }
-
-    public void setThoughtBrain(ThoughtBrain thoughtBrain) {
-        this.thoughtBrain = thoughtBrain;
     }
 
     public ArrayList<Double> getValuesForAllPeriods(){
