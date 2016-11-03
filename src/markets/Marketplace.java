@@ -54,6 +54,13 @@ public abstract class Marketplace {
             registry.init(asset);
         }
         this.assets = new ArrayList<>(registry.getAssets());
+
+        this.activeBid = new Bid(null, sim.getConfig().getMinAssetValue());
+        this.activeOffer = new Offer(null, sim.getConfig().getMaxAssetValue(), null);
+        bids = new PriorityQueue<>();
+        offers = new PriorityQueue<>();
+        bids.add(activeBid);
+        offers.add(activeOffer);
     }
 
     public abstract boolean runOneStep();

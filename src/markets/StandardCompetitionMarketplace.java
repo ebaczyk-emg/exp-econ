@@ -28,14 +28,6 @@ public class StandardCompetitionMarketplace extends Marketplace{
                 sim);
 
         this.initializeAssetAllocation();
-
-        this.activeBid = new Bid(null, sim.getConfig().getMinAssetValue());
-        this.activeOffer = new Offer(null, sim.getConfig().getMaxAssetValue(), null);
-        bids = new PriorityQueue<>();
-        offers = new PriorityQueue<>();
-        bids.add(activeBid);
-        offers.add(activeOffer);
-
         this.setAgentOrder();
     }
 

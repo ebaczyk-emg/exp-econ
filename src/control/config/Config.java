@@ -3,8 +3,7 @@ package control.config;
 import control.SimulationCoordinator;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
+import java.io.IOException;
 
 /**
  * Created by Emily on 10/23/2016.
@@ -19,6 +18,7 @@ public final class Config {
     private static final int N_STEPS = 10;
     private static String systemPath = System.getProperty("user.dir");
     private static final boolean USE_MULTI_PERIOD_ASSET = true;
+    private static final double decayFactor = 0.10d;
 
     public Config() {
         System.out.println("Generated Config file");
@@ -52,10 +52,25 @@ public final class Config {
         return USE_MULTI_PERIOD_ASSET;
     }
 
+    public static double getDecayFactor() {
+        return decayFactor;
+    }
+
     public static String getSystemPath() {
-        //String str = systemPath + File.separator + ".." + File.separator + "exp-econ-output" + File.separator + SimulationCoordinator.getMomentOfInvocationYearMonthDayHourMinuteSecond();
-        //System.out.println(systemPath + " " + str);
         return systemPath;
+    }
+
+    public static String generateOutputPath() {
+        File temp = new File(systemPath);
+        String path = temp.getParentFile().getAbsolutePath();
+        path += File.separator + "exp-econ-output" + File.separator + SimulationCoordinator.getMomentOfInvocationYearMonthDayHourMinuteSecond() ;
+        try {
+            new File(path).mkdirs();
+        } catch (Exception ex ) {
+            ex.printStackTrace();
+            System.exit(11);
+        }
+        return path;
     }
 
 

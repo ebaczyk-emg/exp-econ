@@ -22,10 +22,15 @@ public class OutputPrinter {
         this.sim = simulation;
         System.out.println(path);
         try {
-            transactionWriter = new BufferedWriter(new FileWriter(new File(path + "/transactions.csv")));
-            endowmentWriter = new BufferedWriter(new FileWriter(new File(path + "/endowments.csv")));
+            transactionWriter = new BufferedWriter(
+                    new FileWriter(
+                            new File(path + "/transactions.csv")));
+            endowmentWriter = new BufferedWriter(
+                    new FileWriter(
+                            new File(path + "/endowments.csv")));
         } catch (IOException ex) {
             ex.printStackTrace();
+            System.exit(11);
         }
     }
 

@@ -39,7 +39,7 @@ public class Simulation {
         market = new StandardCompetitionMarketplace(brainAllocator,
                                                     assetGenerator,
                                                     this);
-        printer = new OutputPrinter(config.getSystemPath(), this);
+        printer = new OutputPrinter(config.generateOutputPath(), this);
 
         //TODO figure out how to dynamically generate more markets
         System.out.println("Market created; starting to step");
