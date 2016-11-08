@@ -10,5 +10,6 @@ public class MultiPeriodAsset extends Asset {
         super(registry, intrinsicValue);
         this.owner = null;
         this.dividend = 0.05d * intrinsicValue; //this is arbitrary
+        System.out.println(dividend);
     }
 }

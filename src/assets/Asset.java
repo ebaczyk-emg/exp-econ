@@ -10,13 +10,20 @@ public abstract class Asset {
     double intrinsicValue;
     private int id;
     Agent owner;
-
     double dividend;
 
     public Asset(AssetRegistry registry,
                  double intrinsicValue) {
         this.registry = registry;
         this.intrinsicValue = intrinsicValue;
+        this.dividend = 0d;
+    }
+
+    public void payDividend() {
+        System.out.println(owner.getID());
+        this.owner.
+                endowCash(
+                        dividend);
     }
 
     public double getIntrinsicValue(){

@@ -5,6 +5,7 @@ import control.marketObjects.Bid;
 import control.marketObjects.Offer;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Emily on 9/28/2016.
@@ -14,6 +15,8 @@ public abstract class Agent {
     private int id;
     ArrayList<Asset> assetEndowment;
     double cashEndowment;
+
+    ArrayList<Double> valuesForAllPeriods;
 
     public abstract double getFundamentalValue(Asset a);
     public abstract Bid getBid();

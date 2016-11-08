@@ -63,8 +63,15 @@ public abstract class Marketplace {
         offers.add(activeOffer);
     }
 
-    public abstract boolean runOneStep();
+    public void payDividends() {
+        for(Agent agent : agents){
+            for(Asset a : agent.getOwnedAssets()) {
+                a.payDividend();
+            }
+        }
+    }
 
+    public abstract boolean runOneStep();
 
     public ArrayList<Double> getPastTransactionPrices() {
         return this.pastTransactionPrices;

@@ -5,6 +5,7 @@ import control.marketObjects.Bid;
 import control.marketObjects.Offer;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Emily on 10/3/2016.
@@ -12,7 +13,6 @@ import java.util.ArrayList;
 public class BasicAgent extends Agent{
     AgentPopulation population;
 
-    ArrayList<Double> valuesForAllPeriods;
 
     public BasicAgent(AgentPopulation population) {
         super(population);

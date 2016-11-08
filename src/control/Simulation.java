@@ -24,6 +24,8 @@ public class Simulation {
     OutputPrinter printer;
 
     private int step;
+    private int period;
+    private int stepWithinPeriod;
     private Config config;
 
     public Simulation() {
@@ -44,10 +46,17 @@ public class Simulation {
         //TODO figure out how to dynamically generate more markets
         System.out.println("Market created; starting to step");
 
-        for(int i = 1; i <= config.getnSteps(); i++){
-            step = i;
-            market.runOneStep();
-            printer.printOneStepOfOutput();
+        for(int i = 1; i <= config.getnDividendPeriods(); i++){
+//            market.payDividends();
+            period++;
+            
+            for(int j = 1; j <+ config.getnStepsPerDividendPeriod(); j++) {
+                step++;
+                stepWithinPeriod = j;
+
+                market.runOneStep();
+                printer.printOneStepOfOutput();
+            }
         }
 
         printer.closeWriters();
@@ -67,6 +76,14 @@ public class Simulation {
 
     public BrainAllocator getBrainAllocator() {
         return brainAllocator;
+    }
+
+    public int getPeriod() {
+        return period;
+    }
+
+    public int getStep() {
+        return step;
     }
 
     public Marketplace getMarket() {
