@@ -11,6 +11,7 @@ import control.config.Config;
 import control.output.OutputPrinter;
 import markets.Marketplace;
 import markets.StandardCompetitionMarketplace;
+import util.MersenneTwisterFast;
 
 /**
  * Created by Emily on 9/28/2016.
@@ -27,8 +28,10 @@ public class Simulation {
     private int period;
     private int stepWithinPeriod;
     private Config config;
+    private MersenneTwisterFast random;
 
-    public Simulation() {
+    public Simulation(MersenneTwisterFast rng) {
+        this.random = rng;
         this.config = new Config();
         this.population = new AgentPopulation(this);
         this.assetRegistry = new AssetRegistry(this);
@@ -88,5 +91,9 @@ public class Simulation {
 
     public Marketplace getMarket() {
         return market;
+    }
+
+    public MersenneTwisterFast getRandom() {
+        return this.random;
     }
 }

@@ -35,7 +35,7 @@ public class StandardCompetitionMarketplace extends Marketplace{
         ArrayList<Asset> unallocatedAssets = new ArrayList<>(assets);
         for(Agent agent : agents) {
             for(int i = 0; i < sim.getConfig().getInitAssetEndowment(); i++) {
-                int index = (int) Math.floor(Math.random() * unallocatedAssets.size());
+                int index = (int) Math.floor(sim.getRandom().nextDouble() * unallocatedAssets.size());
                 agent.endowAssetAtInit(unallocatedAssets.get(index));
                 unallocatedAssets.remove(index);
             }
@@ -55,7 +55,7 @@ public class StandardCompetitionMarketplace extends Marketplace{
 
         for(int i=0; i < agents.size(); i++) {
             Agent actingAgent = agents.get(indices[i]);
-            if (Math.random() > 0.5d) {
+            if (sim.getRandom().nextBoolean()) {
                 //the agent is a buyer
                 Bid actingAgentBid = actingAgent.getBid();
                 System.out.println(actingAgentBid);

@@ -2,6 +2,7 @@ package agents;
 
 import control.Simulation;
 import control.config.Config;
+import util.MersenneTwisterFast;
 
 import java.util.ArrayList;
 
@@ -32,5 +33,9 @@ public class AgentPopulation {
 
     public Config getConfig() {
         return sim.getConfig();
+    }
+
+    public MersenneTwisterFast getRandom() {
+        return sim.getRandom();
     }
 }

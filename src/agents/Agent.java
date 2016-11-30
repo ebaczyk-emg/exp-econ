@@ -13,6 +13,7 @@ import java.util.HashMap;
 public abstract class Agent {
     private AgentPopulation population;
     private int id;
+    private boolean informed;
     ArrayList<Asset> assetEndowment;
     double cashEndowment;
 
@@ -22,8 +23,10 @@ public abstract class Agent {
     public abstract Bid getBid();
     public abstract Offer getOffer();
 
-    public Agent(AgentPopulation population){
+    public Agent(AgentPopulation population,
+                 boolean isInformed){
         this.population = population;
+        this.informed = isInformed;
     }
 
     public Bid getBid(Asset a) {
@@ -43,7 +46,7 @@ public abstract class Agent {
 
     public Offer getOffer(Asset a) {
         double calculatedFairValue = this.getFundamentalValue(a);
-        double calculatedOffer = Math.random()*20 + calculatedFairValue; // some amount more than you think it's worth
+        double calculatedOffer = population.getRandom().nextDouble() * 20 + calculatedFairValue; // some amount more than you think it's worth
         if(assetEndowment.size() == 0) {
             return new Offer(this, population.getConfig().getMaxAssetValue(), a);
         } else {
@@ -111,6 +114,10 @@ public abstract class Agent {
 
     public String getID() {
         return "Agent" + this.id;
+    }
+
+    public boolean isInformed() {
+        return informed;
     }
 
     public String printEndowment(){

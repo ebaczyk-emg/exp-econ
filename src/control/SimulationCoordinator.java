@@ -1,5 +1,7 @@
 package control;
 
+import util.MersenneTwisterFast;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
@@ -9,9 +11,10 @@ import java.util.GregorianCalendar;
  */
 public class SimulationCoordinator {
     static ArrayList<Simulation> sims;
+    private static MersenneTwisterFast random = new MersenneTwisterFast(1000);
     public static void main(String [] args) {
         sims = new ArrayList<Simulation>();
-        sims.add(new Simulation());
+        sims.add(new Simulation(random));
     }
 
     public static String getMomentOfInvocationYearMonthDayHourMinuteSecond() {

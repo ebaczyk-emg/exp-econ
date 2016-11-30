@@ -1,8 +1,5 @@
 package control.brainAllocators;
 
-import agentBrains.inductionBrains.ForwardInductionBrain;
-import agentBrains.levelBrains.PriceLevelBrain;
-import agentBrains.thoughtBrains.FirstOrderThoughtBrain;
 import agents.Agent;
 import agents.AgentPopulation;
 import agents.BasicAgent;
@@ -26,10 +23,8 @@ public class SimplestBrainAllocator extends BrainAllocator{
         ArrayList<Agent> agents = new ArrayList<>();
         for(int n = 0; n < numberOfAgents; n++){
             Agent newAgent = new BasicAgent(
-                    population);
-//                    new ForwardInductionBrain(),
-//                    new PriceLevelBrain(),
-//                    new FirstOrderThoughtBrain());
+                    population,
+                    false);
             agents.add(newAgent);
         }
         return agents;

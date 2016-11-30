@@ -14,8 +14,9 @@ public class BasicAgent extends Agent{
     AgentPopulation population;
 
 
-    public BasicAgent(AgentPopulation population) {
-        super(population);
+    public BasicAgent(AgentPopulation population,
+                      boolean informed) {
+        super(population, informed);
         this.population = population;
         this.cashEndowment = 0;
         this.assetEndowment = new ArrayList<>();
