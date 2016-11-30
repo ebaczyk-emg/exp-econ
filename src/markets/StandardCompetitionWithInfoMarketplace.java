@@ -3,11 +3,11 @@ package markets;
 import agents.Agent;
 import assets.Asset;
 import control.Simulation;
-import control.setup.assetGenerators.AssetGenerator;
-import control.setup.agentGenerators.AgentGenerator;
 import control.marketObjects.Bid;
 import control.marketObjects.Offer;
 import control.output.MarketState;
+import control.setup.assetGenerators.AssetGenerator;
+import control.setup.agentGenerators.AgentGenerator;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,17 +16,21 @@ import java.util.PriorityQueue;
 /**
  * Created by Emily on 9/28/2016.
  */
-public class StandardCompetitionMarketplace extends Marketplace{
+public class StandardCompetitionWithInfoMarketplace extends Marketplace{
 
-    public StandardCompetitionMarketplace(AgentGenerator brainAllocator,
-                                          AssetGenerator assetGenerator,
-                                          Simulation sim){
+    ArrayList<Boolean> releasedInfo;
+
+    public StandardCompetitionWithInfoMarketplace(AgentGenerator brainAllocator,
+                                                  AssetGenerator assetGenerator,
+                                                  Simulation sim){
         super(brainAllocator,
                 assetGenerator,
                 sim);
 
         this.initializeAssetAllocation();
         this.setAgentOrder();
+
+        releasedInfo = new ArrayList<>();
     }
 
     public boolean initializeAssetAllocation() {
@@ -50,6 +54,8 @@ public class StandardCompetitionMarketplace extends Marketplace{
     @Override
     public boolean runOneStep() {
         statesThisMonth = new ArrayList<>();
+
+        this.releaseNewInformation();
 
         for(int i=0; i < agents.size(); i++) {
             Agent actingAgent = agents.get(indices[i]);
@@ -123,4 +129,14 @@ public class StandardCompetitionMarketplace extends Marketplace{
         }
     }
 
+    private void releaseNewInformation() {
+        boolean coinFlip = sim.getRandom().nextBoolean(sim.getConfig().getInfoPStateA());
+        this.releasedInfo.add(coinFlip);
+    }
+
+    @Override
+    public void endOfPeriodReset() {
+        super.endOfPeriodReset();
+        releasedInfo = new ArrayList<>();
+    }
 }

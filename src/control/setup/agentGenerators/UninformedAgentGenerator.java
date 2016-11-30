@@ -1,20 +1,21 @@
-package control.setup.brainAllocators;
+package control.setup.agentGenerators;
 
 import agents.Agent;
 import agents.AgentPopulation;
 import agents.BasicAgent;
+import agents.UninfBckAgent;
 import control.Simulation;
 
 import java.util.ArrayList;
 
 /**
- * Created by Emily on 9/28/2016.
+ * Created by Emily on 11/30/2016.
  */
-public class SimplestBrainAllocator extends BrainAllocator{
+public class UninformedAgentGenerator extends AgentGenerator {
     private Simulation sim;
     private AgentPopulation population;
 
-    public SimplestBrainAllocator(AgentPopulation population, Simulation sim) {
+    public UninformedAgentGenerator(AgentPopulation population, Simulation sim) {
         this.sim = sim;
         this.population = population;
     }
@@ -22,11 +23,12 @@ public class SimplestBrainAllocator extends BrainAllocator{
     public ArrayList<Agent> generateAgents(int numberOfAgents){
         ArrayList<Agent> agents = new ArrayList<>();
         for(int n = 0; n < numberOfAgents; n++){
-            Agent newAgent = new BasicAgent(
+            Agent newAgent = new UninfBckAgent(
                     population,
                     false);
             agents.add(newAgent);
         }
         return agents;
     }
+
 }

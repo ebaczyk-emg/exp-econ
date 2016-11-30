@@ -29,6 +29,7 @@ public final class Config {
     private static final double INFO_DIVIDEND_MIN = 10;
     private static final double INFO_DIVIDEND_MAX = 50;
     private static final double INFO_P_STATE_A = 0.6d;
+    private static final int BCK_LOOKBACK_PERIOD = 5;
 
     public Config() {
         System.out.println("Generated Config file");
@@ -101,5 +102,9 @@ public final class Config {
 
     public static double getInfoPStateA() {
         return INFO_P_STATE_A;
+    }
+
+    public static int getBckLookbackPeriod() {
+        return BCK_LOOKBACK_PERIOD;
     }
 }

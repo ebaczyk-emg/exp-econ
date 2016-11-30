@@ -2,13 +2,15 @@ package control;
 
 import agents.AgentPopulation;
 import assets.AssetRegistry;
+import control.setup.agentGenerators.UninformedAgentGenerator;
 import control.setup.assetGenerators.AssetGenerator;
 import control.setup.assetGenerators.HomogeneousAssetGenerator;
 import control.setup.assetGenerators.MultiPeriodAssetGenerator;
-import control.setup.brainAllocators.BrainAllocator;
-import control.setup.brainAllocators.SimplestBrainAllocator;
+import control.setup.agentGenerators.AgentGenerator;
+import control.setup.agentGenerators.SimplestAgentGenerator;
 import control.config.Config;
 import control.output.OutputPrinter;
+import control.setup.assetGenerators.MultiPeriodInfoAssetGenerator;
 import markets.Marketplace;
 import markets.StandardCompetitionMarketplace;
 import util.MersenneTwisterFast;
@@ -17,7 +19,7 @@ import util.MersenneTwisterFast;
  * Created by Emily on 9/28/2016.
  */
 public class Simulation {
-    BrainAllocator brainAllocator;
+    AgentGenerator brainAllocator;
     AssetGenerator assetGenerator;
     Marketplace market;
     AgentPopulation population;
@@ -35,9 +37,9 @@ public class Simulation {
         this.config = new Config();
         this.population = new AgentPopulation(this);
         this.assetRegistry = new AssetRegistry(this);
-        brainAllocator = new SimplestBrainAllocator(population, this);
+        brainAllocator = new UninformedAgentGenerator(population, this);
         if(config.isUseMultiPeriodAsset()) {
-            assetGenerator = new MultiPeriodAssetGenerator(assetRegistry, this);
+            assetGenerator = new MultiPeriodInfoAssetGenerator(assetRegistry, this);
         } else {
             assetGenerator = new HomogeneousAssetGenerator(assetRegistry, this);
         }
@@ -60,6 +62,7 @@ public class Simulation {
                 market.runOneStep();
                 printer.printOneStepOfOutput();
             }
+            market.endOfPeriodReset();
         }
 
         printer.closeWriters();
@@ -77,7 +80,7 @@ public class Simulation {
         return assetRegistry;
     }
 
-    public BrainAllocator getBrainAllocator() {
+    public AgentGenerator getBrainAllocator() {
         return brainAllocator;
     }
 

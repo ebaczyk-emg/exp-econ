@@ -6,7 +6,7 @@ import assets.Asset;
 import assets.AssetRegistry;
 import control.Simulation;
 import control.setup.assetGenerators.AssetGenerator;
-import control.setup.brainAllocators.BrainAllocator;
+import control.setup.agentGenerators.AgentGenerator;
 import control.marketObjects.Bid;
 import control.marketObjects.Offer;
 import control.output.MarketState;
@@ -35,7 +35,7 @@ public abstract class Marketplace {
 
     int[] indices;
     
-    public Marketplace(BrainAllocator brainAllocator,
+    public Marketplace(AgentGenerator brainAllocator,
                        AssetGenerator assetGenerator,
                        Simulation sim) {
         this.sim = sim;
@@ -84,5 +84,9 @@ public abstract class Marketplace {
 
     public ArrayList<MarketState> getStatesThisMonth() {
         return this.statesThisMonth;
+    }
+
+    public void endOfPeriodReset() {
+
     }
 }

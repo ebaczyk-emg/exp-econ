@@ -2,6 +2,7 @@ package agents;
 
 import control.Simulation;
 import control.config.Config;
+import markets.Marketplace;
 import util.MersenneTwisterFast;
 
 import java.util.ArrayList;
@@ -37,5 +38,9 @@ public class AgentPopulation {
 
     public MersenneTwisterFast getRandom() {
         return sim.getRandom();
+    }
+
+    public Marketplace getMarket() {
+        return sim.getMarket();
     }
 }
