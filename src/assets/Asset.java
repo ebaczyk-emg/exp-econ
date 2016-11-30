@@ -20,7 +20,6 @@ public abstract class Asset {
     }
 
     public void payDividend() {
-        System.out.println(owner.getID());
         this.owner.
                 endowCash(
                         dividend);

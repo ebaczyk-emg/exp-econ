@@ -36,7 +36,7 @@ public class StandardCompetitionMarketplace extends Marketplace{
         for(Agent agent : agents) {
             for(int i = 0; i < sim.getConfig().getInitAssetEndowment(); i++) {
                 int index = (int) Math.floor(Math.random() * unallocatedAssets.size());
-                agent.endowAsset(unallocatedAssets.get(index));
+                agent.endowAssetAtInit(unallocatedAssets.get(index));
                 unallocatedAssets.remove(index);
             }
         }
@@ -89,8 +89,11 @@ public class StandardCompetitionMarketplace extends Marketplace{
 
                 double price = (activeBid.getBidPrice() + activeOffer.getOfferPrice()) / 2;
                 System.out.println("TRANSACTION at price " + price);
-                activeBid.getBiddingAgent().buyAsset(activeOffer.getOfferedAsset(), price);
                 activeOffer.getOfferingAgent().sellAsset(activeOffer.getOfferedAsset(), price);
+                activeBid.getBiddingAgent().buyAsset(activeOffer.getOfferedAsset(), price);
+
+                assert (activeOffer.getOfferedAsset().getOwner() == activeBid.getBiddingAgent()):
+                        "mismatch in asset transaction";
 
                 bids = new PriorityQueue<>();
                 offers = new PriorityQueue<>();

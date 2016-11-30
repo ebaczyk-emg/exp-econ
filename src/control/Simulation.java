@@ -47,7 +47,7 @@ public class Simulation {
         System.out.println("Market created; starting to step");
 
         for(int i = 1; i <= config.getnDividendPeriods(); i++){
-//            market.payDividends();
+            market.payDividends();
             period++;
             
             for(int j = 1; j <+ config.getnStepsPerDividendPeriod(); j++) {

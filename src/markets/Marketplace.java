@@ -64,10 +64,9 @@ public abstract class Marketplace {
     }
 
     public void payDividends() {
-        for(Agent agent : agents){
-            for(Asset a : agent.getOwnedAssets()) {
-                a.payDividend();
-            }
+        System.out.println("Paying Dividends for period " + sim.getPeriod());
+        for(Asset asset : assets) {
+            asset.payDividend();
         }
     }
 

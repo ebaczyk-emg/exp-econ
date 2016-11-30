@@ -62,15 +62,23 @@ public abstract class Agent {
     }
 
     public void endowAsset(Asset a) {
-        assert (a.getOwner() == null);
         assetEndowment.add(a);
         a.setOwner(this);
+        assert (a.getOwner() == this);
     }
 
     public void unendowAsset(Asset a) {
-        assert (a.getOwner() == this);
+        assert (a.getOwner() != null);
         assetEndowment.remove(a);
         a.setOwner(null);
+        assert (a.getOwner() == null);
+    }
+
+    public void endowAssetAtInit(Asset a) {
+        assert (a.getOwner() == null);
+        assetEndowment.add(a);
+        a.setOwner(this);
+        assert (a.getOwner() == this);
     }
 
     public void endowCash(double amount) {
