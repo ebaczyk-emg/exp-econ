@@ -14,11 +14,21 @@ public final class Config {
     private static final double MIN_ASSET_VALUE = 50;
     private static final double MAX_ASSET_VALUE = 100;
     private static final int N_AGENTS = 10;
-    private static final int N_DIVIDEND_PERIODS = 2;
+    private static final int N_DIVIDEND_PERIODS = 10;
     private static final int N_STEPS_PER_DIVIDEND_PERIOD = 10;
     private static String systemPath = System.getProperty("user.dir");
     private static final boolean USE_MULTI_PERIOD_ASSET = true;
     private static final double decayFactor = 0.10d;
+
+    /*
+    For InformationAsset, the assets that provide some info to informed agents
+    and no info to uninformed agents
+     */
+
+    private static final double INFO_INTRINSIC_VALUE = 100;
+    private static final double INFO_DIVIDEND_MIN = 10;
+    private static final double INFO_DIVIDEND_MAX = 50;
+    private static final double INFO_P_STATE_A = 0.6d;
 
     public Config() {
         System.out.println("Generated Config file");
@@ -77,5 +87,19 @@ public final class Config {
         return path;
     }
 
+    public static double getInfoIntrinsicValue() {
+        return INFO_INTRINSIC_VALUE;
+    }
 
+    public static double getInfoDividendMin() {
+        return INFO_DIVIDEND_MIN;
+    }
+
+    public static double getInfoDividendMax() {
+        return INFO_DIVIDEND_MAX;
+    }
+
+    public static double getInfoPStateA() {
+        return INFO_P_STATE_A;
+    }
 }

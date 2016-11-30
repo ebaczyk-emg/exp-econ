@@ -5,14 +5,13 @@ import control.marketObjects.Bid;
 import control.marketObjects.Offer;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
- * Created by Emily on 10/3/2016.
+ * Created by Emily on 11/29/2016.
  */
-public class BasicAgent extends Agent{
+public class InfFwdLevelAgent extends Agent {
 
-    public BasicAgent(AgentPopulation population,
+    public InfFwdLevelAgent(AgentPopulation population,
                       boolean informed) {
         super(population, informed);
         this.population = population;
@@ -51,10 +50,6 @@ public class BasicAgent extends Agent{
 
     public double getFundamentalValue(Asset a) {
         return a.getIntrinsicValue();
-    }
-
-    public ArrayList<Double> getValuesForAllPeriods(){
-        return this.valuesForAllPeriods;
     }
 
 }

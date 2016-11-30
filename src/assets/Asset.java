@@ -48,4 +48,8 @@ public abstract class Asset {
     public double getDividend() {
         return dividend;
     }
+
+    public void setDividend(double dividend) {
+        this.dividend = dividend;
+    }
 }

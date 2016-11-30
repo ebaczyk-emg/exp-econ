@@ -2,11 +2,11 @@ package control;
 
 import agents.AgentPopulation;
 import assets.AssetRegistry;
-import control.assetGenerators.AssetGenerator;
-import control.assetGenerators.HomogeneousAssetGenerator;
-import control.assetGenerators.MultiPeriodAssetGenerator;
-import control.brainAllocators.BrainAllocator;
-import control.brainAllocators.SimplestBrainAllocator;
+import control.setup.assetGenerators.AssetGenerator;
+import control.setup.assetGenerators.HomogeneousAssetGenerator;
+import control.setup.assetGenerators.MultiPeriodAssetGenerator;
+import control.setup.brainAllocators.BrainAllocator;
+import control.setup.brainAllocators.SimplestBrainAllocator;
 import control.config.Config;
 import control.output.OutputPrinter;
 import markets.Marketplace;

@@ -1,4 +1,4 @@
-package control.assetGenerators;
+package control.setup.assetGenerators;
 
 import assets.Asset;
 import assets.AssetRegistry;

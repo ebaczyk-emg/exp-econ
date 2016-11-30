@@ -1,12 +1,10 @@
 package markets;
 
 import agents.Agent;
-import agents.AgentPopulation;
 import assets.Asset;
-import assets.AssetRegistry;
 import control.Simulation;
-import control.assetGenerators.AssetGenerator;
-import control.brainAllocators.BrainAllocator;
+import control.setup.assetGenerators.AssetGenerator;
+import control.setup.brainAllocators.BrainAllocator;
 import control.marketObjects.Bid;
 import control.marketObjects.Offer;
 import control.output.MarketState;

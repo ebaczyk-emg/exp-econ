@@ -11,7 +11,7 @@ import java.util.HashMap;
  * Created by Emily on 9/28/2016.
  */
 public abstract class Agent {
-    private AgentPopulation population;
+    AgentPopulation population;
     private int id;
     private boolean informed;
     ArrayList<Asset> assetEndowment;

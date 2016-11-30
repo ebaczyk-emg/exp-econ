@@ -1,4 +1,4 @@
-package control.brainAllocators;
+package control.setup.brainAllocators;
 
 import agents.Agent;
 

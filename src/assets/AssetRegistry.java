@@ -26,6 +26,17 @@ public class AssetRegistry {
         assets.add(asset);
     }
 
+    public double determineDividend() {
+        double lowRegime = sim.getConfig().getInfoDividendMin();
+        double highRegime = sim.getConfig().getInfoDividendMax();
+        double p = sim.getConfig().getInfoPStateA();
+        if(sim.getRandom().nextBoolean(p)) {
+            return lowRegime;
+        } else {
+            return highRegime;
+        }
+    }
+
     public ArrayList<Asset> getAssets() {
         return assets;
     }

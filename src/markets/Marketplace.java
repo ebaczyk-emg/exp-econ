@@ -5,8 +5,8 @@ import agents.AgentPopulation;
 import assets.Asset;
 import assets.AssetRegistry;
 import control.Simulation;
-import control.assetGenerators.AssetGenerator;
-import control.brainAllocators.BrainAllocator;
+import control.setup.assetGenerators.AssetGenerator;
+import control.setup.brainAllocators.BrainAllocator;
 import control.marketObjects.Bid;
 import control.marketObjects.Offer;
 import control.output.MarketState;
@@ -67,6 +67,12 @@ public abstract class Marketplace {
         System.out.println("Paying Dividends for period " + sim.getPeriod());
         for(Asset asset : assets) {
             asset.payDividend();
+        }
+        //set dividends for next period
+        double newDividend = registry.determineDividend();
+        System.out.println("NEW DIVIDEND IS " + newDividend);
+        for(Asset asset : assets) {
+            asset.setDividend(newDividend);
         }
     }
 
