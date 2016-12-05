@@ -18,8 +18,6 @@ import java.util.PriorityQueue;
  */
 public class StandardCompetitionWithInfoMarketplace extends Marketplace{
 
-    ArrayList<Boolean> releasedInfo;
-
     public StandardCompetitionWithInfoMarketplace(AgentGenerator brainAllocator,
                                                   AssetGenerator assetGenerator,
                                                   Simulation sim){

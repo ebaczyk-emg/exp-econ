@@ -11,7 +11,7 @@ import java.util.GregorianCalendar;
  */
 public class SimulationCoordinator {
     static ArrayList<Simulation> sims;
-    private static MersenneTwisterFast random = new MersenneTwisterFast(1000);
+    private static MersenneTwisterFast random = new MersenneTwisterFast(10);
     public static void main(String [] args) {
         sims = new ArrayList<Simulation>();
         sims.add(new Simulation(random));

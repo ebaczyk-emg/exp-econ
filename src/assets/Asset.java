@@ -2,20 +2,22 @@ package assets;
 
 import agents.Agent;
 
+import java.util.ArrayList;
+
 /**
  * Created by Emily on 10/4/2016.
  */
 public abstract class Asset {
-    AssetRegistry registry;
-    double intrinsicValue;
+    private AssetRegistry registry;
+    private double fundingCost;
     private int id;
     Agent owner;
     double dividend;
 
     public Asset(AssetRegistry registry,
-                 double intrinsicValue) {
+                 double fundingCost) {
         this.registry = registry;
-        this.intrinsicValue = intrinsicValue;
+        this.fundingCost = fundingCost;
         this.dividend = 0d;
     }
 
@@ -25,8 +27,8 @@ public abstract class Asset {
                         dividend);
     }
 
-    public double getIntrinsicValue(){
-        return this.intrinsicValue;
+    public double getFundingCost(){
+        return this.fundingCost;
     }
 
     public String getID() {
@@ -51,5 +53,13 @@ public abstract class Asset {
 
     public void setDividend(double dividend) {
         this.dividend = dividend;
+    }
+
+    public ArrayList<Double> getPastPrices() {
+        return registry.getMarketplace().getPastTransactionPrices();
+    }
+
+    public void setFundingCost(double cost) {
+        this.fundingCost = cost;
     }
 }

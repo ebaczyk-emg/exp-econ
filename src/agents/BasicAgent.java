@@ -5,7 +5,6 @@ import control.marketObjects.Bid;
 import control.marketObjects.Offer;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by Emily on 10/3/2016.
@@ -28,11 +27,11 @@ public class BasicAgent extends Agent{
         } else {
             Asset mostValuableOwnedAsset = assetEndowment.get(0);
             for (Asset asset : assetEndowment) {
-                if (asset.getIntrinsicValue() > mostValuableOwnedAsset.getIntrinsicValue()) {
+                if (asset.getFundingCost() > mostValuableOwnedAsset.getFundingCost()) {
                     mostValuableOwnedAsset = asset;
                 }
             }
-            return this.getBid(mostValuableOwnedAsset);
+            return this.getBid(getFundamentalValue(mostValuableOwnedAsset));
         }
     }
 
@@ -40,7 +39,7 @@ public class BasicAgent extends Agent{
         if(assetEndowment.size() > 0) {
             Asset leastValuableOwnedAsset = assetEndowment.get(0);
             for (Asset asset : assetEndowment) {
-                if (asset.getIntrinsicValue() < leastValuableOwnedAsset.getIntrinsicValue()) {
+                if (asset.getFundingCost() < leastValuableOwnedAsset.getFundingCost()) {
                     leastValuableOwnedAsset = asset;
                 }
             }
@@ -50,7 +49,7 @@ public class BasicAgent extends Agent{
     }
 
     public double getFundamentalValue(Asset a) {
-        return a.getIntrinsicValue();
+        return a.getFundingCost();
     }
 
     public ArrayList<Double> getValuesForAllPeriods(){

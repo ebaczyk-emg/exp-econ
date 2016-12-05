@@ -9,16 +9,16 @@ import java.io.File;
  */
 public final class Config {
 
-    private static final double INIT_CASH_ENDOWMENT = 500;
-    private static final int INIT_ASSET_ENDOWMENT = 2;
+    private static final double INIT_CASH_ENDOWMENT = 1000;
+    private static final int INIT_ASSET_ENDOWMENT = 3;
     private static final double MIN_ASSET_VALUE = 50;
-    private static final double MAX_ASSET_VALUE = 100;
-    private static final int N_AGENTS = 10;
-    private static final int N_DIVIDEND_PERIODS = 10;
-    private static final int N_STEPS_PER_DIVIDEND_PERIOD = 10;
+    private static final double MAX_ASSET_VALUE = 200;
+    private static final int N_AGENTS = 20;
+    private static final int N_DIVIDEND_PERIODS = 1;
+    private static final int N_STEPS_PER_DIVIDEND_PERIOD = 1000;
     private static String systemPath = System.getProperty("user.dir");
     private static final boolean USE_MULTI_PERIOD_ASSET = true;
-    private static final double decayFactor = 0.10d;
+    private static final double decayFactor = 2d;
 
     /*
     For InformationAsset, the assets that provide some info to informed agents
@@ -28,8 +28,9 @@ public final class Config {
     private static final double INFO_INTRINSIC_VALUE = 100;
     private static final double INFO_DIVIDEND_MIN = 10;
     private static final double INFO_DIVIDEND_MAX = 50;
-    private static final double INFO_P_STATE_A = 0.6d;
+    private static final double INFO_P_STATE_A = 0.4d;
     private static final int BCK_LOOKBACK_PERIOD = 5;
+    private static final int INF_INFO_THRESHOLD = 3;
 
     public Config() {
         System.out.println("Generated Config file");
@@ -106,5 +107,9 @@ public final class Config {
 
     public static int getBckLookbackPeriod() {
         return BCK_LOOKBACK_PERIOD;
+    }
+
+    public static int getInfInfoThreshold() {
+        return INF_INFO_THRESHOLD;
     }
 }

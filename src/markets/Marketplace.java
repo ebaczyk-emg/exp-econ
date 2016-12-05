@@ -32,6 +32,7 @@ public abstract class Marketplace {
 
     ArrayList<Double> pastTransactionPrices = new ArrayList<>();
     ArrayList<MarketState> statesThisMonth;
+    ArrayList<Boolean> releasedInfo;
 
     int[] indices;
     
@@ -61,6 +62,8 @@ public abstract class Marketplace {
         offers = new PriorityQueue<>();
         bids.add(activeBid);
         offers.add(activeOffer);
+
+        releasedInfo = new ArrayList<>();
     }
 
     public void payDividends() {
@@ -88,5 +91,9 @@ public abstract class Marketplace {
 
     public void endOfPeriodReset() {
 
+    }
+
+    public ArrayList<Boolean> getReleasedInfo() {
+        return this.releasedInfo;
     }
 }

@@ -2,6 +2,7 @@ package assets;
 
 import control.Simulation;
 import control.config.Config;
+import markets.Marketplace;
 
 import java.util.ArrayList;
 
@@ -13,11 +14,13 @@ public class AssetRegistry {
     private ArrayList<Asset> assets;
     private static final int ID_START = 1;
     private int ID;
+    private Marketplace marketplace;
 
     public AssetRegistry(Simulation sim) {
         this.sim = sim;
         assets = new ArrayList<>((sim.getConfig().getnAgents() * sim.getConfig().getInitAssetEndowment()));
         ID = ID_START;
+        marketplace = sim.getMarket();
     }
 
     public void init(Asset asset) {
@@ -43,5 +46,9 @@ public class AssetRegistry {
 
     public Config getConfig() {
         return sim.getConfig();
+    }
+
+    public Marketplace getMarketplace() {
+        return marketplace;
     }
 }

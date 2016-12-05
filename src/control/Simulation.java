@@ -2,24 +2,24 @@ package control;
 
 import agents.AgentPopulation;
 import assets.AssetRegistry;
-import control.setup.agentGenerators.UninformedAgentGenerator;
+import control.setup.agentGenerators.EWAgentGenerator;
 import control.setup.assetGenerators.AssetGenerator;
 import control.setup.assetGenerators.HomogeneousAssetGenerator;
-import control.setup.assetGenerators.MultiPeriodAssetGenerator;
 import control.setup.agentGenerators.AgentGenerator;
-import control.setup.agentGenerators.SimplestAgentGenerator;
 import control.config.Config;
 import control.output.OutputPrinter;
 import control.setup.assetGenerators.MultiPeriodInfoAssetGenerator;
 import markets.Marketplace;
-import markets.StandardCompetitionMarketplace;
+import markets.StandardCompetitionWithInfoMarketplace;
 import util.MersenneTwisterFast;
+
+import java.util.Collections;
 
 /**
  * Created by Emily on 9/28/2016.
  */
 public class Simulation {
-    AgentGenerator brainAllocator;
+    AgentGenerator agentGenerator;
     AssetGenerator assetGenerator;
     Marketplace market;
     AgentPopulation population;
@@ -37,13 +37,14 @@ public class Simulation {
         this.config = new Config();
         this.population = new AgentPopulation(this);
         this.assetRegistry = new AssetRegistry(this);
-        brainAllocator = new UninformedAgentGenerator(population, this);
+        agentGenerator = new EWAgentGenerator(population, this);
+        Collections.shuffle(population.getAgents());
         if(config.isUseMultiPeriodAsset()) {
             assetGenerator = new MultiPeriodInfoAssetGenerator(assetRegistry, this);
         } else {
             assetGenerator = new HomogeneousAssetGenerator(assetRegistry, this);
         }
-        market = new StandardCompetitionMarketplace(brainAllocator,
+        market = new StandardCompetitionWithInfoMarketplace(agentGenerator,
                                                     assetGenerator,
                                                     this);
         printer = new OutputPrinter(config.generateOutputPath(), this);
@@ -80,8 +81,8 @@ public class Simulation {
         return assetRegistry;
     }
 
-    public AgentGenerator getBrainAllocator() {
-        return brainAllocator;
+    public AgentGenerator getAgentGenerator() {
+        return agentGenerator;
     }
 
     public int getPeriod() {

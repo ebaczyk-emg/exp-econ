@@ -5,7 +5,6 @@ import control.marketObjects.Bid;
 import control.marketObjects.Offer;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by Emily on 9/28/2016.
@@ -29,13 +28,11 @@ public abstract class Agent {
         this.informed = isInformed;
     }
 
-    public Bid getBid(Asset a) {
-        double calculatedFairValue = this.getFundamentalValue(a);
+    public Bid getBid(double max) {
+        double calculatedFairValue = max;
         double calculatedBid = calculatedFairValue -
-                population.getConfig().getDecayFactor() *
-                        Math.exp(population.getConfig().getDecayFactor() *
-                                -1d ); //some amount less than you think it's worth
-        System.out.println("calculated to bid " + calculatedBid + " from FV " + calculatedFairValue);
+                Math.exp(population.getRandom().nextDouble() * population.getConfig().getDecayFactor()); //some amount less than you think it's worth
+//        System.out.println("calculated to bid " + calculatedBid + " from FV " + calculatedFairValue);
         if(calculatedBid > cashEndowment) {
             return new Bid(this, population.getConfig().getMinAssetValue());
         } else {
@@ -46,8 +43,10 @@ public abstract class Agent {
 
     public Offer getOffer(Asset a) {
         double calculatedFairValue = this.getFundamentalValue(a);
-        double calculatedOffer = population.getRandom().nextDouble() * 20 + calculatedFairValue; // some amount more than you think it's worth
-        if(assetEndowment.size() == 0) {
+        double calculatedOffer = calculatedFairValue +
+                Math.exp(population.getRandom().nextDouble() * population.getConfig().getDecayFactor()); //some amount more than you think it's worth
+//        System.out.println(calculatedFairValue + " *** " + calculatedOffer);
+        if(calculatedOffer < a.getFundingCost() || this.getOwnedAssets().isEmpty()) {
             return new Offer(this, population.getConfig().getMaxAssetValue(), a);
         } else {
             return new Offer(this, calculatedOffer, a);
@@ -56,6 +55,7 @@ public abstract class Agent {
 
     public void buyAsset(Asset a, double price) {
         this.debit(price);
+        a.setFundingCost(price);
         this.endowAsset(a);
     }
 
@@ -123,7 +123,7 @@ public abstract class Agent {
     public String printEndowment(){
         String ret = "Agent" + id + "," + cashEndowment;
         for(Asset a : assetEndowment) {
-            ret += "," + a.getID() + "," + a.getIntrinsicValue();
+            ret += "," + a.getID() + "," + a.getFundingCost();
         }
         return ret;
     }

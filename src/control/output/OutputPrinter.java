@@ -1,11 +1,9 @@
 package control.output;
 
 import agents.Agent;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import control.Simulation;
 
 import java.io.*;
-import java.nio.file.Path;
 import java.util.ArrayList;
 
 /**
@@ -59,7 +57,7 @@ public class OutputPrinter {
             infoToAdd.add("" + a.getAssetEndowment());
             for(int i = 0; i < a.getAssetEndowment(); i++) {
                 infoToAdd.add(a.getOwnedAssets().get(i).getID());
-                infoToAdd.add("" + a.getOwnedAssets().get(i).getIntrinsicValue());
+                infoToAdd.add("" + a.getOwnedAssets().get(i).getFundingCost());
             }
             try {
                 writeSequenceWithNoTerminalComma(endowmentWriter, infoToAdd);
