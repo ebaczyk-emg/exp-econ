@@ -5,6 +5,7 @@ import control.marketObjects.Bid;
 import control.marketObjects.Offer;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by Emily on 11/29/2016.
@@ -38,15 +39,23 @@ public class InfBckAgent extends Agent {
     }
 
     public Offer getOffer() {
-        if(assetEndowment.size() > 0) {
-            Asset leastValuableOwnedAsset = assetEndowment.get(0);
+        if(assetEndowment.size() > 0) { //make sure you have assets
+            Collections.sort(assetEndowment); //sort assets on funding cost
+            Asset leastValuableProfitableAsset = null;
+            //find the least valuable asset that can still be sold for a profit
             for (Asset asset : assetEndowment) {
-                if (asset.getFundingCost() < leastValuableOwnedAsset.getFundingCost()) {
-                    leastValuableOwnedAsset = asset;
+                if (asset.getFundingCost() <= this.getFundamentalValue(null)) {
+                    leastValuableProfitableAsset = asset;
+                    break;
                 }
             }
-            return this.getOffer(leastValuableOwnedAsset);
-        }
+            //calculate a bid for this asset if there is such an asset
+            if(leastValuableProfitableAsset != null) {
+                return this.getOffer(leastValuableProfitableAsset);
+            } else {
+                return null;
+            }
+        } //else, can't sell anything
         else return null;
     }
 

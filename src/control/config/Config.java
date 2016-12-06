@@ -15,7 +15,7 @@ public final class Config {
     private static final double MAX_ASSET_VALUE = 200;
     private static final int N_AGENTS = 20;
     private static final int N_DIVIDEND_PERIODS = 1;
-    private static final int N_STEPS_PER_DIVIDEND_PERIOD = 1000;
+    private static final int N_STEPS_PER_DIVIDEND_PERIOD = 100;
     private static String systemPath = System.getProperty("user.dir");
     private static final boolean USE_MULTI_PERIOD_ASSET = true;
     private static final double decayFactor = 2d;
@@ -26,9 +26,9 @@ public final class Config {
      */
 
     private static final double INFO_INTRINSIC_VALUE = 100;
-    private static final double INFO_DIVIDEND_MIN = 10;
-    private static final double INFO_DIVIDEND_MAX = 50;
-    private static final double INFO_P_STATE_A = 0.4d;
+    private static final double INFO_DIVIDEND_MIN = -10;
+    private static final double INFO_DIVIDEND_MAX = 10;
+    private static final double INFO_P_STATE_A = 0.3d;
     private static final int BCK_LOOKBACK_PERIOD = 5;
     private static final int INF_INFO_THRESHOLD = 3;
 

@@ -115,12 +115,13 @@ public class StandardCompetitionMarketplace extends Marketplace{
     }
 
     public void setAgentOrder() {
-        indices = new int[agents.size()];
-        ArrayList<Agent> temp = new ArrayList<>(agents);
-        Collections.shuffle(temp);
-        for(int i = 0; i < agents.size(); i++) {
-            indices[i] = temp.indexOf(agents.get(i));
-        }
+        Collections.shuffle(agents);
+//        indices = new int[agents.size()];
+//        ArrayList<Agent> temp = new ArrayList<>(agents);
+//        Collections.shuffle(temp);
+//        for(int i = 0; i < agents.size(); i++) {
+//            indices[i] = temp.indexOf(agents.get(i));
+//        }
     }
 
 }

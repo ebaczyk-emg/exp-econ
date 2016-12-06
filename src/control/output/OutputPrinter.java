@@ -53,6 +53,7 @@ public class OutputPrinter {
         for(Agent a : sim.getPopulation().getAgents()) {
             ArrayList<String> infoToAdd = new ArrayList<>();
             infoToAdd.add(a.getID());
+            infoToAdd.add(a.getClass().getSimpleName());
             infoToAdd.add("" + a.getCashEndowment());
             infoToAdd.add("" + a.getAssetEndowment());
             for(int i = 0; i < a.getAssetEndowment(); i++) {

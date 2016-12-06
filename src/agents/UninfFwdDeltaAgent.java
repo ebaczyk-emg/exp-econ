@@ -36,20 +36,27 @@ public class UninfFwdDeltaAgent extends Agent {
             }
         }
         Bid bid = getBid(maxBid);
-//        System.out.println("testing decay " + maxBid + " " + bid.getBidPrice());
         return bid;
     }
 
     public Offer getOffer() {
-        if(assetEndowment.size() > 0) {
-            Asset leastValuableOwnedAsset = assetEndowment.get(0);
+        if(assetEndowment.size() > 0) { //make sure you have assets
+            Collections.sort(assetEndowment); //sort assets on funding cost
+            Asset leastValuableProfitableAsset = null;
+            //find the least valuable asset that can still be sold for a profit
             for (Asset asset : assetEndowment) {
-                if (asset.getFundingCost() < leastValuableOwnedAsset.getFundingCost()) {
-                    leastValuableOwnedAsset = asset;
+                if (asset.getFundingCost() <= this.getFundamentalValue(null)) {
+                    leastValuableProfitableAsset = asset;
+                    break;
                 }
             }
-            return this.getOffer(leastValuableOwnedAsset);
-        }
+            //calculate a bid for this asset if there is such an asset
+            if(leastValuableProfitableAsset != null) {
+                return this.getOffer(leastValuableProfitableAsset);
+            } else {
+                return null;
+            }
+        } //else, can't sell anything
         else return null;
     }
 
@@ -115,21 +122,5 @@ public class UninfFwdDeltaAgent extends Agent {
         }
 
         return FV;
-        //then, find the regression
-
-//        if(lastTransactions.size() == 0) {
-//            double tempAvg = 0;
-//            for (int i = 0; i < Math.min(population.getConfig().getBckLookbackPeriod(),
-//                    lastTransactions.size()); i++) {
-//                tempAvg += lastTransactions.get(i);
-//            }
-//            tempAvg = tempAvg / Math.min(population.getConfig().getBckLookbackPeriod(),
-//                    lastTransactions.size());
-//            return tempAvg;
-//        } else {
-////            return population.getConfig().getInitAssetEndowment() +
-////                    (population.getConfig().getInfoDividendMax() + population.getConfig().getInfoDividendMin())/2;
-//            return a.getFundingCost();
-//        }
     }
 }

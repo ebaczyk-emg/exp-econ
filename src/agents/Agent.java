@@ -34,7 +34,7 @@ public abstract class Agent {
                 Math.exp(population.getRandom().nextDouble() * population.getConfig().getDecayFactor()); //some amount less than you think it's worth
 //        System.out.println("calculated to bid " + calculatedBid + " from FV " + calculatedFairValue);
         if(calculatedBid > cashEndowment) {
-            return new Bid(this, population.getConfig().getMinAssetValue());
+            return new Bid(this, Math.max( cashEndowment, population.getConfig().getMinAssetValue()));
         } else {
             return new Bid(this, calculatedBid);
         }

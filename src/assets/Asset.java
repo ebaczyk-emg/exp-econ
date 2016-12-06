@@ -1,13 +1,14 @@
 package assets;
 
 import agents.Agent;
+import control.marketObjects.Bid;
 
 import java.util.ArrayList;
 
 /**
  * Created by Emily on 10/4/2016.
  */
-public abstract class Asset {
+public abstract class Asset implements Comparable {
     private AssetRegistry registry;
     private double fundingCost;
     private int id;
@@ -26,6 +27,15 @@ public abstract class Asset {
                 endowCash(
                         dividend);
     }
+
+    public int compareTo(Object a) {
+        if(((Asset) a).getFundingCost() < this.getFundingCost()) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }
+
 
     public double getFundingCost(){
         return this.fundingCost;
