@@ -40,6 +40,36 @@ public class EWAgentGenerator extends AgentGenerator {
                 true);
         agents.add(inf);
 
+//        inf = new InfBckAgent(
+//                population,
+//                true);
+//        agents.add(inf);
+//
+//        inf = new InfBckAgent(
+//                population,
+//                true);
+//        agents.add(inf);
+//
+//        inf = new InfBckAgent(
+//                population,
+//                true);
+//        agents.add(inf);
+//
+//        inf = new InfBckAgent(
+//                population,
+//                true);
+//        agents.add(inf);
+//
+//        inf = new InfBckAgent(
+//                population,
+//                true);
+//        agents.add(inf);
+//
+//        inf = new InfBckAgent(
+//                population,
+//                true);
+//        agents.add(inf);
+
         return agents;
     }
 

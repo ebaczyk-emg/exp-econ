@@ -23,18 +23,7 @@ public class InfBckAgent extends Agent {
     }
 
     public Bid getBid() {
-        //generate a bid that is the maximum of (total cash on hand, calculated FV of asset)
-        double maxBid = 0d;
-        if(this.getOwnedAssets().isEmpty()) {
-            maxBid = this.calculateFairValue(null);
-        } else {
-            for(Asset a : this.getOwnedAssets()) {
-                if(this.calculateFairValue(a) > maxBid) {
-                    maxBid = this.calculateFairValue(a);
-                }
-            }
-        }
-        Bid bid = getBid(maxBid);
+        Bid bid = getBid(this.calculateFairValue(null));
         return bid;
     }
 
@@ -61,10 +50,15 @@ public class InfBckAgent extends Agent {
 
     public double calculateFairValue(Asset a) {
         ArrayList<Boolean> information = population.getMarket().getReleasedInfo();
+        double FV = 0;
         //in no information, default to EV
         if(information.isEmpty()) {
-            return population.getConfig().getInfoIntrinsicValue() +
-                    (population.getConfig().getInfoDividendMax() + population.getConfig().getInfoDividendMin())/2;
+            if(a != null) {
+                FV = a.getFundingCost();
+            } else {
+                FV = population.getConfig().getInfoIntrinsicValue() +
+                        (population.getConfig().getInfoDividendMax() + population.getConfig().getInfoDividendMin()) / 2;
+            }
         } else {
             int stateA = 0, stateB = 0;
             for (int i = 0; i < information.size(); i++) {
@@ -79,7 +73,6 @@ public class InfBckAgent extends Agent {
 
 
             //only move if differential above threshold
-            double FV ;
             if (Math.abs(stateA - stateB) >= population.getConfig().getInfInfoThreshold()) {
                 System.out.println("AGENTS HAVE ENOUGH INFO " + (stateA- stateB));
                 if (stateA > stateB) {
@@ -94,7 +87,7 @@ public class InfBckAgent extends Agent {
             }
 
 //            System.out.println("CALCULATED FV of " + FV);
-            return FV;
         }
+        return FV;
     }
 }

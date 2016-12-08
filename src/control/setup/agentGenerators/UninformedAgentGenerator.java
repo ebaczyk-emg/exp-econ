@@ -1,9 +1,6 @@
 package control.setup.agentGenerators;
 
-import agents.Agent;
-import agents.AgentPopulation;
-import agents.InfBckAgent;
-import agents.UninfFwdLevelAgent;
+import agents.*;
 import control.Simulation;
 
 import java.util.ArrayList;
@@ -22,10 +19,14 @@ public class UninformedAgentGenerator extends AgentGenerator {
 
     public ArrayList<Agent> generateAgents(int numberOfAgents){
         ArrayList<Agent> agents = new ArrayList<>();
-        for(int n = 0; n < numberOfAgents; n++){
-            Agent newAgent = new InfBckAgent(
+        for(int n = 0; n < numberOfAgents/2; n++){
+            Agent newAgent = new UninfFwdLevelAgent(
                     population,
-                    true);
+                    false);
+            agents.add(newAgent);
+            newAgent = new UninfFwdDeltaAgent(
+                    population,
+                    false);
             agents.add(newAgent);
         }
         return agents;

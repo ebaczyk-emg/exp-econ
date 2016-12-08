@@ -34,9 +34,11 @@ public abstract class Agent {
                 Math.exp(population.getRandom().nextDouble() * population.getConfig().getDecayFactor()); //some amount less than you think it's worth
 //        System.out.println("calculated to bid " + calculatedBid + " from FV " + calculatedFairValue);
         if(calculatedBid > cashEndowment) {
-            return new Bid(this, Math.max( cashEndowment, population.getConfig().getMinAssetValue()));
+            return new Bid(this, cashEndowment);
         } else {
-            return new Bid(this, calculatedBid);
+//            return new Bid(this, Math.min(population.getMarket().getMinOffer(), calculatedBid));
+            return new Bid(this, max);
+            //return new Bid(this, calculatedBid);
         }
 
     }
@@ -46,10 +48,15 @@ public abstract class Agent {
         double calculatedOffer = calculatedFairValue +
                 Math.exp(population.getRandom().nextDouble() * population.getConfig().getDecayFactor()); //some amount more than you think it's worth
 //        System.out.println(calculatedFairValue + " *** " + calculatedOffer);
+//        System.out.println(population.getMarket().getMinOffer());
+//        System.exit(11);
         if(calculatedOffer < a.getFundingCost() || this.getOwnedAssets().isEmpty()) {
             return new Offer(this, population.getConfig().getMaxAssetValue(), a);
         } else {
-            return new Offer(this, calculatedOffer, a);
+//            return new Offer(this, Math.max(population.getMarket().getMaxBid(), calculatedOffer), a);
+            return new Offer(this, calculatedFairValue, a);
+            //return new Offer(this, calculatedOffer, a);
+
         }
     }
 

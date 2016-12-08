@@ -78,6 +78,13 @@ public class StandardCompetitionWithInfoMarketplace extends Marketplace{
                 }
             }
 
+            if(activeBid.getBiddingAgent() != null) {
+                this.maxBid = activeBid.getBidPrice();
+            }
+            if(activeOffer.getOfferedAsset() != null) {
+                this.minOffer = activeOffer.getOfferPrice();
+            }
+
             System.out.println("ACTIVE BIDS " + activeBid + " " + activeOffer);
 
             if (activeBid.getBidPrice() >= activeOffer.getOfferPrice()) {
@@ -93,6 +100,7 @@ public class StandardCompetitionWithInfoMarketplace extends Marketplace{
                 System.out.println("TRANSACTION at price " + price);
                 activeOffer.getOfferingAgent().sellAsset(activeOffer.getOfferedAsset(), price);
                 activeBid.getBiddingAgent().buyAsset(activeOffer.getOfferedAsset(), price);
+                pastTransactionPrices.add(price);
 
                 assert (activeOffer.getOfferedAsset().getOwner() == activeBid.getBiddingAgent()):
                         "mismatch in asset transaction";
@@ -105,6 +113,10 @@ public class StandardCompetitionWithInfoMarketplace extends Marketplace{
 
                 activeBid = bids.peek();
                 activeOffer = offers.peek();
+
+                this.maxBid = sim.getConfig().getMinAssetValue();
+                this.minOffer = sim.getConfig().getMaxAssetValue();
+
             } else {
                 statesThisMonth.add(new MarketState(
                         activeBid.getBidPrice(),

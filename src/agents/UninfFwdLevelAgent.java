@@ -23,18 +23,7 @@ public class UninfFwdLevelAgent extends Agent {
     }
 
     public Bid getBid() {
-        //generate a bid that is the maximum of (total cash on hand, calculated FV of asset)
-        double maxBid = 0d;
-        if(this.getOwnedAssets().isEmpty()) {
-            maxBid = this.calculateFairValue(null);
-        } else {
-            for(Asset a : this.getOwnedAssets()) {
-                if(this.calculateFairValue(a) > maxBid) {
-                    maxBid = this.calculateFairValue(a);
-                }
-            }
-        }
-        Bid bid = getBid(maxBid);
+        Bid bid = getBid(this.calculateFairValue(null));
         return bid;
     }
 
@@ -59,6 +48,7 @@ public class UninfFwdLevelAgent extends Agent {
 
     public double calculateFairValue(Asset a) {
         ArrayList<Double> lastTransactions = population.getMarket().getPastTransactionPrices();
+        Collections.reverse(lastTransactions);
         double FV;
         if(lastTransactions.size() != 0) {
             double tempAvg = 0;
@@ -68,12 +58,15 @@ public class UninfFwdLevelAgent extends Agent {
             }
             tempAvg = tempAvg / Math.min(population.getConfig().getBckLookbackPeriod(),
                     lastTransactions.size());
+            System.out.println(tempAvg + " " + Math.min(population.getConfig().getBckLookbackPeriod(), lastTransactions.size()));
             FV = tempAvg;
         } else {
             FV = population.getConfig().getInfoIntrinsicValue() +
                     (population.getConfig().getInfoDividendMax() +
                             population.getConfig().getInfoDividendMin()) / 2;
         }
+        System.out.println("PRICE LEVELS");
+        System.out.println(FV);
         return FV;
     }
 

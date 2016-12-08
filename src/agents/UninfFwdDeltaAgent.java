@@ -7,6 +7,7 @@ import util.LinearTrendLine;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by Emily on 11/29/2016.
@@ -24,18 +25,7 @@ public class UninfFwdDeltaAgent extends Agent {
     }
 
     public Bid getBid() {
-        //generate a bid that is the maximum of (total cash on hand, calculated FV of asset)
-        double maxBid = 0d;
-        if(this.getOwnedAssets().isEmpty()) {
-            maxBid = this.calculateFairValue(null);
-        } else {
-            for(Asset a : this.getOwnedAssets()) {
-                if(this.calculateFairValue(a) > maxBid) {
-                    maxBid = this.calculateFairValue(a);
-                }
-            }
-        }
-        Bid bid = getBid(maxBid);
+        Bid bid = getBid(this.calculateFairValue(null));
         return bid;
     }
 
@@ -67,59 +57,69 @@ public class UninfFwdDeltaAgent extends Agent {
         //if we have enough information, we should default to
         if(lastTransactions.size() >= 2) {
             //first, find the number that have been moving in the same direction
-            ArrayList<Double> consideredTransactions = new ArrayList<>(lastTransactions);
+            List<Double> consideredTransactions = new ArrayList<>(lastTransactions);
             Collections.reverse(consideredTransactions);
+            consideredTransactions = consideredTransactions.subList(0, Math.min(consideredTransactions.size(), population.getConfig().getBckLookbackPeriod()));
             boolean isIncreasing = (consideredTransactions.get(0) > consideredTransactions.get(1));
             ArrayList<Double> finalTransactions = new ArrayList<>();
             finalTransactions.add(consideredTransactions.get(0));
-
+            consideredTransactions.remove(0);
             if (isIncreasing) {
-                while (true) {
-                    try {
-                        if(consideredTransactions.get(0) > consideredTransactions.get(1)) {
-                            finalTransactions.add(consideredTransactions.get(1));
-                            consideredTransactions.remove(0);
-                        } else {
-                            break;
-                        }
-                    } catch (IndexOutOfBoundsException ex) {
+                for(double price : consideredTransactions) {
+                    if(price <= finalTransactions.get(finalTransactions.size()-1)) {
+                        finalTransactions.add(price);
+                    } else {
                         break;
                     }
                 }
             } else {
-                while (true) {
-                    try {
-                        if(consideredTransactions.get(0) > consideredTransactions.get(1)) {
-                            finalTransactions.add(consideredTransactions.get(1));
-                            consideredTransactions.remove(0);
-                        } else {
-                            break;
-                        }
-                    } catch (IndexOutOfBoundsException ex) {
+                for(double price : consideredTransactions) {
+                    if(price >= finalTransactions.get(finalTransactions.size()-1)) {
+                        finalTransactions.add(price);
+                    } else {
                         break;
                     }
                 }
             }
 
             //now run a regression on the calculated values
-            int n = consideredTransactions.size();
+            Collections.reverse(finalTransactions);
+            int n = finalTransactions.size();
+            System.out.println(n);
             double[] index = new double[n];
             double[] values = new double[n];
-            for(int i = 0; i < n; i++){
+            for (int i = 0; i < n; i++) {
+                System.out.println(i);
+                System.out.println(finalTransactions.get(i));
                 index[i] = i;
-                values[i] = consideredTransactions.get(i);
+                values[i] = finalTransactions.get(i);
             }
-            LinearTrendLine trend = new LinearTrendLine();
-            trend.setValues(index, values);
-            FV = population.getConfig().getInfoIntrinsicValue() + trend.predict(n+1);
+
+            if(n > 2) {
+                LinearTrendLine trend = new LinearTrendLine();
+                trend.setValues(values, index);
+                FV = trend.predict(n);
+
+            } else {
+                if(isIncreasing) {
+                    FV = values[1] + (values[1] - values[0]);
+                } else {
+                    FV = values[1] - (values[0] - values[1]);
+                }
+            }
 
             System.out.println("PREDICTING FOR LEVELS");
+            System.out.println(FV);
 
         } else {
             //there is not enough transaction data to infer direction, so we default to EV
-            FV = population.getConfig().getInfoIntrinsicValue() +
-                    (population.getConfig().getInfoDividendMin() +
-                            population.getConfig().getInfoDividendMax())/2;
+            if (a != null) {
+                FV = a.getFundingCost();
+            } else {
+                FV = population.getConfig().getInfoIntrinsicValue() +
+                        (population.getConfig().getInfoDividendMin() +
+                                population.getConfig().getInfoDividendMax()) / 2;
+            }
         }
 
         return FV;

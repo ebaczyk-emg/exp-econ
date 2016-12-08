@@ -3,6 +3,7 @@ package control;
 import agents.AgentPopulation;
 import assets.AssetRegistry;
 import control.setup.agentGenerators.EWAgentGenerator;
+import control.setup.agentGenerators.UninformedAgentGenerator;
 import control.setup.assetGenerators.AssetGenerator;
 import control.setup.assetGenerators.HomogeneousAssetGenerator;
 import control.setup.agentGenerators.AgentGenerator;
@@ -56,7 +57,7 @@ public class Simulation {
             market.payDividends();
             period++;
             
-            for(int j = 1; j <+ config.getnStepsPerDividendPeriod(); j++) {
+            for(int j = 1; j <= config.getnStepsPerDividendPeriod(); j++) {
                 step++;
                 stepWithinPeriod = j;
 
