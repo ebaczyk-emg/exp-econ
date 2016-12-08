@@ -6,7 +6,6 @@ import control.marketObjects.Offer;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Emily on 11/29/2016.
@@ -27,11 +26,11 @@ public class UninfFwdLevelAgent extends Agent {
         //generate a bid that is the maximum of (total cash on hand, calculated FV of asset)
         double maxBid = 0d;
         if(this.getOwnedAssets().isEmpty()) {
-            maxBid = this.getFundamentalValue(null);
+            maxBid = this.calculateFairValue(null);
         } else {
             for(Asset a : this.getOwnedAssets()) {
-                if(this.getFundamentalValue(a) > maxBid) {
-                    maxBid = this.getFundamentalValue(a);
+                if(this.calculateFairValue(a) > maxBid) {
+                    maxBid = this.calculateFairValue(a);
                 }
             }
         }
@@ -44,7 +43,7 @@ public class UninfFwdLevelAgent extends Agent {
             Collections.sort(assetEndowment);
             Asset leastValuableProfitableAsset = null;
             for (Asset asset : assetEndowment) {
-                if (asset.getFundingCost() <= this.getFundamentalValue(null)) {
+                if (asset.getFundingCost() <= this.calculateFairValue(null)) {
                     leastValuableProfitableAsset = asset;
                     break;
                 }
@@ -58,7 +57,7 @@ public class UninfFwdLevelAgent extends Agent {
         else return null;
     }
 
-    public double getFundamentalValue(Asset a) {
+    public double calculateFairValue(Asset a) {
         ArrayList<Double> lastTransactions = population.getMarket().getPastTransactionPrices();
         double FV;
         if(lastTransactions.size() != 0) {
@@ -71,12 +70,9 @@ public class UninfFwdLevelAgent extends Agent {
                     lastTransactions.size());
             FV = tempAvg;
         } else {
-            if (a == null) { //don't have any assets
-                FV = population.getConfig().getInfoIntrinsicValue() +
-                        (population.getConfig().getInfoDividendMax() + population.getConfig().getInfoDividendMin()) / 2;
-            } else { //default to the funding cost of the asset
-                FV = a.getFundingCost();
-            }
+            FV = population.getConfig().getInfoIntrinsicValue() +
+                    (population.getConfig().getInfoDividendMax() +
+                            population.getConfig().getInfoDividendMin()) / 2;
         }
         return FV;
     }

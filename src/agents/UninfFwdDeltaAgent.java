@@ -27,11 +27,11 @@ public class UninfFwdDeltaAgent extends Agent {
         //generate a bid that is the maximum of (total cash on hand, calculated FV of asset)
         double maxBid = 0d;
         if(this.getOwnedAssets().isEmpty()) {
-            maxBid = this.getFundamentalValue(null);
+            maxBid = this.calculateFairValue(null);
         } else {
             for(Asset a : this.getOwnedAssets()) {
-                if(this.getFundamentalValue(a) > maxBid) {
-                    maxBid = this.getFundamentalValue(a);
+                if(this.calculateFairValue(a) > maxBid) {
+                    maxBid = this.calculateFairValue(a);
                 }
             }
         }
@@ -45,7 +45,7 @@ public class UninfFwdDeltaAgent extends Agent {
             Asset leastValuableProfitableAsset = null;
             //find the least valuable asset that can still be sold for a profit
             for (Asset asset : assetEndowment) {
-                if (asset.getFundingCost() <= this.getFundamentalValue(null)) {
+                if (asset.getFundingCost() <= this.calculateFairValue(null)) {
                     leastValuableProfitableAsset = asset;
                     break;
                 }
@@ -60,7 +60,7 @@ public class UninfFwdDeltaAgent extends Agent {
         else return null;
     }
 
-    public double getFundamentalValue(Asset a) {
+    public double calculateFairValue(Asset a) {
         ArrayList<Double> lastTransactions = population.getMarket().getPastTransactionPrices();
         double FV = 0;
 
@@ -117,8 +117,9 @@ public class UninfFwdDeltaAgent extends Agent {
 
         } else {
             //there is not enough transaction data to infer direction, so we default to EV
-            FV = population.getConfig().getInfoIntrinsicValue() + (population.getConfig().getInfoDividendMin() +
-                    population.getConfig().getInfoDividendMax())/2;
+            FV = population.getConfig().getInfoIntrinsicValue() +
+                    (population.getConfig().getInfoDividendMin() +
+                            population.getConfig().getInfoDividendMax())/2;
         }
 
         return FV;

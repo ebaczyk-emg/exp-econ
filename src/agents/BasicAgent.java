@@ -31,7 +31,7 @@ public class BasicAgent extends Agent{
                     mostValuableOwnedAsset = asset;
                 }
             }
-            return this.getBid(getFundamentalValue(mostValuableOwnedAsset));
+            return this.getBid(calculateFairValue(mostValuableOwnedAsset));
         }
     }
 
@@ -48,7 +48,7 @@ public class BasicAgent extends Agent{
         else return null;
     }
 
-    public double getFundamentalValue(Asset a) {
+    public double calculateFairValue(Asset a) {
         return a.getFundingCost();
     }
 

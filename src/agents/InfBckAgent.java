@@ -26,11 +26,11 @@ public class InfBckAgent extends Agent {
         //generate a bid that is the maximum of (total cash on hand, calculated FV of asset)
         double maxBid = 0d;
         if(this.getOwnedAssets().isEmpty()) {
-            maxBid = this.getFundamentalValue(null);
+            maxBid = this.calculateFairValue(null);
         } else {
             for(Asset a : this.getOwnedAssets()) {
-                if(this.getFundamentalValue(a) > maxBid) {
-                    maxBid = this.getFundamentalValue(a);
+                if(this.calculateFairValue(a) > maxBid) {
+                    maxBid = this.calculateFairValue(a);
                 }
             }
         }
@@ -44,7 +44,7 @@ public class InfBckAgent extends Agent {
             Asset leastValuableProfitableAsset = null;
             //find the least valuable asset that can still be sold for a profit
             for (Asset asset : assetEndowment) {
-                if (asset.getFundingCost() <= this.getFundamentalValue(null)) {
+                if (asset.getFundingCost() <= this.calculateFairValue(null)) {
                     leastValuableProfitableAsset = asset;
                     break;
                 }
@@ -59,7 +59,7 @@ public class InfBckAgent extends Agent {
         else return null;
     }
 
-    public double getFundamentalValue(Asset a) {
+    public double calculateFairValue(Asset a) {
         ArrayList<Boolean> information = population.getMarket().getReleasedInfo();
         //in no information, default to EV
         if(information.isEmpty()) {

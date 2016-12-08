@@ -18,7 +18,7 @@ public abstract class Agent {
 
     ArrayList<Double> valuesForAllPeriods;
 
-    public abstract double getFundamentalValue(Asset a);
+    public abstract double calculateFairValue(Asset a);
     public abstract Bid getBid();
     public abstract Offer getOffer();
 
@@ -42,7 +42,7 @@ public abstract class Agent {
     }
 
     public Offer getOffer(Asset a) {
-        double calculatedFairValue = this.getFundamentalValue(a);
+        double calculatedFairValue = this.calculateFairValue(a);
         double calculatedOffer = calculatedFairValue +
                 Math.exp(population.getRandom().nextDouble() * population.getConfig().getDecayFactor()); //some amount more than you think it's worth
 //        System.out.println(calculatedFairValue + " *** " + calculatedOffer);
