@@ -90,6 +90,8 @@ public class StandardCompetitionWithInfoMarketplace extends Marketplace{
             if (activeBid.getBidPrice() >= activeOffer.getOfferPrice()) {
                 //a transaction has occurred
                 statesThisMonth.add(new MarketState(
+                        sim.getPeriod(),
+                        sim.getStep(),
                         activeBid.getBidPrice(),
                         activeBid.getBiddingAgent(),
                         activeOffer.getOfferPrice(),
@@ -119,6 +121,8 @@ public class StandardCompetitionWithInfoMarketplace extends Marketplace{
 
             } else {
                 statesThisMonth.add(new MarketState(
+                        sim.getPeriod(),
+                        sim.getStep(),
                         activeBid.getBidPrice(),
                         activeBid.getBiddingAgent(),
                         activeOffer.getOfferPrice(),

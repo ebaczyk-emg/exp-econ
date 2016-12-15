@@ -129,6 +129,30 @@ public abstract class Marketplace {
 
         releasedInfo = new ArrayList<>();
 
+        ArrayList<Asset> unallocatedAssets = new ArrayList<>(assets);
+        for(Agent agent : agents) {
+            for(Asset a : agent.getOwnedAssets())  {
+                agent.unendowAsset(a);
+//                System.out.println(a.getOwner().getID());
+            }
+        }
+        for(Agent agent : agents) {
+
+            for(int i = 0; i < sim.getConfig().getInitAssetEndowment(); i++) {
+                int index = (int) Math.floor(sim.getRandom().nextDouble() * unallocatedAssets.size());
+                agent.endowAssetAtInit(unallocatedAssets.get(index));
+                unallocatedAssets.remove(index);
+            }
+        }
+        assert unallocatedAssets.size() == 0: "assets were created and were not allocated";
+
+        for(Agent agent : agents) {
+            agent.endowCash(-1 * agent.getCashEndowment());
+            agent.endowCash(sim.getConfig().getInitCashEndowment());
+        }
+
+
+
     }
 
     public ArrayList<Boolean> getReleasedInfo() {

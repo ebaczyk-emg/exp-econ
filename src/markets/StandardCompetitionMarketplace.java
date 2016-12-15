@@ -79,6 +79,8 @@ public class StandardCompetitionMarketplace extends Marketplace{
             if (activeBid.getBidPrice() >= activeOffer.getOfferPrice()) {
                 //a transaction has occurred
                 statesThisMonth.add(new MarketState(
+                        sim.getPeriod(),
+                        sim.getStep(),
                         activeBid.getBidPrice(),
                         activeBid.getBiddingAgent(),
                         activeOffer.getOfferPrice(),
@@ -103,6 +105,8 @@ public class StandardCompetitionMarketplace extends Marketplace{
                 activeOffer = offers.peek();
             } else {
                 statesThisMonth.add(new MarketState(
+                        sim.getPeriod(),
+                        sim.getStep(),
                         activeBid.getBidPrice(),
                         activeBid.getBiddingAgent(),
                         activeOffer.getOfferPrice(),

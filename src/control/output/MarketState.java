@@ -11,12 +11,17 @@ public class MarketState {
     double bidPrice, askPrice;
     String bidderID, askerID, bidderType, askerType;
     boolean transaction;
+    int dividendPeriod, step;
 
-    public MarketState(double bidPrice,
+    public MarketState(int dividendPeriod,
+                       int step,
+                       double bidPrice,
                        Agent bidder,
                        double askPrice,
                        Agent asker,
                        boolean transaction) {
+        this.dividendPeriod = dividendPeriod;
+        this.step = step;
         this.bidPrice = bidPrice;
         this.askPrice = askPrice;
         this.transaction = transaction;
@@ -38,6 +43,8 @@ public class MarketState {
 
     public ArrayList<String> toPrint() {
         ArrayList<String> ret = new ArrayList<>();
+        ret.add(dividendPeriod + "");
+        ret.add(step + "");
         ret.add(bidPrice + "");
         ret.add(bidderID);
         ret.add(bidderType);

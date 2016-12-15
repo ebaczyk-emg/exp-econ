@@ -23,41 +23,21 @@
     <splitter split-orientation="horizontal" split-proportion="0.44087592">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-          <file leaf-file-name="Marketplace.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Marketplace.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/markets/Marketplace.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="598">
-                  <caret line="97" column="30" selection-start-line="97" selection-start-column="30" selection-end-line="97" selection-end-column="30" />
+                <state relative-caret-position="409">
+                  <caret line="142" column="0" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
                   <folding>
                     <element signature="e#2965#2966#0" expanded="true" />
                     <element signature="e#3014#3015#0" expanded="true" />
                     <element signature="e#3072#3073#0" expanded="true" />
                     <element signature="e#3115#3116#0" expanded="true" />
-                    <element signature="e#4428#4429#0" expanded="true" />
-                    <element signature="e#4462#4463#0" expanded="true" />
-                    <element signature="e#4497#4498#0" expanded="true" />
-                    <element signature="e#4533#4534#0" expanded="true" />
+                    <element signature="e#5343#5344#0" expanded="true" />
+                    <element signature="e#5377#5378#0" expanded="true" />
+                    <element signature="e#5412#5413#0" expanded="true" />
+                    <element signature="e#5448#5449#0" expanded="true" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="AgentPopulation.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/agents/AgentPopulation.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="323">
-                  <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="AssetRegistry.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/assets/AssetRegistry.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="502">
-                  <caret line="36" column="29" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
-                  <folding />
                 </state>
               </provider>
             </entry>
@@ -65,40 +45,8 @@
           <file leaf-file-name="StandardCompetitionWithInfoMarketplace.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/markets/StandardCompetitionWithInfoMarketplace.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="668">
-                  <caret line="148" column="20" selection-start-line="148" selection-start-column="20" selection-end-line="148" selection-end-column="20" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Offer.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/control/marketObjects/Offer.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="468">
-                  <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Config.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/control/config/Config.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="459">
-                  <caret line="30" column="52" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="MultiPeriodInfoAssetGenerator.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/control/setup/assetGenerators/MultiPeriodInfoAssetGenerator.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="675">
-                  <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
+                <state relative-caret-position="-196">
+                  <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -107,19 +55,21 @@
           <file leaf-file-name="Agent.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/agents/Agent.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="330">
-                  <caret line="39" column="38" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
+                <state relative-caret-position="274">
+                  <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="UninfFwdLevelAgent.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/agents/UninfFwdLevelAgent.java">
+          <file leaf-file-name="Config.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/control/config/Config.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="552">
-                  <caret line="50" column="44" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
-                  <folding />
+                <state relative-caret-position="378">
+                  <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -178,21 +128,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="OutputPrinter.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="OutputPrinter.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/control/output/OutputPrinter.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="341">
-                  <caret line="40" column="63" selection-start-line="40" selection-start-column="63" selection-end-line="40" selection-end-column="63" />
+                <state relative-caret-position="584">
+                  <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="StandardCompetitionMarketplace.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="StandardCompetitionMarketplace.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/markets/StandardCompetitionMarketplace.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="405">
-                  <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+                <state relative-caret-position="735">
+                  <caret line="108" column="38" selection-start-line="108" selection-start-column="38" selection-end-line="108" selection-end-column="38" />
                   <folding />
                 </state>
               </provider>
@@ -269,10 +219,8 @@
         <option value="$PROJECT_DIR$/src/control/setup/assetGenerators/MultiPeriodInfoAssetGenerator.java" />
         <option value="$PROJECT_DIR$/src/agents/BasicAgent.java" />
         <option value="$PROJECT_DIR$/src/control/SimulationCoordinator.java" />
-        <option value="$PROJECT_DIR$/src/control/output/MarketState.java" />
         <option value="$PROJECT_DIR$/src/control/output/OutputPrinter.java" />
         <option value="$PROJECT_DIR$/src/control/marketObjects/Bid.java" />
-        <option value="$PROJECT_DIR$/src/markets/StandardCompetitionMarketplace.java" />
         <option value="$PROJECT_DIR$/src/assets/Asset.java" />
         <option value="$PROJECT_DIR$/src/control/setup/agentGenerators/UninformedAgentGenerator.java" />
         <option value="$PROJECT_DIR$/src/agents/InfBckAgent.java" />
@@ -280,10 +228,12 @@
         <option value="$PROJECT_DIR$/src/agents/Agent.java" />
         <option value="$PROJECT_DIR$/src/agents/UninfFwdDeltaAgent.java" />
         <option value="$PROJECT_DIR$/src/agents/UninfFwdLevelAgent.java" />
-        <option value="$PROJECT_DIR$/src/control/config/Config.java" />
-        <option value="$PROJECT_DIR$/src/markets/StandardCompetitionWithInfoMarketplace.java" />
-        <option value="$PROJECT_DIR$/src/markets/Marketplace.java" />
         <option value="$PROJECT_DIR$/src/control/setup/agentGenerators/EWAgentGenerator.java" />
+        <option value="$PROJECT_DIR$/src/control/output/MarketState.java" />
+        <option value="$PROJECT_DIR$/src/markets/StandardCompetitionWithInfoMarketplace.java" />
+        <option value="$PROJECT_DIR$/src/markets/StandardCompetitionMarketplace.java" />
+        <option value="$PROJECT_DIR$/src/control/config/Config.java" />
+        <option value="$PROJECT_DIR$/src/markets/Marketplace.java" />
       </list>
     </option>
   </component>
@@ -547,7 +497,7 @@
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="FullScreen" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="agent&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/setup/agentGenerators/EWAgentGenerator.java&#10;standar&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/StandardCompetitionMarketplace.java&#10;standarcom&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/StandardCompetitionMarketplace.java&#10;mar&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/Marketplace.java&#10;ew&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/setup/agentGenerators/EWAgentGenerator.java&#10;level&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/UninfFwdLevelAgent.java&#10;simulation&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/Simulation.java&#10;ass&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/assets/Asset.java&#10;infb&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/InfBckAgent.java&#10;config&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/config/Config.java&#10;simul&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/Simulation.java&#10;info&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/StandardCompetitionWithInfoMarketplace.java&#10;m&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/Marketplace.java&#10;market&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/StandardCompetitionMarketplace.java&#10;uninf&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/UninfFwdLevelAgent.java&#10;inf&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/InfBckAgent.java&#10;delta&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/UninfFwdDeltaAgent.java&#10;bid&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/marketObjects/Bid.java&#10;asset&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/assets/Asset.java&#10;fwd level&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/UninfFwdLevelAgent.java&#10;output&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/output/OutputPrinter.java&#10;confi&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/config/Config.java&#10;del&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/UninfFwdDeltaAgent.java&#10;conf&#9;PSI&#9;JAVA://control.config.Config&#10;sim&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/SimulationCoordinator.java&#10;simula&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/SimulationCoordinator.java&#10;decafa&#9;PSI&#9;JAVA://control.config.Config#decayFactor&#10;assetge&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/setup/assetGenerators/MultiPeriodInfoAssetGenerator.java&#10;unin&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/setup/agentGenerators/UninformedAgentGenerator.java&#10;infw&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/InfFwdLevelAgent.java&#10;simulat&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/Simulation.java&#10;basic&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/BasicAgent.java&#10;popul&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/AgentPopulation.java&#10;regi&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/assets/AssetRegistry.java&#10;con&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/config/Config.java&#10;coo&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/SimulationCoordinator.java&#10;agen&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/Agent.java&#10;trans&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/marketObjects/Transaction.java&#10;multip&#9;PSI&#9;JAVA://assets.MultiPeriodAsset&#10;basicag&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/BasicAgent.java&#10;marketp&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/Marketplace.java&#10;population&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/AgentPopulation.java&#10;assetreg&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/assets/AssetRegistry.java&#10;multiperio&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/assets/MultiPeriodAsset.java&#10;homogen&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/assets/HomogeneousAsset.java&#10;state&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/output/MarketState.java&#10;marketpl&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/Marketplace.java&#10;offer&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/marketObjects/Offer.java&#10;populat&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/AgentPopulation.java&#10;stand&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/StandardCompetitionMarketplace.java" />
+    <property name="SearchEverywhereHistoryKey" value="mar&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/output/MarketState.java&#10;config&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/config/Config.java&#10;agent&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/setup/agentGenerators/EWAgentGenerator.java&#10;standar&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/StandardCompetitionMarketplace.java&#10;standarcom&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/StandardCompetitionMarketplace.java&#10;ew&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/setup/agentGenerators/EWAgentGenerator.java&#10;level&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/UninfFwdLevelAgent.java&#10;simulation&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/Simulation.java&#10;ass&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/assets/Asset.java&#10;infb&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/InfBckAgent.java&#10;simul&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/Simulation.java&#10;info&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/StandardCompetitionWithInfoMarketplace.java&#10;m&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/Marketplace.java&#10;market&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/StandardCompetitionMarketplace.java&#10;uninf&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/UninfFwdLevelAgent.java&#10;inf&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/InfBckAgent.java&#10;delta&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/UninfFwdDeltaAgent.java&#10;bid&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/marketObjects/Bid.java&#10;asset&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/assets/Asset.java&#10;fwd level&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/UninfFwdLevelAgent.java&#10;output&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/output/OutputPrinter.java&#10;confi&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/config/Config.java&#10;del&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/UninfFwdDeltaAgent.java&#10;conf&#9;PSI&#9;JAVA://control.config.Config&#10;sim&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/SimulationCoordinator.java&#10;simula&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/SimulationCoordinator.java&#10;decafa&#9;PSI&#9;JAVA://control.config.Config#decayFactor&#10;assetge&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/setup/assetGenerators/MultiPeriodInfoAssetGenerator.java&#10;unin&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/setup/agentGenerators/UninformedAgentGenerator.java&#10;infw&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/InfFwdLevelAgent.java&#10;simulat&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/Simulation.java&#10;basic&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/BasicAgent.java&#10;popul&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/AgentPopulation.java&#10;regi&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/assets/AssetRegistry.java&#10;con&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/config/Config.java&#10;coo&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/SimulationCoordinator.java&#10;agen&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/Agent.java&#10;trans&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/marketObjects/Transaction.java&#10;multip&#9;PSI&#9;JAVA://assets.MultiPeriodAsset&#10;basicag&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/BasicAgent.java&#10;marketp&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/Marketplace.java&#10;population&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/AgentPopulation.java&#10;assetreg&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/assets/AssetRegistry.java&#10;multiperio&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/assets/MultiPeriodAsset.java&#10;homogen&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/assets/HomogeneousAsset.java&#10;state&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/output/MarketState.java&#10;marketpl&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/Marketplace.java&#10;offer&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/marketObjects/Offer.java&#10;populat&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/AgentPopulation.java&#10;stand&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/StandardCompetitionMarketplace.java" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/commons-math3-3.6.1-bin/commons-math3-3.6.1" />
   </component>
   <component name="RecentsManager">
@@ -972,8 +922,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="3222" height="1766" extended-state="7" />
-    <editor active="false" />
+    <frame x="-11" y="-11" width="3222" height="1766" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -983,7 +933,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3189223" sideWeight="0.5175" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4348371" sideWeight="0.4825" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4348371" sideWeight="0.4825" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1206,22 +1156,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/output/MarketState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/marketObjects/Offer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/Downloads/commons-math3-3.6.1-bin/commons-math3-3.6.1/commons-math3-3.6.1-sources.jar!/org/apache/commons/math3/stat/regression/AbstractMultipleLinearRegression.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
@@ -1272,14 +1206,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/agents/Agent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="39" column="38" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/agents/InfBckAgent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="658">
@@ -1322,36 +1248,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/config/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="30" column="52" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/markets/StandardCompetitionWithInfoMarketplace.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="668">
-          <caret line="148" column="20" selection-start-line="148" selection-start-column="20" selection-end-line="148" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/control/setup/agentGenerators/AgentGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
           <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/markets/StandardCompetitionMarketplace.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -1380,27 +1280,77 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/output/MarketState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/control/output/OutputPrinter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="40" column="63" selection-start-line="40" selection-start-column="63" selection-end-line="40" selection-end-column="63" />
+        <state relative-caret-position="584">
+          <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/markets/StandardCompetitionMarketplace.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="108" column="38" selection-start-line="108" selection-start-column="38" selection-end-line="108" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/marketObjects/Offer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/agents/Agent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/markets/Marketplace.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="97" column="30" selection-start-line="97" selection-start-column="30" selection-end-line="97" selection-end-column="30" />
+        <state relative-caret-position="409">
+          <caret line="142" column="0" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
           <folding>
             <element signature="e#2965#2966#0" expanded="true" />
             <element signature="e#3014#3015#0" expanded="true" />
             <element signature="e#3072#3073#0" expanded="true" />
             <element signature="e#3115#3116#0" expanded="true" />
-            <element signature="e#4428#4429#0" expanded="true" />
-            <element signature="e#4462#4463#0" expanded="true" />
-            <element signature="e#4497#4498#0" expanded="true" />
-            <element signature="e#4533#4534#0" expanded="true" />
+            <element signature="e#5343#5344#0" expanded="true" />
+            <element signature="e#5377#5378#0" expanded="true" />
+            <element signature="e#5412#5413#0" expanded="true" />
+            <element signature="e#5448#5449#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/markets/StandardCompetitionWithInfoMarketplace.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-196">
+          <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/config/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

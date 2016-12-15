@@ -12,7 +12,7 @@ public final class Config {
     private static final double INIT_CASH_ENDOWMENT = 1000;
     private static final int INIT_ASSET_ENDOWMENT = 3;
     private static final double MIN_ASSET_VALUE = 50;
-    private static final double MAX_ASSET_VALUE = 200;
+    private static final double MAX_ASSET_VALUE = 300;
     private static final int N_AGENTS = 20;
     private static final int N_DIVIDEND_PERIODS = 10;
     private static final int N_STEPS_PER_DIVIDEND_PERIOD = 50;
@@ -29,7 +29,7 @@ public final class Config {
     private static final double INFO_DIVIDEND_MIN = 0;
     private static final double INFO_DIVIDEND_MAX = 30;
     private static final double INFO_P_STATE_A = 0.5d;
-    private static final int BCK_LOOKBACK_PERIOD = 10;
+    private static final int BCK_LOOKBACK_PERIOD = 2;
     private static final int INF_INFO_THRESHOLD = 3;
 
     public Config() {
