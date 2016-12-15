@@ -8,7 +8,7 @@ library(moments) ;
 setwd("C:/Users/Emily/Documents/GitHub/exp-econ-output/2016-12-08-02-39-20")
 setwd("C:/Users/Emily/Documents/GitHub/exp-econ-output/2016-12-08-02-02-09")
 setwd("C:/Users/Emily/Documents/GitHub/exp-econ-output/2016-12-08-01-24-54")
-setwd("C:/Users/Emily/Documents/GitHub/exp-econ-output/2016-12-08-10-22-19")
+setwd("C:/Users/Emily/Documents/GitHub/exp-econ-output/2016-12-08-10-22-19") #bubble
 
 
 rm(list=ls())
