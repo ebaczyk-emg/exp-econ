@@ -20,6 +20,7 @@ import java.util.Collections;
  * Created by Emily on 9/28/2016.
  */
 public class Simulation {
+    private final int simNumber;
     AgentGenerator agentGenerator;
     AssetGenerator assetGenerator;
     Marketplace market;
@@ -33,7 +34,8 @@ public class Simulation {
     private Config config;
     private MersenneTwisterFast random;
 
-    public Simulation(MersenneTwisterFast rng) {
+    public Simulation(MersenneTwisterFast rng, int simNumber) {
+        this.simNumber = simNumber;
         this.random = rng;
         this.config = new Config();
         this.population = new AgentPopulation(this);
@@ -50,6 +52,7 @@ public class Simulation {
                                                     this);
         printer = new OutputPrinter(config.generateOutputPath(), this);
 
+        double rand = 0;
         //TODO figure out how to dynamically generate more markets
         System.out.println("Market created; starting to step");
 
@@ -100,5 +103,9 @@ public class Simulation {
 
     public MersenneTwisterFast getRandom() {
         return this.random;
+    }
+
+    public int getSimNumber() {
+        return this.simNumber;
     }
 }

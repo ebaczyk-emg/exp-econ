@@ -8,6 +8,7 @@ import control.marketObjects.Offer;
 import control.output.MarketState;
 import control.setup.assetGenerators.AssetGenerator;
 import control.setup.agentGenerators.AgentGenerator;
+import util.MersenneTwisterFast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,6 +18,7 @@ import java.util.PriorityQueue;
  * Created by Emily on 9/28/2016.
  */
 public class StandardCompetitionWithInfoMarketplace extends Marketplace{
+    private MersenneTwisterFast infoRNG;
 
     public StandardCompetitionWithInfoMarketplace(AgentGenerator brainAllocator,
                                                   AssetGenerator assetGenerator,
@@ -29,6 +31,7 @@ public class StandardCompetitionWithInfoMarketplace extends Marketplace{
         this.setAgentOrder();
 
         releasedInfo = new ArrayList<>();
+        infoRNG = new MersenneTwisterFast(0);
     }
 
     public boolean initializeAssetAllocation() {
@@ -55,12 +58,17 @@ public class StandardCompetitionWithInfoMarketplace extends Marketplace{
 
         this.releaseNewInformation();
 
+        double rand;
+        rand = sim.getRandom().nextDouble();
+        System.out.println(sim.getRandom().nextDouble());
+        System.out.println(rand);
+//        System.exit(111);
+
         for(int i=0; i < agents.size(); i++) {
             Agent actingAgent = agents.get(indices[i]);
-            if (sim.getRandom().nextBoolean()) {
+            if (sim.getRandom().nextDouble() > 0.5d) {
                 //the agent is a buyer
                 Bid actingAgentBid = actingAgent.getBid();
-                System.out.println(actingAgentBid);
                 if(actingAgentBid != null) {
                     if (actingAgentBid.getBidPrice() > activeBid.getBidPrice()) {
                         bids.add(actingAgentBid);
@@ -69,7 +77,6 @@ public class StandardCompetitionWithInfoMarketplace extends Marketplace{
                 }
             } else {
                 Offer actingAgentOffer = actingAgent.getOffer();
-                System.out.println(actingAgentOffer);
                 if(actingAgentOffer != null) {
                     if (actingAgentOffer.getOfferPrice() < activeOffer.getOfferPrice()) {
                         offers.add(actingAgentOffer);
@@ -129,7 +136,6 @@ public class StandardCompetitionWithInfoMarketplace extends Marketplace{
                         activeOffer.getOfferingAgent(),
                         false));
             }
-
         }
         return true;
     }
@@ -144,8 +150,9 @@ public class StandardCompetitionWithInfoMarketplace extends Marketplace{
     }
 
     private void releaseNewInformation() {
-        boolean coinFlip = sim.getRandom().nextBoolean(sim.getConfig().getInfoPStateA());
+        boolean coinFlip = infoRNG.nextBoolean(sim.getConfig().getInfoPStateA());
         this.releasedInfo.add(coinFlip);
+        System.out.println("flip " + releasedInfo.size() + " " + coinFlip);
     }
 
     @Override

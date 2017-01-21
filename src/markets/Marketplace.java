@@ -99,61 +99,10 @@ public abstract class Marketplace {
     }
 
     public void endOfPeriodReset() {
-        this.hardReset();
         this.maxBid = sim.getConfig().getMinAssetValue();
         this.minOffer = sim.getConfig().getMaxAssetValue();
     }
 
-    private void hardReset() {
-        this.agents = agentGen.generateAgents(sim.getConfig().getnAgents());
-        this.agentPopulation = new AgentPopulation(sim);
-        for(Agent agent : agents) {
-            agentPopulation.init(agent);
-        }
-        this.agents = new ArrayList<>(agentPopulation.getAgents());
-
-        this.registry = sim.getAssetRegistry();
-        this.assets = assetGen.generateAssets((sim.getConfig().getnAgents() *
-                sim.getConfig().getInitAssetEndowment()));
-        for(Asset asset : assets) {
-            registry.init(asset);
-        }
-        this.assets = new ArrayList<>(registry.getAssets());
-
-        this.activeBid = new Bid(null, sim.getConfig().getMinAssetValue());
-        this.activeOffer = new Offer(null, sim.getConfig().getMaxAssetValue(), null);
-        bids = new PriorityQueue<>();
-        offers = new PriorityQueue<>();
-        bids.add(activeBid);
-        offers.add(activeOffer);
-
-        releasedInfo = new ArrayList<>();
-
-        ArrayList<Asset> unallocatedAssets = new ArrayList<>(assets);
-        for(Agent agent : agents) {
-            for(Asset a : agent.getOwnedAssets())  {
-                agent.unendowAsset(a);
-//                System.out.println(a.getOwner().getID());
-            }
-        }
-        for(Agent agent : agents) {
-
-            for(int i = 0; i < sim.getConfig().getInitAssetEndowment(); i++) {
-                int index = (int) Math.floor(sim.getRandom().nextDouble() * unallocatedAssets.size());
-                agent.endowAssetAtInit(unallocatedAssets.get(index));
-                unallocatedAssets.remove(index);
-            }
-        }
-        assert unallocatedAssets.size() == 0: "assets were created and were not allocated";
-
-        for(Agent agent : agents) {
-            agent.endowCash(-1 * agent.getCashEndowment());
-            agent.endowCash(sim.getConfig().getInitCashEndowment());
-        }
-
-
-
-    }
 
     public ArrayList<Boolean> getReleasedInfo() {
         return this.releasedInfo;

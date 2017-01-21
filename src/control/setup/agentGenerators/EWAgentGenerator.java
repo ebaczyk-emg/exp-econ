@@ -19,7 +19,7 @@ public class EWAgentGenerator extends AgentGenerator {
 
     public ArrayList<Agent> generateAgents(int numberOfAgents){
         ArrayList<Agent> agents = new ArrayList<>();
-        for(int n = 0; n < 9; n++){
+        for(int n = 0; n < 2; n++){
             Agent uninflevel = new UninfFwdLevelAgent(
                     population,
                     true);
@@ -35,10 +35,10 @@ public class EWAgentGenerator extends AgentGenerator {
                 true);
         agents.add(inf);
 
-        inf = new InfBckAgent(
-                population,
-                true);
-        agents.add(inf);
+//        inf = new InfBckAgent(
+//                population,
+//                true);
+//        agents.add(inf);
 
 //        inf = new InfBckAgent(
 //                population,

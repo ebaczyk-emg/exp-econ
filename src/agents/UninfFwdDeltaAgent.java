@@ -85,12 +85,9 @@ public class UninfFwdDeltaAgent extends Agent {
             //now run a regression on the calculated values
             Collections.reverse(finalTransactions);
             int n = finalTransactions.size();
-            System.out.println(n);
             double[] index = new double[n];
             double[] values = new double[n];
             for (int i = 0; i < n; i++) {
-                System.out.println(i);
-                System.out.println(finalTransactions.get(i));
                 index[i] = i;
                 values[i] = finalTransactions.get(i);
             }
@@ -108,8 +105,6 @@ public class UninfFwdDeltaAgent extends Agent {
                 }
             }
 
-            System.out.println("PREDICTING FOR LEVELS");
-            System.out.println(FV);
 
         } else {
             //there is not enough transaction data to infer direction, so we default to EV

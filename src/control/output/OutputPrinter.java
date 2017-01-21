@@ -22,10 +22,10 @@ public class OutputPrinter {
         try {
             transactionWriter = new BufferedWriter(
                     new FileWriter(
-                            new File(path + "/transactions.csv")));
+                            new File(path + "/transactions-" + sim.getSimNumber() + ".csv")));
             endowmentWriter = new BufferedWriter(
                     new FileWriter(
-                            new File(path + "/endowments.csv")));
+                            new File(path + "/endowments-" + sim.getSimNumber() + ".csv")));
         } catch (IOException ex) {
             ex.printStackTrace();
             System.exit(11);

@@ -58,15 +58,12 @@ public class UninfFwdLevelAgent extends Agent {
             }
             tempAvg = tempAvg / Math.min(population.getConfig().getBckLookbackPeriod(),
                     lastTransactions.size());
-            System.out.println(tempAvg + " " + Math.min(population.getConfig().getBckLookbackPeriod(), lastTransactions.size()));
             FV = tempAvg;
         } else {
             FV = population.getConfig().getInfoIntrinsicValue() +
                     (population.getConfig().getInfoDividendMax() +
                             population.getConfig().getInfoDividendMin()) / 2;
         }
-        System.out.println("PRICE LEVELS");
-        System.out.println(FV);
         return FV;
     }
 

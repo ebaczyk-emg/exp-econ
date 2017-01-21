@@ -69,9 +69,6 @@ public class InfBckAgent extends Agent {
                 }
             }
 
-//            System.out.println(stateA + " A <-> B " + stateB);
-
-
             //only move if differential above threshold
             if (Math.abs(stateA - stateB) >= population.getConfig().getInfInfoThreshold()) {
                 System.out.println("AGENTS HAVE ENOUGH INFO " + (stateA- stateB));
@@ -85,8 +82,6 @@ public class InfBckAgent extends Agent {
                 FV = population.getConfig().getInfoIntrinsicValue() +
                         (population.getConfig().getInfoDividendMax() + population.getConfig().getInfoDividendMin())/2;
             }
-
-//            System.out.println("CALCULATED FV of " + FV);
         }
         return FV;
     }

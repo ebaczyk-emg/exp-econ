@@ -8,24 +8,24 @@ library(moments) ;
 setwd("C:/Users/Emily/Documents/GitHub/exp-econ-output/2016-12-08-02-39-20")
 setwd("C:/Users/Emily/Documents/GitHub/exp-econ-output/2016-12-08-02-02-09")
 setwd("C:/Users/Emily/Documents/GitHub/exp-econ-output/2016-12-08-01-24-54")
-setwd("C:/Users/Emily/Documents/GitHub/exp-econ-output/2016-12-08-04-32-25")
+setwd("C:/Users/Emily/Documents/GitHub/exp-econ-output/2016-12-08-10-22-19") #bubble
 
 
 rm(list=ls())
 
 transactions <- read.csv("transactions.csv", header = F)
 transactions <- as.data.frame(transactions)
-transactions$V7 <- transactions$V7  == "true"
+transactions$V9 <- transactions$V9  == "true"
 full_index <- 1:dim(transactions)[1]
 full_index <- as.data.frame(full_index)
 transactions <- cbind(full_index, transactions)
 #just_trans <- transactions[transactions$v5 == TRUE,]
-jt <- subset(transactions, transactions$V7 == T)
+jt <- subset(transactions, transactions$V9 == T)
 jt <- jt[1:100,]
 index <- 1:dim(jt)[1]
 index <- as.data.frame(index)
 jt <- cbind(index, jt)
-plot(jt$V4)
+plot(jt$V6)
 
 infBck <-     subset(jt, jt$V3=="InfBckAgent")
 uninfLevel <- subset(jt, jt$V3=="UninfFwdLevelAgent")

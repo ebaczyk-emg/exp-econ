@@ -11,10 +11,13 @@ import java.util.GregorianCalendar;
  */
 public class SimulationCoordinator {
     static ArrayList<Simulation> sims;
-    private static MersenneTwisterFast random = new MersenneTwisterFast(10);
+    private static MersenneTwisterFast random = new MersenneTwisterFast(1);
     public static void main(String [] args) {
+        int numSims = 10;
         sims = new ArrayList<Simulation>();
-        sims.add(new Simulation(random));
+        for(int i = 0; i < numSims; i++) {
+            sims.add(new Simulation(random, i));
+        }
     }
 
     public static String getMomentOfInvocationYearMonthDayHourMinuteSecond() {

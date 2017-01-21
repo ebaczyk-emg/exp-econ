@@ -13,9 +13,9 @@ public final class Config {
     private static final int INIT_ASSET_ENDOWMENT = 3;
     private static final double MIN_ASSET_VALUE = 50;
     private static final double MAX_ASSET_VALUE = 300;
-    private static final int N_AGENTS = 20;
-    private static final int N_DIVIDEND_PERIODS = 10;
-    private static final int N_STEPS_PER_DIVIDEND_PERIOD = 50;
+    private static final int N_AGENTS = 5;
+    private static final int N_DIVIDEND_PERIODS = 1;
+    private static final int N_STEPS_PER_DIVIDEND_PERIOD = 10;
     private static String systemPath = System.getProperty("user.dir");
     private static final boolean USE_MULTI_PERIOD_ASSET = true;
     private static final double decayFactor = 2d;
