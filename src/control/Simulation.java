@@ -15,6 +15,7 @@ import markets.StandardCompetitionWithInfoMarketplace;
 import util.MersenneTwisterFast;
 
 import java.util.Collections;
+import java.util.Random;
 
 /**
  * Created by Emily on 9/28/2016.
@@ -32,16 +33,16 @@ public class Simulation {
     private int period;
     private int stepWithinPeriod;
     private Config config;
-    private MersenneTwisterFast random;
+    private Random random;
 
-    public Simulation(MersenneTwisterFast rng, int simNumber) {
+    public Simulation(Random rng, int simNumber) {
         this.simNumber = simNumber;
         this.random = rng;
         this.config = new Config();
         this.population = new AgentPopulation(this);
         this.assetRegistry = new AssetRegistry(this);
         agentGenerator = new EWAgentGenerator(population, this);
-        Collections.shuffle(population.getAgents());
+        Collections.shuffle(population.getAgents(), random);
         if(config.isUseMultiPeriodAsset()) {
             assetGenerator = new MultiPeriodInfoAssetGenerator(assetRegistry, this);
         } else {
@@ -101,7 +102,7 @@ public class Simulation {
         return market;
     }
 
-    public MersenneTwisterFast getRandom() {
+    public Random getRandom() {
         return this.random;
     }
 

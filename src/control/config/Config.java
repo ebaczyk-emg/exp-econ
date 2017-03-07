@@ -79,7 +79,7 @@ public final class Config {
     public static String generateOutputPath() {
         File temp = new File(systemPath);
         String path = temp.getParentFile().getAbsolutePath();
-        path += File.separator + "exp-econ-output" + File.separator + SimulationCoordinator.getMomentOfInvocationYearMonthDayHourMinuteSecond() ;
+        path += File.separator + "exp-econ-output" + File.separator + SimulationCoordinator.getInvocation() ;
         try {
             new File(path).mkdirs();
         } catch (Exception ex ) {

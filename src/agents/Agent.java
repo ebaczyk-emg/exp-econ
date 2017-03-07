@@ -32,7 +32,7 @@ public abstract class Agent {
         double calculatedFairValue = max;
         double calculatedBid = calculatedFairValue -
                 Math.exp(population.getRandom().nextDouble() * population.getConfig().getDecayFactor()); //some amount less than you think it's worth
-        if(calculatedBid > cashEndowment) {
+        if(calculatedFairValue > cashEndowment) {
             return new Bid(this, cashEndowment);
         } else {
 //            return new Bid(this, calculatedBid);
@@ -45,7 +45,7 @@ public abstract class Agent {
         double calculatedFairValue = this.calculateFairValue(a);
         double calculatedOffer = calculatedFairValue +
                 Math.exp(population.getRandom().nextDouble() * population.getConfig().getDecayFactor()); //some amount more than you think it's worth
-        if(calculatedOffer < a.getFundingCost() || this.getOwnedAssets().isEmpty()) {
+        if(calculatedFairValue < a.getFundingCost() || this.getOwnedAssets().isEmpty()) {
             return new Offer(this, population.getConfig().getMaxAssetValue(), a);
         } else {
             return new Offer(this, calculatedFairValue, a);

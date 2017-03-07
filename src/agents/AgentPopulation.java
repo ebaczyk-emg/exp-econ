@@ -6,6 +6,7 @@ import markets.Marketplace;
 import util.MersenneTwisterFast;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by Emily on 10/24/2016.
@@ -36,7 +37,7 @@ public class AgentPopulation {
         return sim.getConfig();
     }
 
-    public MersenneTwisterFast getRandom() {
+    public Random getRandom() {
         return sim.getRandom();
     }
 

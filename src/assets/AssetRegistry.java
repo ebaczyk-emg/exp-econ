@@ -33,7 +33,7 @@ public class AssetRegistry {
         double lowRegime = sim.getConfig().getInfoDividendMin();
         double highRegime = sim.getConfig().getInfoDividendMax();
         double p = sim.getConfig().getInfoPStateA();
-        if(sim.getRandom().nextBoolean(p)) {
+        if(sim.getRandom().nextDouble() > sim.getConfig().getInfoPStateA()) {
             return lowRegime;
         } else {
             return highRegime;

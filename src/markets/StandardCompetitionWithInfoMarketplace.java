@@ -13,12 +13,14 @@ import util.MersenneTwisterFast;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.PriorityQueue;
+import java.util.Random;
 
 /**
  * Created by Emily on 9/28/2016.
  */
 public class StandardCompetitionWithInfoMarketplace extends Marketplace{
-    private MersenneTwisterFast infoRNG;
+    private Random infoRNG;
+    private Random buyerSellerRNG;
 
     public StandardCompetitionWithInfoMarketplace(AgentGenerator brainAllocator,
                                                   AssetGenerator assetGenerator,
@@ -31,7 +33,8 @@ public class StandardCompetitionWithInfoMarketplace extends Marketplace{
         this.setAgentOrder();
 
         releasedInfo = new ArrayList<>();
-        infoRNG = new MersenneTwisterFast(0);
+        infoRNG = new Random(0);
+        buyerSellerRNG = new Random(0);
     }
 
     public boolean initializeAssetAllocation() {
@@ -58,15 +61,14 @@ public class StandardCompetitionWithInfoMarketplace extends Marketplace{
 
         this.releaseNewInformation();
 
-        double rand;
-        rand = sim.getRandom().nextDouble();
-        System.out.println(sim.getRandom().nextDouble());
-        System.out.println(rand);
-//        System.exit(111);
+        for(int i=0; i < 100; i++) {
+//            System.out.println(buyerSellerRNG.nextBoolean());
+        }
+//        System.exit(1);
 
         for(int i=0; i < agents.size(); i++) {
             Agent actingAgent = agents.get(indices[i]);
-            if (sim.getRandom().nextDouble() > 0.5d) {
+            if (buyerSellerRNG.nextBoolean()) {
                 //the agent is a buyer
                 Bid actingAgentBid = actingAgent.getBid();
                 if(actingAgentBid != null) {
@@ -143,14 +145,14 @@ public class StandardCompetitionWithInfoMarketplace extends Marketplace{
     public void setAgentOrder() {
         indices = new int[agents.size()];
         ArrayList<Agent> temp = new ArrayList<>(agents);
-        Collections.shuffle(temp);
+        Collections.shuffle(temp, sim.getRandom());
         for(int i = 0; i < agents.size(); i++) {
             indices[i] = temp.indexOf(agents.get(i));
         }
     }
 
     private void releaseNewInformation() {
-        boolean coinFlip = infoRNG.nextBoolean(sim.getConfig().getInfoPStateA());
+        boolean coinFlip = (infoRNG.nextDouble() > sim.getConfig().getInfoPStateA());
         this.releasedInfo.add(coinFlip);
         System.out.println("flip " + releasedInfo.size() + " " + coinFlip);
     }
