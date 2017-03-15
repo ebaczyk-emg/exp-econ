@@ -64,7 +64,7 @@ public class UninfFwdLevelAgent extends Agent {
                     (population.getConfig().getInfoDividendMax() +
                             population.getConfig().getInfoDividendMin()) / 2;
         }
-        return FV;
+        return Math.min(FV, population.getConfig().getMaxAssetValue());
     }
 
 }

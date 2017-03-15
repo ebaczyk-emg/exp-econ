@@ -117,6 +117,6 @@ public class UninfFwdDeltaAgent extends Agent {
             }
         }
 
-        return FV;
+        return Math.min(FV, population.getConfig().getMaxAssetValue());
     }
 }

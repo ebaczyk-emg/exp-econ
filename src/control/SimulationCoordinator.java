@@ -17,7 +17,7 @@ public class SimulationCoordinator {
     private static Random r = new Random(1);
     public static void main(String [] args) {
         invocation = getMomentOfInvocationYearMonthDayHourMinuteSecond();
-        int numSims = 1;
+        int numSims = 100;
         sims = new ArrayList<Simulation>();
         for(int i = 0; i < numSims; i++) {
             sims.add(new Simulation(r, i));

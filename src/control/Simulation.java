@@ -3,6 +3,7 @@ package control;
 import agents.AgentPopulation;
 import assets.AssetRegistry;
 import control.setup.agentGenerators.EWAgentGenerator;
+import control.setup.agentGenerators.OnlyLevelAgentGenerator;
 import control.setup.agentGenerators.UninformedAgentGenerator;
 import control.setup.assetGenerators.AssetGenerator;
 import control.setup.assetGenerators.HomogeneousAssetGenerator;
@@ -41,7 +42,7 @@ public class Simulation {
         this.config = new Config();
         this.population = new AgentPopulation(this);
         this.assetRegistry = new AssetRegistry(this);
-        agentGenerator = new EWAgentGenerator(population, this);
+        agentGenerator = new OnlyLevelAgentGenerator(population, this);
         Collections.shuffle(population.getAgents(), random);
         if(config.isUseMultiPeriodAsset()) {
             assetGenerator = new MultiPeriodInfoAssetGenerator(assetRegistry, this);

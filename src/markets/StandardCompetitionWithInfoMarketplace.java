@@ -96,7 +96,7 @@ public class StandardCompetitionWithInfoMarketplace extends Marketplace{
 
             System.out.println("ACTIVE BIDS " + activeBid + " " + activeOffer);
 
-            if (activeBid.getBidPrice() >= activeOffer.getOfferPrice()) {
+            if (activeBid.getBidPrice() > activeOffer.getOfferPrice()) {
                 //a transaction has occurred
                 statesThisMonth.add(new MarketState(
                         sim.getPeriod(),
