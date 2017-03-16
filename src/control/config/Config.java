@@ -29,8 +29,8 @@ public final class Config {
     private static final double INFO_DIVIDEND_MIN = 0;
     private static final double INFO_DIVIDEND_MAX = 30;
     private static final double INFO_P_STATE_A = 1d;
-    private static final int BCK_LOOKBACK_PERIOD = 2;
-    private static final int INF_INFO_THRESHOLD = 15;
+    private static final int BCK_LOOKBACK_PERIOD = 20;
+    private static final int INF_INFO_THRESHOLD = 35;
 
     public Config() {
         System.out.println("Generated Config file");

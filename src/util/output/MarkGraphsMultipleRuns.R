@@ -8,8 +8,10 @@ setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-02-17-17-29-53/")
 #test with PRNG fixed 
 setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-03-14-17-42-32/")
 
-setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-03-15-12-24-18/")
+setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-03-15-15-30-43/")
 
+setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-03-15-15-56-04/")
+setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-03-15-16-54-57/")
 rm(list=ls())
 
 nruns <- 100
@@ -19,17 +21,19 @@ equilibrations <- as.vector(rep(0,nruns))
 rolling_vol <- data.frame(1:42)
 trans <- data.frame(matrix(nrow=(nruns*nagents), ncol=nruns))
 
-plot(0, xlim= range(0:125), ylim=range(75:150),xlab = "Transaction #", ylab="Transaction Price",main="Transaction Paths")
+plot(0, xlim= range(0:1500), ylim=range(75:165),xlab = "Transaction #", ylab="Transaction Price",main="Transaction Paths")
 
 for(i in 0:(nruns-1)) {
   transactions <- read.csv(paste("transactions-",i,".csv", sep=""), header = F)
+  original_index <- 1:length(transactions$V1)
+  transactions <- cbind(original_index, transactions)
   tprices <- (transactions$V3 + transactions$V6)/2
   tprices[transactions$V9=="false"] <- NA
   trans[,(i+1)] <- tprices
   jt <- subset(transactions, transactions$V9 == "true")
   index <- 1:length(jt$V3)
   jt <- cbind(index, jt)
-  lines(jt$index, (jt$V6 + jt$V3)/2, col=colors[i])
+  points(jt$original_index, (jt$V6 + jt$V3)/2, col=colors[i])
   
   if(length(jt$V3)<=10) {
     equilibrations[(i+1)] <- NA
@@ -94,7 +98,6 @@ p2 <- ggplot(df_trimmed, aes(index, tprices)) + geom_point()
 ggExtra::ggMarginal(p2, type=c("histogram"), margins=c("x"), binwidth=50)
 
 #plotting number of transactions
-numerict <- applyis.numeric(trans)
 ntransactions <- rowSums(!is.na(trans))
 barplot(ntransactions)
 smoothed_trans <- 1:15

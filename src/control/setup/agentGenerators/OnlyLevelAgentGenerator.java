@@ -34,6 +34,15 @@ public class OnlyLevelAgentGenerator extends AgentGenerator {
             agents.add(inf);
         }
 
+//        inf = new InfBckAgent(
+//                population,
+//                true);
+//        agents.add(inf);
+//        inf = new InfBckAgent(
+//                population,
+//                true);
+//        agents.add(inf);
+
         return agents;
     }
 

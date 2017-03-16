@@ -60,9 +60,13 @@ public class UninfFwdLevelAgent extends Agent {
                     lastTransactions.size());
             FV = tempAvg;
         } else {
-            FV = population.getConfig().getInfoIntrinsicValue() +
-                    (population.getConfig().getInfoDividendMax() +
-                            population.getConfig().getInfoDividendMin()) / 2;
+            if (a != null) {
+                FV = a.getFundingCost();
+            } else {
+                FV = population.getConfig().getInfoIntrinsicValue() +
+                        (population.getConfig().getInfoDividendMax() +
+                                population.getConfig().getInfoDividendMin()) / 2;
+            }
         }
         return Math.min(FV, population.getConfig().getMaxAssetValue());
     }

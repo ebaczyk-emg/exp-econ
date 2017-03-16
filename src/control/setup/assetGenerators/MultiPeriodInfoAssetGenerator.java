@@ -23,9 +23,10 @@ public class MultiPeriodInfoAssetGenerator extends AssetGenerator {
         ArrayList<Asset> assets = new ArrayList<>(numAssets);
         this.dividend = registry.determineDividend();
         for(int i = 0; i < numAssets; i++) {
-            double value = sim.getConfig().getInfoIntrinsicValue();
+            double value = sim.getConfig().getInfoIntrinsicValue() +
+                    (sim.getConfig().getInfoDividendMax() + sim.getConfig().getInfoDividendMin())/2;
             //shock the value to reflect difference in funding costs
-            double adjustment = sim.getRandom().nextDouble() * 10;
+            double adjustment = sim.getRandom().nextDouble() * 15;
             if(sim.getRandom().nextBoolean()) {
                 value += adjustment;
             } else {

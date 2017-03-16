@@ -35,8 +35,8 @@ public abstract class Agent {
         if(calculatedFairValue > cashEndowment) {
             return new Bid(this, cashEndowment);
         } else {
-//            return new Bid(this, calculatedBid);
-            return new Bid(this, calculatedFairValue);
+            return new Bid(this, calculatedBid);
+//            return new Bid(this, calculatedFairValue);
         }
 
     }
@@ -48,8 +48,8 @@ public abstract class Agent {
         if(calculatedFairValue < a.getFundingCost() || this.getOwnedAssets().isEmpty()) {
             return new Offer(this, population.getConfig().getMaxAssetValue(), a);
         } else {
-            return new Offer(this, calculatedFairValue, a);
-            //return new Offer(this, calculatedOffer, a);
+//            return new Offer(this, calculatedFairValue, a);
+            return new Offer(this, calculatedOffer, a);
         }
     }
 
