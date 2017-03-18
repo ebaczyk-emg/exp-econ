@@ -11,7 +11,7 @@ setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-03-14-17-42-32/")
 setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-03-15-15-30-43/")
 
 setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-03-15-15-56-04/")
-setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-03-15-16-27-48/")
+setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-03-16-11-38-29/")
 rm(list=ls())
 
 nruns <- 100

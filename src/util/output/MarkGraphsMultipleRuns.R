@@ -11,7 +11,7 @@ setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-03-14-17-42-32/")
 setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-03-15-15-30-43/")
 
 setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-03-15-15-56-04/")
-setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-03-15-16-54-57/")
+setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-03-17-15-38-20/")
 rm(list=ls())
 
 nruns <- 100
@@ -22,7 +22,7 @@ rolling_vol <- data.frame(1:42)
 trans <- data.frame(matrix(nrow=(nruns*nagents), ncol=nruns))
 
 plot(0, xlim= range(0:1500), ylim=range(75:165),xlab = "Transaction #", ylab="Transaction Price",main="Transaction Paths")
-
+abline(a=130,b=0)
 for(i in 0:(nruns-1)) {
   transactions <- read.csv(paste("transactions-",i,".csv", sep=""), header = F)
   original_index <- 1:length(transactions$V1)
@@ -33,7 +33,7 @@ for(i in 0:(nruns-1)) {
   jt <- subset(transactions, transactions$V9 == "true")
   index <- 1:length(jt$V3)
   jt <- cbind(index, jt)
-  points(jt$original_index, (jt$V6 + jt$V3)/2, col=colors[i])
+  lines(jt$original_index, (jt$V6 + jt$V3)/2, col=colors[i])
   
   if(length(jt$V3)<=10) {
     equilibrations[(i+1)] <- NA
@@ -43,7 +43,7 @@ for(i in 0:(nruns-1)) {
     for(j in 10:length(jt$V3)) {
       price_vol <- sd(jt$V3[(j-10):j])
       rvol[(j-10)] <- price_vol
-      if(price_vol <1) {
+      if(price_vol <1 && j>550) {
         equilibrations[(i+1)] <- jt$V3[j]
         break
       }
@@ -56,6 +56,8 @@ for(i in 0:(nruns-1)) {
     rolling_vol <- qpcR:::cbind.na(rolling_vol, rvol)
   }
 }
+avg_prices <- apply(trans,1,mean,na.rm=T)
+points(avg_prices,lwd=4,)
 
 #plot rolling vols
 
@@ -105,3 +107,42 @@ for(k in 1:15) {
   smoothed_trans[k] <- sum(ntransactions[((k-1)*100):(k*100)])
 }
 plot(smoothed_trans)
+
+##intertemporal endowment evolution
+level <- data.frame(matrix(nrow=(nruns), ncol=nruns))
+delta <- data.frame(matrix(nrow=(nruns), ncol=nruns))
+informed <- data.frame(matrix(nrow=(nruns), ncol=nruns))
+
+for(i in 0:(nruns-1)) {
+  no_col <- max(count.fields(paste("endowments-",i,".csv", sep=""), sep=","))
+  endowments <- read.csv(paste("endowments-",i,".csv", sep=""), na.strings=c(""," ",NA),header=F, flush=T, col.names=1:no_col)
+  for(j in 1:100) {
+    period_endowments <-endowments[((j-1)*15):(j*15),]
+    level_ags <- subset(period_endowments, period_endowments$X2 == "UninfFwdLevelAgent")
+    delta_ags <- subset(period_endowments, period_endowments$X2 == "UninfFwdDeltaAgent")
+    informed_ags <- subset(period_endowments, period_endowments$X2 == "InfBckAgent")
+    
+    level[j,(i+1)] <- mean((apply(!is.na(level_ags),1,sum) - 4)/2)
+    delta[j,(i+1)] <- mean((apply(!is.na(delta_ags),1,sum) - 4)/2)
+    informed[j,(i+1)] <- mean((apply(!is.na(informed_ags),1,sum) - 4)/2)
+    
+  }
+}
+
+plot(0, xlim= range(0:100), ylim=range(0:10),xlab = "Time", ylab="Avg. # Assets",main="Intertemporal Endowment Evolution")
+for(i in 1:nruns){
+  lines(level[,i],col="red")
+  lines(delta[,i],col="green")
+  lines(informed[,i],col="black")
+}
+lines(apply(level,1,mean),lwd=4,col="red")
+lines(apply(delta,1,mean),lwd=4,col="green")
+lines(apply(informed,1,mean),lwd=4,col="black")
+
+lines(apply(level,1,mean) + apply(level,1,sd),col="red")
+lines(apply(level,1,mean) - apply(level,1,sd),col="red")
+lines(apply(delta,1,mean) + apply(delta,1,sd),col="green")
+lines(apply(delta,1,mean) - apply(delta,1,sd),col="green")
+lines(apply(informed,1,mean) + apply(informed,1,sd),col="black")
+lines(apply(informed,1,mean) - apply(informed,1,sd),col="black")
+

@@ -22,32 +22,6 @@ public class InfBckAgent extends Agent {
         valuesForAllPeriods = new ArrayList<>();
     }
 
-    public Bid getBid() {
-        Bid bid = getBid(this.calculateFairValue(null));
-        return bid;
-    }
-
-    public Offer getOffer() {
-        if(assetEndowment.size() > 0) { //make sure you have assets
-            Collections.sort(assetEndowment); //sort assets on funding cost
-            Asset leastValuableProfitableAsset = null;
-            //find the least valuable asset that can still be sold for a profit
-            for (Asset asset : assetEndowment) {
-                if (asset.getFundingCost() <= this.calculateFairValue(null)) {
-                    leastValuableProfitableAsset = asset;
-                    break;
-                }
-            }
-            //calculate a bid for this asset if there is such an asset
-            if(leastValuableProfitableAsset != null) {
-                return this.getOffer(leastValuableProfitableAsset);
-            } else {
-                return null;
-            }
-        } //else, can't sell anything
-        else return null;
-    }
-
     public double calculateFairValue(Asset a) {
         ArrayList<Boolean> information = population.getMarket().getReleasedInfo();
         double FV = 0;
@@ -78,9 +52,20 @@ public class InfBckAgent extends Agent {
                     FV = population.getConfig().getInfoIntrinsicValue() + population.getConfig().getInfoDividendMax();
                 }
             } else {
-                //if info not above threshold, just default to EV
-                FV = population.getConfig().getInfoIntrinsicValue() +
-                        (population.getConfig().getInfoDividendMax() + population.getConfig().getInfoDividendMin())/2;
+                //if info isn't above threshold, just act as other agents
+                if (a != null) {
+                    FV = a.getFundingCost();
+                } else {
+                    FV=0;
+                    for(Asset asset : this.getOwnedAssets()){
+                        FV += asset.getFundingCost();
+                    }
+                    FV = FV / this.getOwnedAssets().size();
+                    System.out.println(FV);
+//                FV = population.getConfig().getInfoIntrinsicValue() +
+//                        (population.getConfig().getInfoDividendMax() +
+//                                population.getConfig().getInfoDividendMin()) / 2;
+                }
             }
         }
         return Math.min(FV, population.getConfig().getMaxAssetValue());

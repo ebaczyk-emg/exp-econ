@@ -61,11 +61,6 @@ public class StandardCompetitionWithInfoMarketplace extends Marketplace{
 
         this.releaseNewInformation();
 
-        for(int i=0; i < 100; i++) {
-//            System.out.println(buyerSellerRNG.nextBoolean());
-        }
-//        System.exit(1);
-
         for(int i=0; i < agents.size(); i++) {
             Agent actingAgent = agents.get(indices[i]);
             if (buyerSellerRNG.nextBoolean()) {

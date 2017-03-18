@@ -22,30 +22,6 @@ public class UninfFwdLevelAgent extends Agent {
         valuesForAllPeriods = new ArrayList<>();
     }
 
-    public Bid getBid() {
-        Bid bid = getBid(this.calculateFairValue(null));
-        return bid;
-    }
-
-    public Offer getOffer() {
-        if(assetEndowment.size() > 0) {
-            Collections.sort(assetEndowment);
-            Asset leastValuableProfitableAsset = null;
-            for (Asset asset : assetEndowment) {
-                if (asset.getFundingCost() <= this.calculateFairValue(null)) {
-                    leastValuableProfitableAsset = asset;
-                    break;
-                }
-            }
-            if(leastValuableProfitableAsset != null) {
-                return this.getOffer(leastValuableProfitableAsset);
-            } else {
-                return null;
-            }
-        }
-        else return null;
-    }
-
     public double calculateFairValue(Asset a) {
         ArrayList<Double> lastTransactions = population.getMarket().getPastTransactionPrices();
         Collections.reverse(lastTransactions);
@@ -63,9 +39,14 @@ public class UninfFwdLevelAgent extends Agent {
             if (a != null) {
                 FV = a.getFundingCost();
             } else {
-                FV = population.getConfig().getInfoIntrinsicValue() +
-                        (population.getConfig().getInfoDividendMax() +
-                                population.getConfig().getInfoDividendMin()) / 2;
+                FV=0;
+                for(Asset asset : this.getOwnedAssets()){
+                    FV += asset.getFundingCost();
+                }
+                FV = FV / this.getOwnedAssets().size();
+//                FV = population.getConfig().getInfoIntrinsicValue() +
+//                        (population.getConfig().getInfoDividendMax() +
+//                                population.getConfig().getInfoDividendMin()) / 2;
             }
         }
         return Math.min(FV, population.getConfig().getMaxAssetValue());

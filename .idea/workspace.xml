@@ -24,11 +24,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
+      <file leaf-file-name="StandardCompetitionWithInfoMarketplace.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/markets/StandardCompetitionWithInfoMarketplace.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="513">
+              <caret line="75" column="56" selection-start-line="75" selection-start-column="56" selection-end-line="75" selection-end-column="56" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="UninfFwdDeltaAgent.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/agents/UninfFwdDeltaAgent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="113" column="1" selection-start-line="113" selection-start-column="1" selection-end-line="113" selection-end-column="1" />
+            <state relative-caret-position="120">
+              <caret line="23" column="48" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -37,18 +47,8 @@
       <file leaf-file-name="Agent.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/agents/Agent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="47" column="41" selection-start-line="47" selection-start-column="41" selection-end-line="47" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InfBckAgent.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/agents/InfBckAgent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="58" column="1" selection-start-line="58" selection-start-column="1" selection-end-line="58" selection-end-column="1" />
+            <state relative-caret-position="999">
+              <caret line="42" column="17" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -57,8 +57,8 @@
       <file leaf-file-name="MultiPeriodInfoAssetGenerator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/control/setup/assetGenerators/MultiPeriodInfoAssetGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="783">
-              <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
+            <state relative-caret-position="621">
+              <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -67,8 +67,18 @@
       <file leaf-file-name="SimulationCoordinator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/control/SimulationCoordinator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+            <state relative-caret-position="243">
+              <caret line="15" column="65" selection-start-line="15" selection-start-column="65" selection-end-line="15" selection-end-column="65" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InfBckAgent.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/agents/InfBckAgent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="39">
+              <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -77,8 +87,28 @@
       <file leaf-file-name="UninfFwdLevelAgent.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/agents/UninfFwdLevelAgent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="82">
-              <caret line="45" column="25" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
+            <state relative-caret-position="-13">
+              <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OnlyLevelAgentGenerator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/control/setup/agentGenerators/OnlyLevelAgentGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="398">
+              <caret line="32" column="26" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OutputPrinter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/control/output/OutputPrinter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="74">
+              <caret line="44" column="38" selection-start-line="44" selection-start-column="38" selection-end-line="44" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -87,8 +117,8 @@
       <file leaf-file-name="Config.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/control/config/Config.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="474">
-              <caret line="27" column="56" selection-start-line="27" selection-start-column="56" selection-end-line="27" selection-end-column="56" />
+            <state relative-caret-position="69">
+              <caret line="12" column="54" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -155,17 +185,17 @@
         <option value="$PROJECT_DIR$/src/util/MersenneTwisterFast.java" />
         <option value="$PROJECT_DIR$/src/agents/AgentPopulation.java" />
         <option value="$PROJECT_DIR$/src/assets/AssetRegistry.java" />
-        <option value="$PROJECT_DIR$/src/markets/StandardCompetitionWithInfoMarketplace.java" />
         <option value="$PROJECT_DIR$/src/control/Simulation.java" />
         <option value="$PROJECT_DIR$/src/control/config/Config.java" />
         <option value="$PROJECT_DIR$/src/agents/UninfExpDeltaAgent.java" />
-        <option value="$PROJECT_DIR$/src/agents/Agent.java" />
-        <option value="$PROJECT_DIR$/src/control/setup/agentGenerators/OnlyLevelAgentGenerator.java" />
-        <option value="$PROJECT_DIR$/src/agents/InfBckAgent.java" />
-        <option value="$PROJECT_DIR$/src/agents/UninfFwdDeltaAgent.java" />
-        <option value="$PROJECT_DIR$/src/agents/UninfFwdLevelAgent.java" />
         <option value="$PROJECT_DIR$/src/control/setup/assetGenerators/MultiPeriodInfoAssetGenerator.java" />
+        <option value="$PROJECT_DIR$/src/markets/StandardCompetitionWithInfoMarketplace.java" />
+        <option value="$PROJECT_DIR$/src/agents/UninfFwdLevelAgent.java" />
+        <option value="$PROJECT_DIR$/src/agents/UninfFwdDeltaAgent.java" />
+        <option value="$PROJECT_DIR$/src/agents/InfBckAgent.java" />
+        <option value="$PROJECT_DIR$/src/agents/Agent.java" />
         <option value="$PROJECT_DIR$/src/control/SimulationCoordinator.java" />
+        <option value="$PROJECT_DIR$/src/control/setup/agentGenerators/OnlyLevelAgentGenerator.java" />
       </list>
     </option>
   </component>
@@ -177,8 +207,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1600" />
-    <option name="height" value="1325" />
+    <option name="width" value="1601" />
+    <option name="height" value="1319" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -239,156 +269,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exp-econ" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exp-econ" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="markets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exp-econ" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exp-econ" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="control" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exp-econ" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exp-econ" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="control" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="setup" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assetGenerators" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exp-econ" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exp-econ" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="control" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="setup" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="agentGenerators" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exp-econ" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exp-econ" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="control" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="output" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exp-econ" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exp-econ" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="control" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="marketObjects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exp-econ" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exp-econ" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -422,7 +302,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="conf&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/config/Config.java&#10;simul&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/SimulationCoordinator.java&#10;uninf&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/UninfFwdLevelAgent.java&#10;exp&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/UninfExpDeltaAgent.java&#10;confi&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/config/Config.java&#10;simulation&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/SimulationCoordinator.java&#10;config&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/config/Config.java&#10;sim&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/Simulation.java&#10;within&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/StandardCompetitionWithInfoMarketplace.java&#10;simu&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/SimulationCoordinator.java&#10;generator&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/setup/agentGenerators/EWAgentGenerator.java&#10;coo&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/SimulationCoordinator.java&#10;mersenn&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/util/MersenneTwisterFast.java&#10;info&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/StandardCompetitionWithInfoMarketplace.java&#10;level&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/UninfFwdLevelAgent.java&#10;delta&#9;PSI&#9;JAVA://agents.UninfFwdDeltaAgent&#10;con&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/config/Config.java&#10;mar&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/output/MarketState.java&#10;agent&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/setup/agentGenerators/EWAgentGenerator.java&#10;standar&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/StandardCompetitionMarketplace.java&#10;standarcom&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/StandardCompetitionMarketplace.java&#10;ew&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/setup/agentGenerators/EWAgentGenerator.java&#10;ass&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/assets/Asset.java&#10;infb&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/InfBckAgent.java&#10;m&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/Marketplace.java&#10;market&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/StandardCompetitionMarketplace.java&#10;inf&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/InfBckAgent.java&#10;bid&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/marketObjects/Bid.java&#10;asset&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/assets/Asset.java&#10;fwd level&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/UninfFwdLevelAgent.java&#10;output&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/output/OutputPrinter.java&#10;del&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/UninfFwdDeltaAgent.java&#10;simula&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/SimulationCoordinator.java&#10;decafa&#9;PSI&#9;JAVA://control.config.Config#decayFactor&#10;assetge&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/setup/assetGenerators/MultiPeriodInfoAssetGenerator.java&#10;unin&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/setup/agentGenerators/UninformedAgentGenerator.java&#10;infw&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/InfFwdLevelAgent.java&#10;simulat&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/Simulation.java&#10;basic&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/BasicAgent.java&#10;popul&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/AgentPopulation.java&#10;regi&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/assets/AssetRegistry.java&#10;agen&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/Agent.java&#10;trans&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/marketObjects/Transaction.java&#10;multip&#9;PSI&#9;JAVA://assets.MultiPeriodAsset&#10;basicag&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/BasicAgent.java&#10;marketp&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/Marketplace.java&#10;population&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/AgentPopulation.java&#10;assetreg&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/assets/AssetRegistry.java&#10;multiperio&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/assets/MultiPeriodAsset.java&#10;homogen&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/assets/HomogeneousAsset.java" />
+    <property name="SearchEverywhereHistoryKey" value="config&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/config/Config.java&#10;endowme&#9;PSI&#9;JAVA://control.output.OutputPrinter#endowmentWriter&#10;n&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/setup/agentGenerators/OnlyLevelAgentGenerator.java&#10;market&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/StandardCompetitionWithInfoMarketplace.java&#10;conf&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/config/Config.java&#10;simul&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/SimulationCoordinator.java&#10;uninf&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/UninfFwdLevelAgent.java&#10;exp&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/UninfExpDeltaAgent.java&#10;confi&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/config/Config.java&#10;simulation&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/SimulationCoordinator.java&#10;sim&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/Simulation.java&#10;within&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/StandardCompetitionWithInfoMarketplace.java&#10;simu&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/SimulationCoordinator.java&#10;generator&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/setup/agentGenerators/EWAgentGenerator.java&#10;coo&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/SimulationCoordinator.java&#10;mersenn&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/util/MersenneTwisterFast.java&#10;info&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/StandardCompetitionWithInfoMarketplace.java&#10;level&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/UninfFwdLevelAgent.java&#10;delta&#9;PSI&#9;JAVA://agents.UninfFwdDeltaAgent&#10;con&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/config/Config.java&#10;mar&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/output/MarketState.java&#10;agent&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/setup/agentGenerators/EWAgentGenerator.java&#10;standar&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/StandardCompetitionMarketplace.java&#10;standarcom&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/StandardCompetitionMarketplace.java&#10;ew&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/setup/agentGenerators/EWAgentGenerator.java&#10;ass&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/assets/Asset.java&#10;infb&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/InfBckAgent.java&#10;m&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/Marketplace.java&#10;inf&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/InfBckAgent.java&#10;bid&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/marketObjects/Bid.java&#10;asset&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/assets/Asset.java&#10;fwd level&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/UninfFwdLevelAgent.java&#10;output&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/output/OutputPrinter.java&#10;del&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/UninfFwdDeltaAgent.java&#10;simula&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/SimulationCoordinator.java&#10;decafa&#9;PSI&#9;JAVA://control.config.Config#decayFactor&#10;assetge&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/setup/assetGenerators/MultiPeriodInfoAssetGenerator.java&#10;unin&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/setup/agentGenerators/UninformedAgentGenerator.java&#10;infw&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/InfFwdLevelAgent.java&#10;simulat&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/Simulation.java&#10;basic&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/BasicAgent.java&#10;popul&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/AgentPopulation.java&#10;regi&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/assets/AssetRegistry.java&#10;agen&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/Agent.java&#10;trans&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/control/marketObjects/Transaction.java&#10;multip&#9;PSI&#9;JAVA://assets.MultiPeriodAsset&#10;basicag&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/BasicAgent.java&#10;marketp&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/markets/Marketplace.java&#10;population&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/agents/AgentPopulation.java&#10;assetreg&#9;FILE&#9;file://C:/Users/Emily/Documents/GitHub/exp-econ/src/assets/AssetRegistry.java" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/commons-math3-3.6.1-bin/commons-math3-3.6.1" />
   </component>
   <component name="RecentsManager">
@@ -847,8 +727,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1600" height="1325" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1601" height="1319" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -859,11 +739,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3189223" sideWeight="0.5175" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38136324" sideWeight="0.4825" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38334778" sideWeight="0.4825" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19708492" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09689677" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953104" sideWeight="0.495" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1042,13 +922,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/output/OutputPrinter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="27" column="83" selection-start-line="27" selection-start-column="83" selection-end-line="27" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1137,14 +1010,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/markets/StandardCompetitionWithInfoMarketplace.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="148" column="21" selection-start-line="148" selection-start-column="21" selection-end-line="148" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/control/setup/agentGenerators/EWAgentGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="675">
@@ -1161,66 +1026,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/setup/agentGenerators/OnlyLevelAgentGenerator.java">
+    <entry file="file://$PROJECT_DIR$/src/agents/UninfFwdDeltaAgent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="26" column="54" selection-start-line="26" selection-start-column="54" selection-end-line="26" selection-end-column="54" />
+        <state relative-caret-position="120">
+          <caret line="23" column="48" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/agents/InfBckAgent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="58" column="1" selection-start-line="58" selection-start-column="1" selection-end-line="58" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/agents/UninfFwdDeltaAgent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="113" column="1" selection-start-line="113" selection-start-column="1" selection-end-line="113" selection-end-column="1" />
+        <state relative-caret-position="39">
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/agents/Agent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="47" column="41" selection-start-line="47" selection-start-column="41" selection-end-line="47" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/config/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="27" column="56" selection-start-line="27" selection-start-column="56" selection-end-line="27" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/SimulationCoordinator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+        <state relative-caret-position="999">
+          <caret line="42" column="17" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/control/setup/assetGenerators/MultiPeriodInfoAssetGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="783">
-          <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
+        <state relative-caret-position="621">
+          <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/markets/StandardCompetitionWithInfoMarketplace.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="75" column="56" selection-start-line="75" selection-start-column="56" selection-end-line="75" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/SimulationCoordinator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="15" column="65" selection-start-line="15" selection-start-column="65" selection-end-line="15" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/setup/agentGenerators/OnlyLevelAgentGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="32" column="26" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/output/OutputPrinter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="44" column="38" selection-start-line="44" selection-start-column="38" selection-end-line="44" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/config/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="12" column="54" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/agents/UninfFwdLevelAgent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="45" column="25" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
+        <state relative-caret-position="-13">
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
           <folding />
         </state>
       </provider>

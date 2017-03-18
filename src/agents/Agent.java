@@ -5,6 +5,7 @@ import control.marketObjects.Bid;
 import control.marketObjects.Offer;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by Emily on 9/28/2016.
@@ -19,13 +20,35 @@ public abstract class Agent {
     ArrayList<Double> valuesForAllPeriods;
 
     public abstract double calculateFairValue(Asset a);
-    public abstract Bid getBid();
-    public abstract Offer getOffer();
 
     public Agent(AgentPopulation population,
                  boolean isInformed){
         this.population = population;
         this.informed = isInformed;
+    }
+
+    public Bid getBid() {
+        Bid bid = getBid(this.calculateFairValue(null));
+        return bid;
+    }
+
+    public Offer getOffer() {
+        if(assetEndowment.size() > 0) {
+            Collections.sort(assetEndowment);
+            Asset leastValuableProfitableAsset = null;
+            for (Asset asset : assetEndowment) {
+                if (asset.getFundingCost() <= this.calculateFairValue(null)) {
+                    leastValuableProfitableAsset = asset;
+                    break;
+                }
+            }
+            if(leastValuableProfitableAsset != null) {
+                return this.getOffer(leastValuableProfitableAsset);
+            } else {
+                return null;
+            }
+        }
+        else return null;
     }
 
     public Bid getBid(double max) {
@@ -43,8 +66,9 @@ public abstract class Agent {
 
     public Offer getOffer(Asset a) {
         double calculatedFairValue = this.calculateFairValue(a);
+        //some amount more than you think it's worth
         double calculatedOffer = calculatedFairValue +
-                Math.exp(population.getRandom().nextDouble() * population.getConfig().getDecayFactor()); //some amount more than you think it's worth
+                Math.exp(population.getRandom().nextDouble() * population.getConfig().getDecayFactor());
         if(calculatedFairValue < a.getFundingCost() || this.getOwnedAssets().isEmpty()) {
             return new Offer(this, population.getConfig().getMaxAssetValue(), a);
         } else {
