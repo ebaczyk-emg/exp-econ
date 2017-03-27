@@ -1,6 +1,7 @@
 package control.output;
 
 import agents.Agent;
+import assets.Asset;
 import control.Simulation;
 
 import java.io.*;
@@ -14,6 +15,7 @@ public class OutputPrinter {
     private String path;
     private BufferedWriter transactionWriter;
     private BufferedWriter endowmentWriter;
+    private BufferedWriter valuationWriter;
 
     public OutputPrinter(String systemPath, Simulation simulation){
         this.path = systemPath;
@@ -26,6 +28,9 @@ public class OutputPrinter {
             endowmentWriter = new BufferedWriter(
                     new FileWriter(
                             new File(path + "/endowments-" + sim.getSimNumber() + ".csv")));
+            valuationWriter = new BufferedWriter(
+                    new FileWriter(
+                            new File(path + "/valuations-" + sim.getSimNumber() + ".csv")));
         } catch (IOException ex) {
             ex.printStackTrace();
             System.exit(11);
@@ -35,6 +40,7 @@ public class OutputPrinter {
     public void printOneStepOfOutput() {
         printTransactions();
         printEndowments();
+        printValuations();
     }
 
     private void printTransactions() {
@@ -56,6 +62,11 @@ public class OutputPrinter {
             infoToAdd.add(a.getClass().getSimpleName());
             infoToAdd.add("" + a.getCashEndowment());
             infoToAdd.add("" + a.getAssetEndowment());
+            double totalValueOfAssets = a.getCashEndowment();
+            for(Asset asset : a.getOwnedAssets()){
+                totalValueOfAssets += asset.getFundingCost();
+            }
+            infoToAdd.add("" + totalValueOfAssets);
             for(int i = 0; i < a.getAssetEndowment(); i++) {
                 infoToAdd.add(a.getOwnedAssets().get(i).getID());
                 infoToAdd.add("" + a.getOwnedAssets().get(i).getFundingCost());
@@ -63,6 +74,29 @@ public class OutputPrinter {
             try {
                 writeSequenceWithNoTerminalComma(endowmentWriter, infoToAdd);
                 endowmentWriter.flush();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    public void printValuations() {
+        for(Agent a : sim.getPopulation().getAgents()){
+            double valuationOfEndowment = 0;
+            for(Asset asset : a.getOwnedAssets()){
+                valuationOfEndowment += a.calculateFairValue(asset);
+                System.out.println(asset.getFundingCost() + " " + a.calculateFairValue(asset));
+            }
+            valuationOfEndowment = valuationOfEndowment/Math.max(1,a.getOwnedAssets().size());
+            ArrayList<String> vals = new ArrayList<>();
+            vals.add(a.getID());
+            vals.add(a.getClass().getSimpleName());
+            vals.add("" + a.calculateFairValue(null));
+            vals.add("" + valuationOfEndowment);
+            System.out.println("for " + a.getClass().getSimpleName() + " " + valuationOfEndowment);
+            try{
+                writeSequenceWithNoTerminalComma(valuationWriter, vals);
+                valuationWriter.flush();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }

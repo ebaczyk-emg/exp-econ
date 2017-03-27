@@ -34,19 +34,31 @@ public abstract class Agent {
 
     public Offer getOffer() {
         if(assetEndowment.size() > 0) {
-            Collections.sort(assetEndowment);
-            Asset leastValuableProfitableAsset = null;
-            for (Asset asset : assetEndowment) {
-                if (asset.getFundingCost() <= this.calculateFairValue(null)) {
-                    leastValuableProfitableAsset = asset;
-                    break;
-                }
-            }
-            if(leastValuableProfitableAsset != null) {
-                return this.getOffer(leastValuableProfitableAsset);
+            Asset assetToSell = assetEndowment.get(population.getRandom().nextInt(getAssetEndowment()));
+            if(this.getAverageFundingCost() <= this.calculateFairValue(null)){
+                return new Offer(this, this.calculateFairValue(assetToSell), assetToSell);
             } else {
                 return null;
+//                return new Offer(this, this.calculateFairValue(null), assetToSell);
             }
+//            Collections.sort(assetEndowment); //sort endowment decreasing on funding cost
+//            System.out.println(assetEndowment.get(0).getFundingCost());
+//            for (int i=0; i < assetEndowment.size(); i++) {
+//                if (assetEndowment.get(i).getFundingCost() <= this.calculateFairValue(null)) {
+//                    if(i==0) {
+//                        return this.getOffer(assetEndowment.get(0));
+//                    } else {
+//                        return this.getOffer(assetEndowment.get(i-1));
+//                    }
+//                }
+//            }
+//            if(assetToSell == null) {
+//                return this.getOffer(assetEndowment.get(assetEndowment.size() - 1));
+//            } else {
+//                System.err.println("something is wrong in offer code");
+//                System.exit(11);
+//                return null;
+//            }
         }
         else return null;
     }
@@ -66,14 +78,18 @@ public abstract class Agent {
 
     public Offer getOffer(Asset a) {
         double calculatedFairValue = this.calculateFairValue(a);
-        //some amount more than you think it's worth
-        double calculatedOffer = calculatedFairValue +
-                Math.exp(population.getRandom().nextDouble() * population.getConfig().getDecayFactor());
-        if(calculatedFairValue < a.getFundingCost() || this.getOwnedAssets().isEmpty()) {
-            return new Offer(this, population.getConfig().getMaxAssetValue(), a);
-        } else {
+        if(calculatedFairValue >= a.getFundingCost()) {
+            //some amount more than you think it's worth
+            double calculatedOffer = calculatedFairValue +
+                    Math.exp(population.getRandom().nextDouble() * population.getConfig().getDecayFactor());
+            if (calculatedFairValue < a.getFundingCost() || this.getOwnedAssets().isEmpty()) {
+                return new Offer(this, population.getConfig().getMaxAssetValue(), a);
+            } else {
 //            return new Offer(this, calculatedFairValue, a);
-            return new Offer(this, calculatedOffer, a);
+                return new Offer(this, calculatedOffer, a);
+            }
+        } else {
+            return new Offer(this, this.calculateFairValue(null), a);
         }
     }
 
@@ -106,6 +122,14 @@ public abstract class Agent {
         assetEndowment.add(a);
         a.setOwner(this);
         assert (a.getOwner() == this);
+    }
+
+    public double getAverageFundingCost() {
+        double averageFundingCost = 0;
+        for(Asset a: this.getOwnedAssets()) {
+            averageFundingCost += a.getFundingCost();
+        }
+        return(averageFundingCost/Math.max(1,this.getAssetEndowment()));
     }
 
     public void endowCash(double amount) {

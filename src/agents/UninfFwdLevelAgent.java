@@ -36,17 +36,13 @@ public class UninfFwdLevelAgent extends Agent {
                     lastTransactions.size());
             FV = tempAvg;
         } else {
-            if (a != null) {
-                FV = a.getFundingCost();
+            //there is not enough transaction data to infer direction, so we default
+            if(this.getAssetEndowment() > 0){
+                FV = this.getAverageFundingCost();
             } else {
-                FV=0;
-                for(Asset asset : this.getOwnedAssets()){
-                    FV += asset.getFundingCost();
-                }
-                FV = FV / this.getOwnedAssets().size();
-//                FV = population.getConfig().getInfoIntrinsicValue() +
-//                        (population.getConfig().getInfoDividendMax() +
-//                                population.getConfig().getInfoDividendMin()) / 2;
+                FV = population.getConfig().getInfoIntrinsicValue() +
+                        (population.getConfig().getInfoDividendMin() +
+                                population.getConfig().getInfoDividendMax()) / 2;
             }
         }
         return Math.min(FV, population.getConfig().getMaxAssetValue());

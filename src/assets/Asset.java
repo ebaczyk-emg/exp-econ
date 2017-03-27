@@ -30,9 +30,9 @@ public abstract class Asset implements Comparable {
 
     public int compareTo(Object a) {
         if(((Asset) a).getFundingCost() < this.getFundingCost()) {
-            return 1;
-        } else {
             return -1;
+        } else {
+            return 1;
         }
     }
 

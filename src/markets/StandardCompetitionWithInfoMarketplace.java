@@ -34,7 +34,7 @@ public class StandardCompetitionWithInfoMarketplace extends Marketplace{
 
         releasedInfo = new ArrayList<>();
         infoRNG = new Random(0);
-        buyerSellerRNG = new Random(0);
+        buyerSellerRNG = sim.getRandom();
     }
 
     public boolean initializeAssetAllocation() {
@@ -58,11 +58,10 @@ public class StandardCompetitionWithInfoMarketplace extends Marketplace{
     @Override
     public boolean runOneStep() {
         statesThisMonth = new ArrayList<>();
-
+        this.setAgentOrder();
         this.releaseNewInformation();
-
         for(int i=0; i < agents.size(); i++) {
-            Agent actingAgent = agents.get(indices[i]);
+            Agent actingAgent = agents.get(i);
             if (buyerSellerRNG.nextBoolean()) {
                 //the agent is a buyer
                 Bid actingAgentBid = actingAgent.getBid();
@@ -138,12 +137,7 @@ public class StandardCompetitionWithInfoMarketplace extends Marketplace{
     }
 
     public void setAgentOrder() {
-        indices = new int[agents.size()];
-        ArrayList<Agent> temp = new ArrayList<>(agents);
-        Collections.shuffle(temp, sim.getRandom());
-        for(int i = 0; i < agents.size(); i++) {
-            indices[i] = temp.indexOf(agents.get(i));
-        }
+        Collections.shuffle(agents, sim.getRandom());
     }
 
     private void releaseNewInformation() {

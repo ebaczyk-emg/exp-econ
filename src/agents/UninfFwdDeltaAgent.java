@@ -1,8 +1,6 @@
 package agents;
 
 import assets.Asset;
-import control.marketObjects.Bid;
-import control.marketObjects.Offer;
 import util.LinearTrendLine;
 
 import java.util.ArrayList;
@@ -81,18 +79,13 @@ public class UninfFwdDeltaAgent extends Agent {
 
 
         } else {
-            //there is not enough transaction data to infer direction, so we default to EV
-            if (a != null) {
-                FV = a.getFundingCost();
+            //there is not enough transaction data to infer direction, so we default
+            if(this.getAssetEndowment() > 0){
+                FV = this.getAverageFundingCost();
             } else {
-                FV=0;
-                for(Asset asset : this.getOwnedAssets()){
-                    FV += asset.getFundingCost();
-                }
-                FV = FV / this.getOwnedAssets().size();
-//                FV = population.getConfig().getInfoIntrinsicValue() +
-//                        (population.getConfig().getInfoDividendMin() +
-//                                population.getConfig().getInfoDividendMax()) / 2;
+                FV = population.getConfig().getInfoIntrinsicValue() +
+                        (population.getConfig().getInfoDividendMin() +
+                                population.getConfig().getInfoDividendMax()) / 2;
             }
         }
 

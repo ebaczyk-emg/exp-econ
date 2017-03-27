@@ -1,11 +1,8 @@
 package agents;
 
 import assets.Asset;
-import control.marketObjects.Bid;
-import control.marketObjects.Offer;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * Created by Emily on 11/29/2016.
@@ -30,8 +27,10 @@ public class InfBckAgent extends Agent {
             if(a != null) {
                 FV = a.getFundingCost();
             } else {
-                FV = population.getConfig().getInfoIntrinsicValue() +
-                        (population.getConfig().getInfoDividendMax() + population.getConfig().getInfoDividendMin()) / 2;
+                for(Asset asset : this.getOwnedAssets()){
+                    FV += asset.getFundingCost();
+                }
+                FV = FV / Math.max(1,this.getOwnedAssets().size());
             }
         } else {
             int stateA = 0, stateB = 0;
@@ -53,21 +52,17 @@ public class InfBckAgent extends Agent {
                 }
             } else {
                 //if info isn't above threshold, just act as other agents
-                if (a != null) {
-                    FV = a.getFundingCost();
-                } else {
-                    FV=0;
-                    for(Asset asset : this.getOwnedAssets()){
-                        FV += asset.getFundingCost();
-                    }
-                    FV = FV / this.getOwnedAssets().size();
-                    System.out.println(FV);
-//                FV = population.getConfig().getInfoIntrinsicValue() +
-//                        (population.getConfig().getInfoDividendMax() +
-//                                population.getConfig().getInfoDividendMin()) / 2;
-                }
+                //there is not enough transaction data to infer direction, so we default
+//                if(this.getAssetEndowment() > 0){
+//                    FV = this.getAverageFundingCost();
+//                } else {
+                    FV = population.getConfig().getInfoIntrinsicValue() +
+                            (population.getConfig().getInfoDividendMin() +
+                                    population.getConfig().getInfoDividendMax()) / 2;
+//                }
             }
         }
+
         return Math.min(FV, population.getConfig().getMaxAssetValue());
     }
 }

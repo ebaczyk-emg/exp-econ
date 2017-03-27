@@ -19,7 +19,7 @@ public class OnlyLevelAgentGenerator extends AgentGenerator {
 
     public ArrayList<Agent> generateAgents(int numberOfAgents){
         ArrayList<Agent> agents = new ArrayList<>();
-        for(int n = 0; n < 5; n++){
+        for(int n = 0; n < 4; n++){
             Agent uninflevel = new UninfFwdLevelAgent(
                     population,
                     true);
@@ -28,20 +28,20 @@ public class OnlyLevelAgentGenerator extends AgentGenerator {
                     population,
                     true);
             agents.add(uninfdelta);
-            Agent inf = new InfBckAgent(
-                    population,
-                    true);
-            agents.add(inf);
+//            Agent inf = new InfBckAgent(
+//                    population,
+//                    true);
+//            agents.add(inf);
         }
 
-//        Agent inf = new InfBckAgent(
-//                population,
-//                true);
-//        agents.add(inf);
-//        inf = new InfBckAgent(
-//                population,
-//                true);
-//        agents.add(inf);
+        Agent inf = new InfBckAgent(
+                population,
+                true);
+        agents.add(inf);
+        inf = new InfBckAgent(
+                population,
+                true);
+        agents.add(inf);
 //        inf = new InfBckAgent(
 //                population,
 //                true);
