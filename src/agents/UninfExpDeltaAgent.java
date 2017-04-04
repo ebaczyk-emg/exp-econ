@@ -67,7 +67,6 @@ public class UninfExpDeltaAgent extends Agent {
                         - consideredTransactions.get(i+1));
             }
             FV = consideredTransactions.get(0) + (1-theta) * sum;
-            System.out.println((1-theta) * sum + "");
 
         } else {
             //there is not enough transaction data to infer direction, so we default to EV

@@ -20,7 +20,6 @@ public class OutputPrinter {
     public OutputPrinter(String systemPath, Simulation simulation){
         this.path = systemPath;
         this.sim = simulation;
-        System.out.println(path);
         try {
             transactionWriter = new BufferedWriter(
                     new FileWriter(
@@ -85,7 +84,6 @@ public class OutputPrinter {
             double valuationOfEndowment = 0;
             for(Asset asset : a.getOwnedAssets()){
                 valuationOfEndowment += a.calculateFairValue(asset);
-                System.out.println(asset.getFundingCost() + " " + a.calculateFairValue(asset));
             }
             valuationOfEndowment = valuationOfEndowment/Math.max(1,a.getOwnedAssets().size());
             ArrayList<String> vals = new ArrayList<>();
@@ -93,7 +91,6 @@ public class OutputPrinter {
             vals.add(a.getClass().getSimpleName());
             vals.add("" + a.calculateFairValue(null));
             vals.add("" + valuationOfEndowment);
-            System.out.println("for " + a.getClass().getSimpleName() + " " + valuationOfEndowment);
             try{
                 writeSequenceWithNoTerminalComma(valuationWriter, vals);
                 valuationWriter.flush();

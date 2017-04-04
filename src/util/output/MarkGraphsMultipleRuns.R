@@ -12,9 +12,46 @@ setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-03-15-15-30-43/")
 
 setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-03-15-15-56-04/")
 setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-03-27-11-32-34/")
-setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-03-27-16-14-07/")
+setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-03-28-23-54-44/")
+
 rm(list=ls())
 
+#just level
+setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-04-01-18-45-06/")
+#just delta
+setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-04-01-18-50-10/")
+#3-3-4
+setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-04-01-18-56-49/")
+#4-4-2
+setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-04-01-18-57-43/")
+#4-4-2 with Exp
+setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-04-01-18-58-29/")
+
+#better budget constraints
+# just level
+setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-04-02-19-32-48/")
+#just delta 
+setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-04-03-01-08-31/")
+#4-4-2
+setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-04-03-01-16-51/")
+setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-04-03-02-18-27/")
+
+#lookback 5
+setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-04-03-03-58-09/")
+#lookback 20
+setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-04-03-03-57-48/")
+
+#liquidity
+setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-04-03-05-23-36/")
+#asset liquidity
+setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-04-03-05-29-29/")
+
+#p=50
+setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-04-03-06-29-21/")
+
+
+
+rm(list=ls())
 nruns <- 100
 nagents <- 10
 colors <- rainbow(nruns)
@@ -24,8 +61,9 @@ trans <- data.frame(matrix(nrow=(nruns*nagents), ncol=nruns))
 bids <- data.frame(matrix(nrow=(nruns*nagents), ncol=nruns))
 asks <- data.frame(matrix(nrow=(nruns*nagents), ncol=nruns))
 
-plot(0, xlim= range(0:1000), ylim=range(100:175),xlab = "Transaction #", ylab="Transaction Price",main="Transaction Paths")
-abline(a=130,b=0)
+plot(0, xlim= range(0:1000), ylim=range(100:160),xlab = "Model Time", ylab="Transaction Price",main="Transaction Paths")
+abline(a=130,b=0,lwd=4)
+abline(v=490,cex=5,lty=2)
 for(i in 0:(nruns-1)) {
   transactions <- read.csv(paste("transactions-",i,".csv", sep=""), header = F)
   original_index <- 1:length(transactions$V1)
@@ -42,7 +80,7 @@ for(i in 0:(nruns-1)) {
   jt <- subset(transactions, transactions$V9 == "true")
   index <- 1:length(jt$V3)
   jt <- cbind(index, jt)
-  lines(jt$original_index, (jt$V6 + jt$V3)/2, col=colors[i])
+  points(jt$original_index, (jt$V6 + jt$V3)/2, col=colors[i])
   
   if(length(jt$V3)<=10) {
     equilibrations[(i+1)] <- NA
@@ -67,7 +105,7 @@ for(i in 0:(nruns-1)) {
 }
 
 avg_prices <- apply(trans,1,mean,na.rm=T)
-points(avg_prices)
+#points(avg_prices)
 
 plot(0, ylim=range(110:140),xlim=range(0:1000))
 avg_bids <- apply(bids, 1, mean, na.rm=T)
@@ -80,6 +118,15 @@ rolling_price_avg <- rep(0,(length(avg_prices)))
 for(n in 20:length(avg_prices)) {
   rolling_price_avg[n] <- mean(na.omit(avg_prices[(n-19):n]))
 }
+points(rolling_price_avg)
+
+#comparison
+plot(0, xlim= range(0:1000), ylim=range(100:160),xlab = "Model Time", ylab="Transaction Price",main="Transaction Paths")
+rolling_ps_no_asset_level <- rolling_price_avg
+rolling_ps_asset_level <- rolling_price_avg
+points(rolling_ps_asset_level, col="blue")
+points(rolling_ps_no_asset_level, col="grey")
+legend(x=200,y=155,legend=c("Budget Constraint","No Budget Constraint"),col=c("blue","grey"),lwd=4)
 
 #plot rolling vols
 
@@ -141,7 +188,7 @@ for(i in 0:(nruns-1)) {
   for(j in 1:100) {
     period_endowments <-endowments[((j-1)*nagents):(j*nagents),]
     level_ags <- subset(period_endowments, period_endowments$X2 == "UninfFwdLevelAgent")
-    delta_ags <- subset(period_endowments, period_endowments$X2 == "UninfFwdDeltaAgent")
+    delta_ags <- subset(period_endowments, period_endowments$X2 == "UninfExpDeltaAgent")
     informed_ags <- subset(period_endowments, period_endowments$X2 == "InfBckAgent")
     
     level[j,(i+1)] <- mean((apply(!is.na(level_ags),1,sum) - 5)/2)
@@ -150,10 +197,12 @@ for(i in 0:(nruns-1)) {
   }
 }
 
-plot(0, xlim= range(0:100), ylim=range(0:10),xlab = "Time", ylab="Avg. # Assets",main="Intertemporal Endowment Evolution")
+plot(0, cex=0,xlim= range(0:100), ylim=range(0:7),xlab = "Model Time", ylab="Avg. # Assets",main="Intertemporal Endowment Evolution")
 lines(apply(level,1,mean),lwd=4,col="red")
 lines(apply(delta,1,mean),lwd=4,col="green")
 lines(apply(informed,1,mean),lwd=4,col="black")
+legend(x=10,y=6,legend=c("Informed","Level","Delta"),col=c("black","red","green"),lwd=4)
+
 
 for(i in 1:nruns){
   lines(level[,i],col="red")
@@ -174,21 +223,24 @@ totals <- apply(level,1,mean) + apply(delta,1,mean) + apply(informed,1,mean)
 vals_informed <- matrix(nrow=nruns,ncol=nruns)
 vals_level <- vals_informed
 vals_delta <- vals_informed
-plot(0,ylim=range(100:140), xlim=range(0,100))
+plot(0,ylim=range(100:140), xlim=range(0,100),xlab="Model Time", ylab="Valuation Price",main="Valuation Trajectories")
 
 for(i in 0:(nruns-1)) {
   valuations <- read.csv(paste("valuations-",i,".csv", sep=""), header = F)
   for(j in 1:nruns) {
     period_valuations <-valuations[((j-1)*nagents +1):(j*nagents),]
     period_valuations[period_valuations==0] <- NA
-    vals_informed[j,(i+1)] <- mean(subset(period_valuations, period_valuations$V2 == "InfBckAgent")[,4], na.rm=T)
-    vals_level[j,(i+1)] <- mean(subset(period_valuations, period_valuations$V2 == "UninfFwdLevelAgent")[,4],na.rm=T)
-    vals_delta[j,(i+1)] <- mean(subset(period_valuations, period_valuations$V2 == "UninfFwdDeltaAgent")[,4],na.rm=T)
+    vals_informed[j,(i+1)] <- mean(subset(period_valuations, period_valuations$V2 == "InfBckAgent")[,3], na.rm=T)
+    vals_level[j,(i+1)] <- mean(subset(period_valuations, period_valuations$V2 == "UninfFwdLevelAgent")[,3],na.rm=T)
+    vals_delta[j,(i+1)] <- mean(subset(period_valuations, period_valuations$V2 == "UninfExpDeltaAgent")[,3],na.rm=T)
   }
   #lines(vals_delta[,(i+1)], col="green")
 }
 
-lines(apply(vals_informed, 1, mean, na.rm=T), col="black")
-lines(apply(vals_delta,1,mean,na.rm=T), col="green")
-lines(apply(vals_level,1,mean,na.rm=T), col="red")
+lines(apply(vals_informed, 1, mean, na.rm=T), col="black",lwd=4)
+lines(apply(vals_delta,1,mean,na.rm=T), col="green",lwd=4)
+lines(apply(vals_level,1,mean,na.rm=T), col="red",lwd=4)
+legend(x=55,y=110,legend=c("Informed","Level","Delta"),col=c("black","red","green"),lwd=4)
 
+extended <- rep(apply(vals_informed, 1, mean, na.rm=T), each=10)
+lines(extended, lwd=4)

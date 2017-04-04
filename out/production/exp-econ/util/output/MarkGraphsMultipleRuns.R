@@ -11,7 +11,8 @@ setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-03-14-17-42-32/")
 setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-03-15-15-30-43/")
 
 setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-03-15-15-56-04/")
-setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-03-23-13-53-59/")
+setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-03-27-11-32-34/")
+setwd("C://Users/Emily/Documents/GitHub/exp-econ-output/2017-03-27-16-14-07/")
 rm(list=ls())
 
 nruns <- 100
@@ -23,7 +24,7 @@ trans <- data.frame(matrix(nrow=(nruns*nagents), ncol=nruns))
 bids <- data.frame(matrix(nrow=(nruns*nagents), ncol=nruns))
 asks <- data.frame(matrix(nrow=(nruns*nagents), ncol=nruns))
 
-plot(0, xlim= range(0:1000), ylim=range(75:165),xlab = "Transaction #", ylab="Transaction Price",main="Transaction Paths")
+plot(0, xlim= range(0:1000), ylim=range(100:175),xlab = "Transaction #", ylab="Transaction Price",main="Transaction Paths")
 abline(a=130,b=0)
 for(i in 0:(nruns-1)) {
   transactions <- read.csv(paste("transactions-",i,".csv", sep=""), header = F)
@@ -150,14 +151,15 @@ for(i in 0:(nruns-1)) {
 }
 
 plot(0, xlim= range(0:100), ylim=range(0:10),xlab = "Time", ylab="Avg. # Assets",main="Intertemporal Endowment Evolution")
+lines(apply(level,1,mean),lwd=4,col="red")
+lines(apply(delta,1,mean),lwd=4,col="green")
+lines(apply(informed,1,mean),lwd=4,col="black")
+
 for(i in 1:nruns){
   lines(level[,i],col="red")
   lines(delta[,i],col="green")
   lines(informed[,i],col="black")
 }
-lines(apply(level,1,mean),lwd=4,col="red")
-lines(apply(delta,1,mean),lwd=4,col="green")
-lines(apply(informed,1,mean),lwd=4,col="black")
 
 lines(apply(level,1,mean) + apply(level,1,sd),col="red")
 lines(apply(level,1,mean) - apply(level,1,sd),col="red")
@@ -172,17 +174,21 @@ totals <- apply(level,1,mean) + apply(delta,1,mean) + apply(informed,1,mean)
 vals_informed <- matrix(nrow=nruns,ncol=nruns)
 vals_level <- vals_informed
 vals_delta <- vals_informed
-plot(0,ylim=range(80:150), xlim=range(0,100))
+plot(0,ylim=range(100:140), xlim=range(0,100))
 
 for(i in 0:(nruns-1)) {
   valuations <- read.csv(paste("valuations-",i,".csv", sep=""), header = F)
   for(j in 1:nruns) {
     period_valuations <-valuations[((j-1)*nagents +1):(j*nagents),]
-    vals_informed[j,(i+1)] <- mean(subset(period_valuations, period_valuations$V2 == "InfBckAgent")[,3])
-    vals_level[j,(i+1)] <- mean(subset(period_valuations, period_valuations$V2 == "UninfFwdLevelAgent")[,3])
-    vals_delta[j,(i+1)] <- mean(subset(period_valuations, period_valuations$V2 == "UninfFwdDeltaAgent")[,3])
+    period_valuations[period_valuations==0] <- NA
+    vals_informed[j,(i+1)] <- mean(subset(period_valuations, period_valuations$V2 == "InfBckAgent")[,4], na.rm=T)
+    vals_level[j,(i+1)] <- mean(subset(period_valuations, period_valuations$V2 == "UninfFwdLevelAgent")[,4],na.rm=T)
+    vals_delta[j,(i+1)] <- mean(subset(period_valuations, period_valuations$V2 == "UninfFwdDeltaAgent")[,4],na.rm=T)
   }
+  #lines(vals_delta[,(i+1)], col="green")
 }
-lines(apply(vals_informed, 1, mean), col="black")
-lines(apply(vals_delta,1,mean), col="green")
-lines(apply(vals_level,1,mean), col="blue")
+
+lines(apply(vals_informed, 1, mean, na.rm=T), col="black")
+lines(apply(vals_delta,1,mean,na.rm=T), col="green")
+lines(apply(vals_level,1,mean,na.rm=T), col="red")
+

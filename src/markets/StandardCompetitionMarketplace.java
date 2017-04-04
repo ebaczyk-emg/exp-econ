@@ -56,7 +56,6 @@ public class StandardCompetitionMarketplace extends Marketplace{
             if (sim.getRandom().nextBoolean()) {
                 //the agent is a buyer
                 Bid actingAgentBid = actingAgent.getBid();
-                System.out.println(actingAgentBid);
                 if(actingAgentBid != null) {
                     if (actingAgentBid.getBidPrice() > activeBid.getBidPrice()) {
                         bids.add(actingAgentBid);
@@ -65,7 +64,6 @@ public class StandardCompetitionMarketplace extends Marketplace{
                 }
             } else {
                 Offer actingAgentOffer = actingAgent.getOffer();
-                System.out.println(actingAgentOffer);
                 if(actingAgentOffer != null) {
                     if (actingAgentOffer.getOfferPrice() < activeOffer.getOfferPrice()) {
                         offers.add(actingAgentOffer);
