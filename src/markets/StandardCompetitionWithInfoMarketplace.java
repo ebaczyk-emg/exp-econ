@@ -33,7 +33,7 @@ public class StandardCompetitionWithInfoMarketplace extends Marketplace{
         this.setAgentOrder();
 
         releasedInfo = new ArrayList<>();
-        infoRNG = new Random(0);
+        infoRNG = new Random(10);
         buyerSellerRNG = sim.getRandom();
     }
 
@@ -143,7 +143,6 @@ public class StandardCompetitionWithInfoMarketplace extends Marketplace{
     private void releaseNewInformation() {
         boolean coinFlip = (infoRNG.nextDouble() > sim.getConfig().getInfoPStateA());
         this.releasedInfo.add(coinFlip);
-        System.out.println("flip " + releasedInfo.size() + " " + coinFlip);
     }
 
     @Override
